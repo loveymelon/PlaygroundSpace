@@ -9,10 +9,21 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(InfoText.splash)
+                .multilineTextAlignment(.center)
+                .setTextStyle(type: .title1)
+                .padding(.top, 60)
+            
+            Spacer()
+            
+            Image(ImageNames.splash)
+                .resizable()
+                .aspectRatio(1, contentMode: .fit)
+                .padding(.horizontal, 10)
+                .clipped()
+            
+            Spacer()
+        }
     }
-}
-
-#Preview {
-    SplashView()
 }

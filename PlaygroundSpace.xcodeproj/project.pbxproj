@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */; };
-		DF8B09B32C4F8B7F000B768A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09B22C4F8B7F000B768A /* ContentView.swift */; };
 		DF8B09B52C4F8B82000B768A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8B09B42C4F8B82000B768A /* Assets.xcassets */; };
 		DF8B09B82C4F8B82000B768A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8B09B72C4F8B82000B768A /* Preview Assets.xcassets */; };
 		DF8B09C22C4F8B82000B768A /* PlaygroundSpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09C12C4F8B82000B768A /* PlaygroundSpaceTests.swift */; };
 		DF8B09CC2C4F8B82000B768A /* PlaygroundSpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */; };
 		DF8B09CE2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */; };
 		DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF9DF5BB2C4FBAF5007649DB /* .gitignore */; };
+		DF9DF5BF2C4FBC6F007649DB /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */; };
+		DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5C42C4FE9AB007649DB /* Alamofire */; };
+		DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5CA2C4FED59007649DB /* SplashView.swift */; };
+		DF9DF5CE2C4FEE4C007649DB /* TCACoordinators in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5CD2C4FEE4C007649DB /* TCACoordinators */; };
+		DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D02C4FF004007649DB /* PSTypography.swift */; };
+		DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */; };
+		DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D52C5012A3007649DB /* InfoText.swift */; };
+		DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D72C501CFA007649DB /* ImageNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +44,6 @@
 /* Begin PBXFileReference section */
 		DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceApp.swift; sourceTree = "<group>"; };
-		DF8B09B22C4F8B7F000B768A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DF8B09B42C4F8B82000B768A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF8B09B72C4F8B82000B768A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DF8B09BD2C4F8B82000B768A /* PlaygroundSpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaygroundSpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +52,11 @@
 		DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITests.swift; sourceTree = "<group>"; };
 		DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DF9DF5BB2C4FBAF5007649DB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DF9DF5CA2C4FED59007649DB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DF9DF5D02C4FF004007649DB /* PSTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTypography.swift; sourceTree = "<group>"; };
+		DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextModifier.swift; sourceTree = "<group>"; };
+		DF9DF5D52C5012A3007649DB /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
+		DF9DF5D72C501CFA007649DB /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */,
+				DF9DF5CE2C4FEE4C007649DB /* TCACoordinators in Frameworks */,
+				DF9DF5BF2C4FBC6F007649DB /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +111,10 @@
 		DF8B09AF2C4F8B7F000B768A /* PlaygroundSpace */ = {
 			isa = PBXGroup;
 			children = (
+				DF9DF5D22C4FF181007649DB /* Modifier */,
+				DF9DF5CF2C4FEFD4007649DB /* Enum */,
+				DF9DF5C62C4FED32007649DB /* Scene */,
 				DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */,
-				DF8B09B22C4F8B7F000B768A /* ContentView.swift */,
 				DF8B09B42C4F8B82000B768A /* Assets.xcassets */,
 				DF8B09B62C4F8B82000B768A /* Preview Content */,
 			);
@@ -130,6 +146,56 @@
 			path = PlaygroundSpaceUITests;
 			sourceTree = "<group>";
 		};
+		DF9DF5C62C4FED32007649DB /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5C72C4FED37007649DB /* Splash */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		DF9DF5C72C4FED37007649DB /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5C92C4FED49007649DB /* Feature */,
+				DF9DF5C82C4FED43007649DB /* View */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		DF9DF5C82C4FED43007649DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5CA2C4FED59007649DB /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF9DF5C92C4FED49007649DB /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF9DF5CF2C4FEFD4007649DB /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5D02C4FF004007649DB /* PSTypography.swift */,
+				DF9DF5D52C5012A3007649DB /* InfoText.swift */,
+				DF9DF5D72C501CFA007649DB /* ImageNames.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		DF9DF5D22C4FF181007649DB /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +212,11 @@
 			dependencies = (
 			);
 			name = PlaygroundSpace;
+			packageProductDependencies = (
+				DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */,
+				DF9DF5C42C4FE9AB007649DB /* Alamofire */,
+				DF9DF5CD2C4FEE4C007649DB /* TCACoordinators */,
+			);
 			productName = PlaygroundSpace;
 			productReference = DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +289,11 @@
 				Base,
 			);
 			mainGroup = DF8B09A42C4F8B7F000B768A;
+			packageReferences = (
+				DF9DF5BD2C4FBC6F007649DB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				DF9DF5C32C4FE9AB007649DB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */,
+			);
 			productRefGroup = DF8B09AE2C4F8B7F000B768A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -261,8 +337,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF8B09B32C4F8B7F000B768A /* ContentView.swift in Sources */,
+				DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,
+				DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */,
+				DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */,
+				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,
+				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -408,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -441,9 +521,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.melon.PlaygroundSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -470,9 +554,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.melon.PlaygroundSpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -592,6 +680,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DF9DF5BD2C4FBC6F007649DB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.11.0;
+			};
+		};
+		DF9DF5C32C4FE9AB007649DB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/johnpatrickmorgan/TCACoordinators.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF9DF5BD2C4FBC6F007649DB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		DF9DF5C42C4FE9AB007649DB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF9DF5C32C4FE9AB007649DB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		DF9DF5CD2C4FEE4C007649DB /* TCACoordinators */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */;
+			productName = TCACoordinators;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF8B09A52C4F8B7F000B768A /* Project object */;
 }
