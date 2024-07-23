@@ -14,6 +14,7 @@
 		DF8B09C22C4F8B82000B768A /* PlaygroundSpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09C12C4F8B82000B768A /* PlaygroundSpaceTests.swift */; };
 		DF8B09CC2C4F8B82000B768A /* PlaygroundSpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */; };
 		DF8B09CE2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */; };
+		DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF9DF5BB2C4FBAF5007649DB /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		DF8B09C72C4F8B82000B768A /* PlaygroundSpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaygroundSpaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITests.swift; sourceTree = "<group>"; };
 		DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF9DF5BB2C4FBAF5007649DB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		DF8B09A42C4F8B7F000B768A = {
 			isa = PBXGroup;
 			children = (
+				DF9DF5BB2C4FBAF5007649DB /* .gitignore */,
 				DF8B09AF2C4F8B7F000B768A /* PlaygroundSpace */,
 				DF8B09C02C4F8B82000B768A /* PlaygroundSpaceTests */,
 				DF8B09CA2C4F8B82000B768A /* PlaygroundSpaceUITests */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF8B09B82C4F8B82000B768A /* Preview Assets.xcassets in Resources */,
+				DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */,
 				DF8B09B52C4F8B82000B768A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
