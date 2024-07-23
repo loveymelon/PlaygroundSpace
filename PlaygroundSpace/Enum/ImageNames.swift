@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum ImageNames {
+    static let splash = "Splash"
+}
