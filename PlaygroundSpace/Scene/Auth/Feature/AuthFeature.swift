@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import ComposableArchitecture
+
+@Reducer
+struct AuthFeature {
+    @ObservableState
+    struct State: Equatable {
+        
+    }
+    
+    enum Action {
+        
+    }
+}
