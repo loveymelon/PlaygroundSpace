@@ -6,3 +6,27 @@
 //
 
 import Foundation
+import ComposableArchitecture
+
+@Reducer
+struct OnboardingFeature {
+    @ObservableState
+    struct State: Equatable {
+        var isLaunching = false
+    }
+    
+    enum Action {
+        case onAppear
+    }
+    
+    var body: some Reducer<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .onAppear:
+                break
+            }
+            
+            return .none
+        }
+    }
+}
