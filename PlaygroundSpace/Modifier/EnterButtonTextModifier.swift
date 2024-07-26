@@ -1,5 +1,5 @@
 //
-//  EnterButtonModifier.swift
+//  EnterButtonTextModifier.swift
 //  PlaygroundSpace
 //
 //  Created by 김진수 on 7/26/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-private struct EnterButtonModifier: ViewModifier {
+private struct EnterButtonTextModifier: ViewModifier {
     let type: PSTypography
     let foreColor: Color
     let backColor: Color
@@ -19,11 +19,12 @@ private struct EnterButtonModifier: ViewModifier {
             .foregroundStyle(foreColor)
             .background(backColor)
             .setTextStyle(type: type)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
 
 extension View {
-    func asButton(type: PSTypography, foreColor: Color, backColor: Color) -> some View {
-        modifier(EnterButtonModifier(type: type, foreColor: foreColor, backColor: backColor))
+    func asText(type: PSTypography, foreColor: Color, backColor: Color) -> some View {
+        modifier(EnterButtonTextModifier(type: type, foreColor: foreColor, backColor: backColor))
     }
 }
