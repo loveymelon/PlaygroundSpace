@@ -9,11 +9,10 @@ import Foundation
 import ComposableArchitecture
 import FlowStacks
 import TCACoordinators
-
+//
 //@Reducer(state: .equatable)
 //enum Screen {
-//    case splash(SplashView)
-//    case onboarding(OnboardingView)
+//    case onboarding(OnboardingFeature)
 //}
 //
 //@Reducer
@@ -24,15 +23,15 @@ import TCACoordinators
 //      }
 //    
 //    enum Action {
-//        case router(IndexedRouterActionOf<Screen>)
+//        case router(IdentifiedRouterActionOf<Screen>)
 //      }
 //    
 //    var body: some ReducerOf<Self> {
-//        Reduce<State, Action> { state, action in
+//        Reduce { state, action in
 //            switch action {
-//                //            case .router(.routeAction(id: _, action: .)):
-//                //                <#code#>
-//                //            }
+////            case .router(.routeAction(id: _, action: .onboarding(.onSplash))):
+////                <#code#>
+////            }
 //            default:
 //                break
 //            }
