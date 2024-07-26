@@ -8,6 +8,7 @@
 import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
+import ComposableArchitecture
 
 @main
 struct PlaygroundSpaceApp: App {
@@ -24,7 +25,11 @@ struct PlaygroundSpaceApp: App {
 //                        _ = AuthController.handleOpenUrl(url: url)
 //                    }
 //                }
-            SignUpView()
+            WithPerceptionTracking {
+                OnboardingView(store: Store(initialState: OnboardingFeature.State()) {
+                    OnboardingFeature()
+                })
+            }
         }
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */; };
+		DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A482C53F44D004EC293 /* RootCoordinator.swift */; };
+		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
 		DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */; };
 		DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1F2C538BFA000DACFD /* SignUpView.swift */; };
 		DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F212C5399B4000DACFD /* SignUpType.swift */; };
@@ -56,6 +58,8 @@
 /* Begin PBXFileReference section */
 		DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterButtonTextModifier.swift; sourceTree = "<group>"; };
 		DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaygroundSpace.entitlements; sourceTree = "<group>"; };
+		DF784A482C53F44D004EC293 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
 		DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSubstringModifier.swift; sourceTree = "<group>"; };
 		DF844F1F2C538BFA000DACFD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DF844F212C5399B4000DACFD /* SignUpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpType.swift; sourceTree = "<group>"; };
@@ -113,6 +117,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF784A4A2C53F451004EC293 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DF94E7C12C50A73C005494B7 /* Coordinator.swift */,
+				DF784A482C53F44D004EC293 /* RootCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DF784A4B2C53F91C004EC293 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
 		DF844F1E2C538BEB000DACFD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,11 +207,11 @@
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF784A4A2C53F451004EC293 /* Coordinator */,
 				DF844F1E2C538BEB000DACFD /* SignUp */,
 				DFD83DD02C52A4EE009F8A5E /* Auth */,
 				DF9DF5D92C502393007649DB /* Onboarding */,
 				DF9DF5C72C4FED37007649DB /* Splash */,
-				DF94E7C12C50A73C005494B7 /* Coordinator.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -260,6 +281,7 @@
 		DFD83DD02C52A4EE009F8A5E /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				DF784A4B2C53F91C004EC293 /* Feature */,
 				DFD83DD12C52A52C009F8A5E /* View */,
 			);
 			path = Auth;
@@ -434,7 +456,9 @@
 				DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */,
 				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
 				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,
+				DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */,
 				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
+				DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */,
 				DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */,
 				DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */,
 				DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */,

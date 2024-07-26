@@ -13,24 +13,39 @@ struct OnboardingView: View {
     @Perception.Bindable var store: StoreOf<OnboardingFeature>
     
     var body: some View {
-        VStack {
-            
-            
-            SplashView()
-            
-            Button {
+        WithPerceptionTracking { // store를 추적하기 위해서
+            VStack {
                 
-            } label: {
-                Text(InfoText.start)
-                    .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
-                    
+                switch store.currentViewState {
+                case .on:
+                    SplashView()
+                    makeButton()
+                case .loading:
+                    SplashView()
+                }
+                
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 30)
-            
+            .sheet(item: $store.scope(state: \.authViewState, action: \.authViewAction)) { store in
+                AuthView(store: store)
+                    .presentationDetents([.height(250)])
+                    .presentationDragIndicator(.visible)
+            }
+            .onAppear {
+                store.send(.onAppear)
+            }
         }
-        .onAppear {
-            store.send(.onAppear)
+    }
+}
+
+extension OnboardingView {
+    func makeButton() -> some View {
+        Button {
+            store.send(.startButtonTapped)
+        } label: {
+            Text(InfoText.start)
+                .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
         }
+        .padding(.horizontal, 20)
+        .padding(.bottom, 30)
     }
 }
