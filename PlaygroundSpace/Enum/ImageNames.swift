@@ -9,4 +9,7 @@ import Foundation
 
 enum ImageNames {
     static let splash = "Splash"
+    static let appleLogin = "AppleLogin"
+    static let kakaoLogin = "KakaoLogin"
+    static let emailLogin = "EmailLogin"
 }
