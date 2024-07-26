@@ -10,8 +10,12 @@ import AuthenticationServices
 import KakaoSDKCommon
 import KakaoSDKAuth
 import KakaoSDKUser
+import ComposableArchitecture
 
 struct AuthView: View {
+    
+    @Perception.Bindable var store: StoreOf<AuthFeature>
+    
     var body: some View {
         VStack(spacing: 8) {
                 makeAppleButton()
@@ -20,6 +24,7 @@ struct AuthView: View {
                 makeSignUpButton()
         }
         .padding(.horizontal, 20)
+        
     }
 }
 
@@ -41,12 +46,12 @@ extension AuthView {
                             switch authResults.credential{
                             case let appleIDCredential as ASAuthorizationAppleIDCredential:
                                 // 계정 정보 가져오기
-                                let UserIdentifier = appleIDCredential.user
+                                let userIdentifier = appleIDCredential.user
                                 let fullName = appleIDCredential.fullName
-                                let name =  (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
+                                let name = (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
                                 let email = appleIDCredential.email
-                                let IdentityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
-                                let AuthorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
+                                let identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
+                                let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
                             default:
                                 break
                             }
@@ -124,9 +129,6 @@ extension AuthView {
              }
              if let mail = User?.kakaoAccount?.email {
 //                userMail = mail
-             }
-             if let profile = User?.kakaoAccount?.profile?.profileImageUrl {
-//                profileImage = profile
              }
         }
     }
