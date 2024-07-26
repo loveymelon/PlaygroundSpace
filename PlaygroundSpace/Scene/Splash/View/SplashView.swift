@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct SplashView: View {
+    
     var body: some View {
         VStack {
             Text(InfoText.splash)
                 .multilineTextAlignment(.center)
                 .setTextStyle(type: .title1)
+                .foregroundStyle(.brBlack)
                 .padding(.top, 60)
             
             Spacer()

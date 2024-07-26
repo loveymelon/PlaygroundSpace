@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */; };
+		DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */; };
+		DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1F2C538BFA000DACFD /* SignUpView.swift */; };
+		DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F212C5399B4000DACFD /* SignUpType.swift */; };
 		DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */; };
 		DF8B09B52C4F8B82000B768A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8B09B42C4F8B82000B768A /* Assets.xcassets */; };
 		DF8B09B82C4F8B82000B768A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8B09B72C4F8B82000B768A /* Preview Assets.xcassets */; };
 		DF8B09C22C4F8B82000B768A /* PlaygroundSpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09C12C4F8B82000B768A /* PlaygroundSpaceTests.swift */; };
 		DF8B09CC2C4F8B82000B768A /* PlaygroundSpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */; };
 		DF8B09CE2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */; };
+		DF94E7C22C50A73C005494B7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94E7C12C50A73C005494B7 /* Coordinator.swift */; };
+		DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */; };
 		DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF9DF5BB2C4FBAF5007649DB /* .gitignore */; };
 		DF9DF5BF2C4FBC6F007649DB /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */; };
 		DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5C42C4FE9AB007649DB /* Alamofire */; };
@@ -22,6 +28,12 @@
 		DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */; };
 		DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D52C5012A3007649DB /* InfoText.swift */; };
 		DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D72C501CFA007649DB /* ImageNames.swift */; };
+		DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5DC2C5023BA007649DB /* OnboardingView.swift */; };
+		DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83DD22C52A53E009F8A5E /* AuthView.swift */; };
+		DFD83DD72C52ACD2009F8A5E /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DFD83DD62C52ACD2009F8A5E /* KakaoSDKAuth */; };
+		DFD83DD92C52ACD2009F8A5E /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = DFD83DD82C52ACD2009F8A5E /* KakaoSDKCommon */; };
+		DFD83DDB2C52ACD2009F8A5E /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = DFD83DDA2C52ACD2009F8A5E /* KakaoSDKUser */; };
+		DFD83DDF2C52ADAC009F8A5E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83DDE2C52ADAC009F8A5E /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterButtonTextModifier.swift; sourceTree = "<group>"; };
+		DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSubstringModifier.swift; sourceTree = "<group>"; };
+		DF844F1F2C538BFA000DACFD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		DF844F212C5399B4000DACFD /* SignUpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpType.swift; sourceTree = "<group>"; };
 		DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceApp.swift; sourceTree = "<group>"; };
 		DF8B09B42C4F8B82000B768A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,12 +67,19 @@
 		DF8B09C72C4F8B82000B768A /* PlaygroundSpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaygroundSpaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITests.swift; sourceTree = "<group>"; };
 		DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF94E7C12C50A73C005494B7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
 		DF9DF5BB2C4FBAF5007649DB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DF9DF5CA2C4FED59007649DB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DF9DF5D02C4FF004007649DB /* PSTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTypography.swift; sourceTree = "<group>"; };
 		DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextModifier.swift; sourceTree = "<group>"; };
 		DF9DF5D52C5012A3007649DB /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
 		DF9DF5D72C501CFA007649DB /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
+		DF9DF5DC2C5023BA007649DB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DFD83DD22C52A53E009F8A5E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		DFD83DD42C52A5D2009F8A5E /* PlaygroundSpace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaygroundSpace.entitlements; sourceTree = "<group>"; };
+		DFD83DDC2C52AD0E009F8A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DFD83DDE2C52ADAC009F8A5E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +89,10 @@
 			files = (
 				DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */,
 				DF9DF5CE2C4FEE4C007649DB /* TCACoordinators in Frameworks */,
+				DFD83DDB2C52ACD2009F8A5E /* KakaoSDKUser in Frameworks */,
 				DF9DF5BF2C4FBC6F007649DB /* ComposableArchitecture in Frameworks */,
+				DFD83DD92C52ACD2009F8A5E /* KakaoSDKCommon in Frameworks */,
+				DFD83DD72C52ACD2009F8A5E /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF844F1E2C538BEB000DACFD /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				DF844F1F2C538BFA000DACFD /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		DF8B09A42C4F8B7F000B768A = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +145,9 @@
 		DF8B09AF2C4F8B7F000B768A /* PlaygroundSpace */ = {
 			isa = PBXGroup;
 			children = (
+				DFD83DDD2C52AD94009F8A5E /* Keys */,
+				DFD83DDC2C52AD0E009F8A5E /* Info.plist */,
+				DFD83DD42C52A5D2009F8A5E /* PlaygroundSpace.entitlements */,
 				DF9DF5D22C4FF181007649DB /* Modifier */,
 				DF9DF5CF2C4FEFD4007649DB /* Enum */,
 				DF9DF5C62C4FED32007649DB /* Scene */,
@@ -149,7 +186,11 @@
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF844F1E2C538BEB000DACFD /* SignUp */,
+				DFD83DD02C52A4EE009F8A5E /* Auth */,
+				DF9DF5D92C502393007649DB /* Onboarding */,
 				DF9DF5C72C4FED37007649DB /* Splash */,
+				DF94E7C12C50A73C005494B7 /* Coordinator.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -157,7 +198,6 @@
 		DF9DF5C72C4FED37007649DB /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				DF9DF5C92C4FED49007649DB /* Feature */,
 				DF9DF5C82C4FED43007649DB /* View */,
 			);
 			path = Splash;
@@ -174,6 +214,7 @@
 		DF9DF5C92C4FED49007649DB /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -184,6 +225,7 @@
 				DF9DF5D02C4FF004007649DB /* PSTypography.swift */,
 				DF9DF5D52C5012A3007649DB /* InfoText.swift */,
 				DF9DF5D72C501CFA007649DB /* ImageNames.swift */,
+				DF844F212C5399B4000DACFD /* SignUpType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -192,8 +234,51 @@
 			isa = PBXGroup;
 			children = (
 				DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */,
+				DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */,
+				DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		DF9DF5D92C502393007649DB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5C92C4FED49007649DB /* Feature */,
+				DF9DF5DE2C5023C0007649DB /* View */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DF9DF5DE2C5023C0007649DB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5DC2C5023BA007649DB /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DFD83DD02C52A4EE009F8A5E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DFD83DD12C52A52C009F8A5E /* View */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		DFD83DD12C52A52C009F8A5E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DFD83DD22C52A53E009F8A5E /* AuthView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DFD83DDD2C52AD94009F8A5E /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				DFD83DDE2C52ADAC009F8A5E /* APIKey.swift */,
+			);
+			path = Keys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +301,9 @@
 				DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */,
 				DF9DF5C42C4FE9AB007649DB /* Alamofire */,
 				DF9DF5CD2C4FEE4C007649DB /* TCACoordinators */,
+				DFD83DD62C52ACD2009F8A5E /* KakaoSDKAuth */,
+				DFD83DD82C52ACD2009F8A5E /* KakaoSDKCommon */,
+				DFD83DDA2C52ACD2009F8A5E /* KakaoSDKUser */,
 			);
 			productName = PlaygroundSpace;
 			productReference = DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */;
@@ -293,6 +381,7 @@
 				DF9DF5BD2C4FBC6F007649DB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				DF9DF5C32C4FE9AB007649DB /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */,
+				DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = DF8B09AE2C4F8B7F000B768A /* Products */;
 			projectDirPath = "";
@@ -337,12 +426,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */,
 				DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,
 				DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */,
 				DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */,
+				DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */,
+				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
 				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,
 				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
+				DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */,
+				DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */,
+				DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */,
+				DFD83DDF2C52ADAC009F8A5E /* APIKey.swift in Sources */,
+				DF94E7C22C50A73C005494B7 /* Coordinator.swift in Sources */,
+				DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,12 +601,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlaygroundSpace/PlaygroundSpace.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlaygroundSpace/Preview Content\"";
 				DEVELOPMENT_TEAM = QQ67S8HZ4F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlaygroundSpace/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -536,12 +636,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlaygroundSpace/PlaygroundSpace.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlaygroundSpace/Preview Content\"";
 				DEVELOPMENT_TEAM = QQ67S8HZ4F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlaygroundSpace/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -706,6 +808,14 @@
 				minimumVersion = 0.10.1;
 			};
 		};
+		DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.22.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -723,6 +833,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */;
 			productName = TCACoordinators;
+		};
+		DFD83DD62C52ACD2009F8A5E /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		DFD83DD82C52ACD2009F8A5E /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		DFD83DDA2C52ACD2009F8A5E /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

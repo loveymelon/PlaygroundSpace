@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import KakaoSDKCommon
+import KakaoSDKAuth
 
 @main
 struct PlaygroundSpaceApp: App {
+    init() {
+        KakaoSDK.initSDK(appKey: APIKey.kakaoKey)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            //            OnboardingView()
+//            AuthView()
+//                .onOpenURL { url in
+//                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+//                        _ = AuthController.handleOpenUrl(url: url)
+//                    }
+//                }
+            SignUpView()
         }
     }
 }
