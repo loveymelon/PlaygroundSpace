@@ -6,13 +6,31 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct OnboardingView: View {
+    
+    @Perception.Bindable var store: StoreOf<OnboardingFeature>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            
+            SplashView()
+            
+            Button {
+                
+            } label: {
+                Text(InfoText.start)
+                    .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
+                    
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 30)
+            
+        }
+        .onAppear {
+            store.send(.onAppear)
+        }
     }
-}
-
-#Preview {
-    OnboardingView()
 }
