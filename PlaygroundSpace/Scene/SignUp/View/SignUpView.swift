@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SignUpView: View {
     @State var text: String = ""
     @State var numberText: String = ""
+    
+    @Perception.Bindable var store: StoreOf<SignUpFeature>
     
     var body: some View {
         ZStack(alignment: .bottom) {
