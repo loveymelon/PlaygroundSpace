@@ -12,10 +12,19 @@ import ComposableArchitecture
 struct SignUpFeature {
     @ObservableState
     struct State: Equatable {
+        var emailText: String = ""
+        var nicknameText: String = ""
+        var phoneText: String = ""
+        var passwordText: String = ""
+        var checkPasswordText: String = ""
         
+        var emailEdit: Bool = false
+        var requiredIsValid: Bool = false
     }
     
-    enum Action {
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
+        
         case backButtonTapped
         
         case delegate(Delegate)
@@ -25,12 +34,21 @@ struct SignUpFeature {
     }
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
+        
         Reduce { state, action in
             switch action {
             case .backButtonTapped:
                 return .run { send in
                     await send(.delegate(.signUpAction))
                 }
+            
+            case .binding:
+                state.emailEdit = !state.emailText.isEmpty
+            
+                let requiredValid = (state.emailEdit && !state.nicknameText.isEmpty && !state.passwordText.isEmpty && !state.checkPasswordText.isEmpty)
+                
+                state.requiredIsValid = requiredValid
             default:
                 break
             }

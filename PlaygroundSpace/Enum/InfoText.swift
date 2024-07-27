@@ -12,10 +12,13 @@ enum InfoText {
     static let start = "시작하기"
     static let or = "또는"
     static let signUp = "또는 새롭게 회원가입 하기"
-    static let duplicate = "중복 확인"
-    static let signUpEnter = "가입하기"
     static let already = "출시 준비 완료!"
     static let startDetail = "님의 조직을 위해 새로운 새싸톡 워크스페이스를 시작할 준비가 완료되었어요!"
     static let workspaceCre = "워크스페이스 생성"
     static let signUpTitle = "회원가입"
+    
+    enum SignUpButtonType: String {
+        case duplicate = "중복 확인"
+        case signUpEnter = "가입하기"
+    }
 }

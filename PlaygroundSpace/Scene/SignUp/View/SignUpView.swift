@@ -9,22 +9,22 @@ import SwiftUI
 import ComposableArchitecture
 
 struct SignUpView: View {
-    @State var text: String = ""
-    @State var numberText: String = ""
     
     @Perception.Bindable var store: StoreOf<SignUpFeature>
     
     var body: some View {
-        makeTopBar()
-        
-        ZStack(alignment: .bottom) {
-            Color(.baPrimary)
+        WithPerceptionTracking {
+            makeTopBar()
             
-            makeSignUpView()
-            
-            makeButton(text: InfoText.signUpEnter)
-                .frame(height: 68)
-                .padding(.horizontal, 25)
+            ZStack(alignment: .bottom) {
+                Color(.baPrimary)
+                
+                makeSignUpView()
+                
+                makeButton(buttonType: .signUpEnter)
+                    .frame(height: 68)
+                    .padding(.horizontal, 25)
+            }
         }
     }
 }
@@ -33,7 +33,7 @@ extension SignUpView {
     private func makeSignUpView() -> some View {
         VStack(spacing: 10) {
             ForEach(SignUp.allCases, id: \.self) { item in
-                makeLabeledTextField(type: item, secure: item.secure)
+                makeLabeledTextField(type: item)
             }
             
             Spacer()
@@ -42,7 +42,7 @@ extension SignUpView {
         .padding(.horizontal, 25)
     }
     
-    private func makeLabeledTextField(type: SignUp, secure: Bool) -> some View {
+    private func makeLabeledTextField(type: SignUp) -> some View {
         VStack {
             HStack {
                 Text(type.rawValue)
@@ -52,16 +52,29 @@ extension SignUpView {
                 Spacer()
             }
             
-            checkDuplicateTextField(type: type, secure: secure)
+            checkDuplicateTextField(type: type)
         }
     }
     
-    private func makeButton(text: String) -> some View {
-        Button {
-            print("tap")
-        } label: {
-            Text(text)
-                .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
+    private func makeButton(buttonType: InfoText.SignUpButtonType) -> some View {
+        
+        switch buttonType {
+        case .duplicate:
+            Button {
+                print("duplicate")
+            } label: {
+                Text(buttonType.rawValue)
+                    .asText(type: .title2, foreColor: .brWhite, backColor: store.emailEdit ? .brGreen: .brInactive)
+            }
+            .disabled(!store.emailEdit)
+        case .signUpEnter:
+            Button {
+                print("signUpEnter")
+            } label: {
+                Text(buttonType.rawValue)
+                    .asText(type: .title2, foreColor: .brWhite, backColor: store.requiredIsValid ? .brGreen: .brInactive)
+            }
+            .disabled(!store.requiredIsValid)
         }
     }
     
@@ -94,16 +107,23 @@ extension SignUpView {
     }
     
     @ViewBuilder
-    private func makeTextField(placeHolder: String, secure: Bool) -> some View {
+    private func makeTextField(type: SignUp) -> some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(.baSecondary)
             .frame(height: 44)
             .overlay {
                 Group {
-                    if !secure {
-                        TextField(placeHolder, text: $text)
-                    } else {
-                        SecureField(placeHolder, text: $text)
+                    switch type {
+                    case .email:
+                        TextField(type.placeHolder, text: $store.emailText)
+                    case .nickname:
+                        TextField(type.placeHolder, text: $store.nicknameText)
+                    case .phone:
+                        TextField(type.placeHolder, text: $store.phoneText)
+                    case .password:
+                        SecureField(type.placeHolder, text: $store.passwordText)
+                    case .checkPassword:
+                        SecureField(type.placeHolder, text: $store.checkPasswordText)
                     }
                 }
                 .foregroundStyle(.brBlack)
@@ -111,18 +131,19 @@ extension SignUpView {
                 .textFieldStyle(.plain)
                 .padding(.horizontal, 10)
             }
+            
     }
     
     @ViewBuilder
-    private func checkDuplicateTextField(type: SignUp, secure: Bool) -> some View {
+    private func checkDuplicateTextField(type: SignUp) -> some View {
         
         if type != SignUp.email {
-            makeTextField(placeHolder: type.placeHolder, secure: secure)
+            makeTextField(type: type)
         } else {
             HStack(spacing: 10) {
-                makeTextField(placeHolder: type.placeHolder, secure: secure)
+                makeTextField(type: type)
                 
-                makeButton(text: InfoText.duplicate)
+                makeButton(buttonType: .duplicate)
                     .frame(width: 100, height: 44)
             }
         }
