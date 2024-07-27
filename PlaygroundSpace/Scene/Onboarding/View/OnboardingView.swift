@@ -30,6 +30,11 @@ struct OnboardingView: View {
                     .presentationDetents([.height(250)])
                     .presentationDragIndicator(.visible)
             }
+            .sheet(item: $store.scope(state: \.signUpViewState, action: \.signUpViewAction), content: { store in
+                SignUpView(store: store)
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.visible)
+            })
             .onAppear {
                 store.send(.onAppear)
             }

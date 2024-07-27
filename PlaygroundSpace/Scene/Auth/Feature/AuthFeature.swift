@@ -16,6 +16,25 @@ struct AuthFeature {
     }
     
     enum Action {
+        case signUpButtonTapped
         
+        case delegate(Delegate)
+        enum Delegate {
+            case authViewAction
+        }
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .signUpButtonTapped:
+                return .run { send in
+                    await send(.delegate(.authViewAction))
+                }
+            default:
+                break
+            }
+            return .none
+        }
     }
 }

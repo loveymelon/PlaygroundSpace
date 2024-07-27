@@ -10,6 +10,7 @@
 		DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */; };
 		DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A482C53F44D004EC293 /* RootCoordinator.swift */; };
 		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
+		DF784A512C54B7CE004EC293 /* SignUpFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A502C54B7CE004EC293 /* SignUpFeature.swift */; };
 		DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */; };
 		DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1F2C538BFA000DACFD /* SignUpView.swift */; };
 		DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F212C5399B4000DACFD /* SignUpType.swift */; };
@@ -60,6 +61,7 @@
 		DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaygroundSpace.entitlements; sourceTree = "<group>"; };
 		DF784A482C53F44D004EC293 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
+		DF784A502C54B7CE004EC293 /* SignUpFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFeature.swift; sourceTree = "<group>"; };
 		DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSubstringModifier.swift; sourceTree = "<group>"; };
 		DF844F1F2C538BFA000DACFD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DF844F212C5399B4000DACFD /* SignUpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpType.swift; sourceTree = "<group>"; };
@@ -134,10 +136,27 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
-		DF844F1E2C538BEB000DACFD /* SignUp */ = {
+		DF784A4E2C54B7B8004EC293 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				DF844F1F2C538BFA000DACFD /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF784A4F2C54B7BF004EC293 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF784A502C54B7CE004EC293 /* SignUpFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF844F1E2C538BEB000DACFD /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				DF784A4F2C54B7BF004EC293 /* Feature */,
+				DF784A4E2C54B7B8004EC293 /* View */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -448,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF784A512C54B7CE004EC293 /* SignUpFeature.swift in Sources */,
 				DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */,
 				DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,

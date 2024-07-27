@@ -111,7 +111,7 @@ extension AuthView {
     
     func makeSignUpButton() -> some View {
         Button {
-            print("tap")
+            store.send(.signUpButtonTapped)
         } label: {
             Text(InfoText.signUp)
                 .TextWithColoredSubstring(originalText: InfoText.signUp, coloredSubstring: InfoText.or, color: .tePrimary)
