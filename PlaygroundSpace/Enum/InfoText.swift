@@ -17,4 +17,5 @@ enum InfoText {
     static let already = "출시 준비 완료!"
     static let startDetail = "님의 조직을 위해 새로운 새싸톡 워크스페이스를 시작할 준비가 완료되었어요!"
     static let workspaceCre = "워크스페이스 생성"
+    static let signUpTitle = "회원가입"
 }

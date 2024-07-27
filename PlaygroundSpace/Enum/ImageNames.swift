@@ -12,4 +12,5 @@ enum ImageNames {
     static let appleLogin = "AppleLogin"
     static let kakaoLogin = "KakaoLogin"
     static let emailLogin = "EmailLogin"
+    static let backButton = "BackButton"
 }
