@@ -16,12 +16,21 @@ struct SignUpFeature {
     }
     
     enum Action {
+        case backButtonTapped
         
+        case delegate(Delegate)
+        enum Delegate {
+            case signUpAction
+        }
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .backButtonTapped:
+                return .run { send in
+                    await send(.delegate(.signUpAction))
+                }
             default:
                 break
             }

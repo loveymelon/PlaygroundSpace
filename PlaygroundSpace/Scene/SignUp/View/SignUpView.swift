@@ -15,6 +15,8 @@ struct SignUpView: View {
     @Perception.Bindable var store: StoreOf<SignUpFeature>
     
     var body: some View {
+        makeTopBar()
+        
         ZStack(alignment: .bottom) {
             Color(.baPrimary)
             
@@ -61,6 +63,34 @@ extension SignUpView {
             Text(text)
                 .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
         }
+    }
+    
+    private func makeTopBar() -> some View {
+        VStack {
+            Color(.clear)
+                .frame(height: 2)
+            HStack {
+                Button {
+                    store.send(.backButtonTapped)
+                } label: {
+                    Image(ImageNames.backButton)
+                }
+                .padding(.leading, 8)
+                
+                Spacer()
+                
+                Text(InfoText.signUpTitle)
+                    .setTextStyle(type: .title2)
+                    .foregroundStyle(.brBlack)
+                    .padding(.trailing, 28)
+                
+                Spacer()
+                    
+            }
+        }
+        .frame(height: 44)
+        .frame(maxWidth: .infinity)
+        .ignoresSafeArea()
     }
     
     @ViewBuilder

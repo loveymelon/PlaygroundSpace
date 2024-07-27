@@ -82,6 +82,12 @@ struct OnboardingFeature {
                 }
             case .showSignUpView:
                 state.signUpViewState = SignUpFeature.State()
+                
+            case .signUpViewAction(.presented(.delegate(.signUpAction))):
+                
+                return .run { send in
+                    await send(.signUpViewAction(.dismiss))
+                }
             default:
                 break
                 
