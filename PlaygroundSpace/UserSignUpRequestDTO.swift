@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct UserSignUpRequestDTO: RequestDTO {
+    let email: String
+    let password: String
+    let nickname: String
+    let phone: String
+}

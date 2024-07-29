@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct ErrorDTO: DTO, Error {
+    let errorCode: String
+}
