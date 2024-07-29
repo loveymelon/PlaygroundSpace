@@ -52,4 +52,19 @@ enum SignUp: String, CaseIterable {
             return "\(rawValue)를 한 번더 입력하세요"
         }
     }
+    
+    var regex: String {
+        switch self {
+        case .email:
+            return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+.com$"
+        case .password:
+            return "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>]).{8,}$"
+        case .nickname:
+            return  "^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u1100-\\u11FF\\u3130-\\u318F\\s]{1,30}$"
+        case .phone:
+            return "^01([0-9]{1})([0-9]{3,4})([0-9]{4})$"
+        default:
+            return ""
+        }
+    }
 }
