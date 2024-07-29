@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum HeaderType {
+    static let secretHeader = "SesacKey"
+}

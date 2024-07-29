@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum EncodingType {
+    case url
+    case json
+    case multiPart
+}
