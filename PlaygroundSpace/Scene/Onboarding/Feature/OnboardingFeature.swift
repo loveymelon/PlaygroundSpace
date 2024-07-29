@@ -19,6 +19,7 @@ struct OnboardingFeature {
         // @Presents?
         @Presents var authViewState: AuthFeature.State?
         @Presents var signUpViewState: SignUpFeature.State?
+        var completeViewState: CompleteFeature.State?
     }
     
     enum Action {
@@ -26,19 +27,23 @@ struct OnboardingFeature {
         
         // 사이드 이펙트
         case onSplash
-        case onView
+        case onView(ViewState)
         
         case startButtonTapped
         case showSignUpView
+        case changeViewComplete
         
         case authViewAction(PresentationAction<AuthFeature.Action>)
         case signUpViewAction(PresentationAction<SignUpFeature.Action>)
+        case completeViewAction(CompleteFeature.Action)
     }
     
     // 사이드 이펙트
     enum ViewState {
         case loading
         case on
+        case login
+        case logout
     }
     
     // 이거의 용도눈??
@@ -60,12 +65,12 @@ struct OnboardingFeature {
             case .onSplash:
                 
                 return .run { send in
-                    await send(.onView)
+                    await send(.onView(.on))
                 }
                 .debounce(id: cancelID.splash, for: 1, scheduler: RunLoop.main, options: .none) // 타이머
                 
-            case .onView:
-                state.currentViewState = .on
+            case .onView(let viewState):
+                state.currentViewState = viewState
             case .startButtonTapped:
                 state.authViewState = AuthFeature.State()
               
@@ -75,7 +80,6 @@ struct OnboardingFeature {
                 // 물론 아무런 동작을 하지 않는 뷰라면 해도된다. 왜냐하면 유저가 그냥 내렸을때도 감지하기 때문이다.
 //                print("asd")
             case .authViewAction(.presented(.delegate(.authViewAction))):
-                
                 return .run { send in
                     await send(.authViewAction(.dismiss))
                     await send(.showSignUpView)
@@ -84,10 +88,17 @@ struct OnboardingFeature {
                 state.signUpViewState = SignUpFeature.State()
                 
             case .signUpViewAction(.presented(.delegate(.signUpAction))):
-                
                 return .run { send in
                     await send(.signUpViewAction(.dismiss))
                 }
+            case .signUpViewAction(.presented(.delegate(.signUpFinish))):
+                return .run { send in
+                    await send(.signUpViewAction(.dismiss))
+                    await send(.changeViewComplete)
+                    await send(.onView(.login))
+                }
+            case .changeViewComplete:
+                state.completeViewState = CompleteFeature.State()
             default:
                 break
                 
@@ -100,6 +111,9 @@ struct OnboardingFeature {
         }
         .ifLet(\.$signUpViewState, action: \.signUpViewAction) {
             SignUpFeature()
+        }
+        .ifLet(\.completeViewState, action: \.completeViewAction) {
+            CompleteFeature()
         }
     }
 }

@@ -22,6 +22,12 @@ struct OnboardingView: View {
                     makeButton()
                 case .loading:
                     SplashView()
+                case .login:
+                    IfLetStore(store.scope(state: \.completeViewState, action: \.completeViewAction)) { store in
+                        CompleteView(store: store)
+                    }
+                case .logout:
+                    EmptyView()
                 }
                 
             }

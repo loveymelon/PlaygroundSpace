@@ -8,18 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */; };
+		DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CB2C56BE96001793AC /* SignUpMapper.swift */; };
+		DF7313CF2C56BF22001793AC /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CE2C56BF22001793AC /* SignUpRepository.swift */; };
 		DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A482C53F44D004EC293 /* RootCoordinator.swift */; };
 		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
 		DF784A512C54B7CE004EC293 /* SignUpFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A502C54B7CE004EC293 /* SignUpFeature.swift */; };
 		DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */; };
 		DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1F2C538BFA000DACFD /* SignUpView.swift */; };
 		DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F212C5399B4000DACFD /* SignUpType.swift */; };
+		DF8543F12C55064E00DC80A8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8543F02C55064E00DC80A8 /* String+Extension.swift */; };
+		DF8543F72C550DE200DC80A8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8543F62C550DE200DC80A8 /* NetworkManager.swift */; };
+		DF8543FC2C550FED00DC80A8 /* UserDTOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8543FB2C550FED00DC80A8 /* UserDTOModel.swift */; };
+		DF8544012C55105700DC80A8 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544002C55105700DC80A8 /* DTO.swift */; };
+		DF8544032C55110B00DC80A8 /* RequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544022C55110B00DC80A8 /* RequestDTO.swift */; };
+		DF8544052C5511CD00DC80A8 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544042C5511CD00DC80A8 /* Token.swift */; };
+		DF8544072C55133500DC80A8 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544062C55133500DC80A8 /* RouterProtocol.swift */; };
+		DF85440A2C55163F00DC80A8 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544092C55163F00DC80A8 /* UserRouter.swift */; };
+		DF85440C2C55172100DC80A8 /* HeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85440B2C55172100DC80A8 /* HeaderType.swift */; };
+		DF85440E2C55184B00DC80A8 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85440D2C55184B00DC80A8 /* APIError.swift */; };
+		DF8544102C5518BC00DC80A8 /* EncodingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF85440F2C5518BC00DC80A8 /* EncodingType.swift */; };
+		DF8544152C564B0500DC80A8 /* UserEmailRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544142C564B0500DC80A8 /* UserEmailRequestDTO.swift */; };
+		DF8544172C564C5100DC80A8 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544162C564C5100DC80A8 /* JSONManager.swift */; };
+		DF8544192C564C7300DC80A8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8544182C564C7300DC80A8 /* NetworkError.swift */; };
 		DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */; };
 		DF8B09B52C4F8B82000B768A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8B09B42C4F8B82000B768A /* Assets.xcassets */; };
 		DF8B09B82C4F8B82000B768A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF8B09B72C4F8B82000B768A /* Preview Assets.xcassets */; };
 		DF8B09C22C4F8B82000B768A /* PlaygroundSpaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09C12C4F8B82000B768A /* PlaygroundSpaceTests.swift */; };
 		DF8B09CC2C4F8B82000B768A /* PlaygroundSpaceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */; };
 		DF8B09CE2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */; };
+		DF902BFA2C576C4000334769 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF902BF92C576C4000334769 /* ErrorDTO.swift */; };
+		DF902BFD2C577FC700334769 /* CompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF902BFC2C577FC700334769 /* CompleteView.swift */; };
+		DF902C042C57817800334769 /* CompleteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF902C032C57817800334769 /* CompleteFeature.swift */; };
+		DF902C062C57839C00334769 /* UserSignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF902C052C57839C00334769 /* UserSignUpRequestDTO.swift */; };
 		DF94E7C22C50A73C005494B7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94E7C12C50A73C005494B7 /* Coordinator.swift */; };
 		DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */; };
 		DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF9DF5BB2C4FBAF5007649DB /* .gitignore */; };
@@ -59,12 +79,28 @@
 /* Begin PBXFileReference section */
 		DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterButtonTextModifier.swift; sourceTree = "<group>"; };
 		DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlaygroundSpace.entitlements; sourceTree = "<group>"; };
+		DF7313CB2C56BE96001793AC /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
+		DF7313CE2C56BF22001793AC /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		DF784A482C53F44D004EC293 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
 		DF784A502C54B7CE004EC293 /* SignUpFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFeature.swift; sourceTree = "<group>"; };
 		DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSubstringModifier.swift; sourceTree = "<group>"; };
 		DF844F1F2C538BFA000DACFD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DF844F212C5399B4000DACFD /* SignUpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpType.swift; sourceTree = "<group>"; };
+		DF8543F02C55064E00DC80A8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		DF8543F62C550DE200DC80A8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		DF8543FB2C550FED00DC80A8 /* UserDTOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTOModel.swift; sourceTree = "<group>"; };
+		DF8544002C55105700DC80A8 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		DF8544022C55110B00DC80A8 /* RequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDTO.swift; sourceTree = "<group>"; };
+		DF8544042C5511CD00DC80A8 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		DF8544062C55133500DC80A8 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		DF8544092C55163F00DC80A8 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		DF85440B2C55172100DC80A8 /* HeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderType.swift; sourceTree = "<group>"; };
+		DF85440D2C55184B00DC80A8 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		DF85440F2C5518BC00DC80A8 /* EncodingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingType.swift; sourceTree = "<group>"; };
+		DF8544142C564B0500DC80A8 /* UserEmailRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEmailRequestDTO.swift; sourceTree = "<group>"; };
+		DF8544162C564C5100DC80A8 /* JSONManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		DF8544182C564C7300DC80A8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaygroundSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceApp.swift; sourceTree = "<group>"; };
 		DF8B09B42C4F8B82000B768A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +110,10 @@
 		DF8B09C72C4F8B82000B768A /* PlaygroundSpaceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaygroundSpaceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8B09CB2C4F8B82000B768A /* PlaygroundSpaceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITests.swift; sourceTree = "<group>"; };
 		DF8B09CD2C4F8B82000B768A /* PlaygroundSpaceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSpaceUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF902BF92C576C4000334769 /* ErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDTO.swift; sourceTree = "<group>"; };
+		DF902BFC2C577FC700334769 /* CompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteView.swift; sourceTree = "<group>"; };
+		DF902C032C57817800334769 /* CompleteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFeature.swift; sourceTree = "<group>"; };
+		DF902C052C57839C00334769 /* UserSignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignUpRequestDTO.swift; sourceTree = "<group>"; };
 		DF94E7C12C50A73C005494B7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
 		DF9DF5BB2C4FBAF5007649DB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -119,6 +159,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF7313CD2C56BF12001793AC /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF7313CE2C56BF22001793AC /* SignUpRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		DF784A4A2C53F451004EC293 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,10 +203,91 @@
 		DF844F1E2C538BEB000DACFD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				DF7313CD2C56BF12001793AC /* Repository */,
+				DF85441A2C56B85400DC80A8 /* Mapper */,
 				DF784A4F2C54B7BF004EC293 /* Feature */,
 				DF784A4E2C54B7B8004EC293 /* View */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		DF8543EF2C55063E00DC80A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DF8543F02C55064E00DC80A8 /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DF8543F42C550DA600DC80A8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DF8543F62C550DE200DC80A8 /* NetworkManager.swift */,
+				DF8544162C564C5100DC80A8 /* JSONManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DF8543F82C550F8A00DC80A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF8544132C564AEA00DC80A8 /* RequestDTO */,
+				DF8543FA2C550F9900DC80A8 /* Entity */,
+				DF8543F92C550F9200DC80A8 /* DTO */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DF8543F92C550F9200DC80A8 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				DF8543FB2C550FED00DC80A8 /* UserDTOModel.swift */,
+				DF8544042C5511CD00DC80A8 /* Token.swift */,
+				DF902BF92C576C4000334769 /* ErrorDTO.swift */,
+			);
+			name = DTO;
+			sourceTree = "<group>";
+		};
+		DF8543FA2C550F9900DC80A8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		DF8543FD2C55100000DC80A8 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				DF8544002C55105700DC80A8 /* DTO.swift */,
+				DF8544022C55110B00DC80A8 /* RequestDTO.swift */,
+				DF8544062C55133500DC80A8 /* RouterProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		DF8544082C5515B800DC80A8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				DF8544092C55163F00DC80A8 /* UserRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		DF8544132C564AEA00DC80A8 /* RequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+				DF8544142C564B0500DC80A8 /* UserEmailRequestDTO.swift */,
+				DF902C052C57839C00334769 /* UserSignUpRequestDTO.swift */,
+			);
+			name = RequestDTO;
+			sourceTree = "<group>";
+		};
+		DF85441A2C56B85400DC80A8 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF7313CB2C56BE96001793AC /* SignUpMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		DF8B09A42C4F8B7F000B768A = {
@@ -185,6 +314,11 @@
 		DF8B09AF2C4F8B7F000B768A /* PlaygroundSpace */ = {
 			isa = PBXGroup;
 			children = (
+				DF8544082C5515B800DC80A8 /* Router */,
+				DF8543FD2C55100000DC80A8 /* Protocol */,
+				DF8543F82C550F8A00DC80A8 /* Model */,
+				DF8543F42C550DA600DC80A8 /* Manager */,
+				DF8543EF2C55063E00DC80A8 /* Extension */,
 				DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */,
 				DFD83DDD2C52AD94009F8A5E /* Keys */,
 				DFD83DDC2C52AD0E009F8A5E /* Info.plist */,
@@ -223,9 +357,35 @@
 			path = PlaygroundSpaceUITests;
 			sourceTree = "<group>";
 		};
+		DF902BFB2C577FAC00334769 /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				DF902C022C57816A00334769 /* Feature */,
+				DF902C012C57816300334769 /* View */,
+			);
+			path = Complete;
+			sourceTree = "<group>";
+		};
+		DF902C012C57816300334769 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF902BFC2C577FC700334769 /* CompleteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF902C022C57816A00334769 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF902C032C57817800334769 /* CompleteFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF902BFB2C577FAC00334769 /* Complete */,
 				DF784A4A2C53F451004EC293 /* Coordinator */,
 				DF844F1E2C538BEB000DACFD /* SignUp */,
 				DFD83DD02C52A4EE009F8A5E /* Auth */,
@@ -266,6 +426,10 @@
 				DF9DF5D52C5012A3007649DB /* InfoText.swift */,
 				DF9DF5D72C501CFA007649DB /* ImageNames.swift */,
 				DF844F212C5399B4000DACFD /* SignUpType.swift */,
+				DF85440B2C55172100DC80A8 /* HeaderType.swift */,
+				DF85440D2C55184B00DC80A8 /* APIError.swift */,
+				DF85440F2C5518BC00DC80A8 /* EncodingType.swift */,
+				DF8544182C564C7300DC80A8 /* NetworkError.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -468,23 +632,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF784A512C54B7CE004EC293 /* SignUpFeature.swift in Sources */,
+				DF7313CF2C56BF22001793AC /* SignUpRepository.swift in Sources */,
+				DF8544192C564C7300DC80A8 /* NetworkError.swift in Sources */,
 				DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */,
+				DF902BFA2C576C4000334769 /* ErrorDTO.swift in Sources */,
+				DF8544032C55110B00DC80A8 /* RequestDTO.swift in Sources */,
 				DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */,
+				DF8543F12C55064E00DC80A8 /* String+Extension.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,
+				DF8544172C564C5100DC80A8 /* JSONManager.swift in Sources */,
 				DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */,
+				DF8544072C55133500DC80A8 /* RouterProtocol.swift in Sources */,
 				DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */,
+				DF8544152C564B0500DC80A8 /* UserEmailRequestDTO.swift in Sources */,
+				DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */,
+				DF8543FC2C550FED00DC80A8 /* UserDTOModel.swift in Sources */,
+				DF902C042C57817800334769 /* CompleteFeature.swift in Sources */,
 				DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */,
 				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
 				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,
+				DF902C062C57839C00334769 /* UserSignUpRequestDTO.swift in Sources */,
+				DF85440E2C55184B00DC80A8 /* APIError.swift in Sources */,
 				DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */,
+				DF8544102C5518BC00DC80A8 /* EncodingType.swift in Sources */,
 				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
+				DF8543F72C550DE200DC80A8 /* NetworkManager.swift in Sources */,
+				DF8544052C5511CD00DC80A8 /* Token.swift in Sources */,
+				DF85440A2C55163F00DC80A8 /* UserRouter.swift in Sources */,
 				DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */,
 				DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */,
 				DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */,
+				DF902BFD2C577FC700334769 /* CompleteView.swift in Sources */,
 				DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */,
 				DFD83DDF2C52ADAC009F8A5E /* APIKey.swift in Sources */,
+				DF85440C2C55172100DC80A8 /* HeaderType.swift in Sources */,
 				DF94E7C22C50A73C005494B7 /* Coordinator.swift in Sources */,
 				DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */,
+				DF8544012C55105700DC80A8 /* DTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
