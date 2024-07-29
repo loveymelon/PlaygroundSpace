@@ -61,7 +61,7 @@ extension SignUpView {
         switch buttonType {
         case .duplicate:
             Button {
-                print("duplicate")
+                store.send(.duplicateButtonTapped)
             } label: {
                 Text(buttonType.rawValue)
                     .asText(type: .title2, foreColor: .brWhite, backColor: store.emailEdit ? .brGreen: .brInactive)
@@ -69,7 +69,7 @@ extension SignUpView {
             .disabled(!store.emailEdit)
         case .signUpEnter:
             Button {
-                print("signUpEnter")
+                store.send(.signUpButtonTapped)
             } label: {
                 Text(buttonType.rawValue)
                     .asText(type: .title2, foreColor: .brWhite, backColor: store.requiredIsValid ? .brGreen: .brInactive)
@@ -82,7 +82,7 @@ extension SignUpView {
         VStack {
             Color(.clear)
                 .frame(height: 2)
-            HStack {
+            HStack(alignment: .center) {
                 Button {
                     store.send(.backButtonTapped)
                 } label: {
@@ -120,6 +120,7 @@ extension SignUpView {
                         TextField(type.placeHolder, text: $store.nicknameText)
                     case .phone:
                         TextField(type.placeHolder, text: $store.phoneText)
+                            .keyboardType(.numberPad)
                     case .password:
                         SecureField(type.placeHolder, text: $store.passwordText)
                     case .checkPassword:
