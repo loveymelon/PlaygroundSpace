@@ -9,23 +9,40 @@ import SwiftUI
 import ComposableArchitecture
 
 struct CompleteView: View {
-    var store: StoreOf<CompleteFeature>
+    @Perception.Bindable var store: StoreOf<CompleteFeature>
     
     var body: some View {
-        makeCompleteView()
+        WithPerceptionTracking {
+            makeCompleteView()
+                .onAppear {
+                    store.send(.onAppear)
+                }
+                .navigationTitle(store.textState.start)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            store.send(.backButtonTapped)
+                        } label: {
+                            Image(store.textState.backImgae)
+                        }
+                    }
+                }
+        }
     }
 }
 
 extension CompleteView {
     private func makeCompleteView() -> some View {
-        VStack {
-            makeTopBar()
-            ZStack {
-                Color(.baPrimary)
-                
-                makeText(text: InfoText.already, type: .title1)
-                makeText(text: InfoText.startDetail, type: .body)
+        ZStack {
+            Color(.baPrimary)
+            
+            VStack {
+                makeText(text: store.textState.title, type: .title1)
+                    .padding(.top, 40)
+                makeText(text: store.textState.nickname + store.textState.detail, type: .body)
                 makeImage(image: ImageNames.complete)
+                Spacer()
                 makeButton()
             }
         }
@@ -77,7 +94,7 @@ extension CompleteView {
         Button {
             print("next")
         } label: {
-            Text(InfoText.workspaceCre)
+            Text(InfoText.HomeEmptyTextType.create)
                 .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
         }
         .padding(.horizontal, 20)
