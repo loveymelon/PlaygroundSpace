@@ -14,11 +14,30 @@ enum InfoText {
     static let signUp = "또는 새롭게 회원가입 하기"
     static let already = "출시 준비 완료!"
     static let startDetail = "님의 조직을 위해 새로운 새싸톡 워크스페이스를 시작할 준비가 완료되었어요!"
-    static let workspaceCre = "워크스페이스 생성"
     static let signUpTitle = "회원가입"
+    static let login = "로그인"
     
     enum SignUpButtonType: String {
         case duplicate = "중복 확인"
         case signUpEnter = "가입하기"
+    }
+    
+    enum EmailLoginType: String, CaseIterable {
+        case email = "이메일"
+        case password = "비밀번호"
+        
+        var placeHolder: String {
+            switch self {
+            case .email, .password:
+                return "\(rawValue)를 입력하세요"
+            }
+        }
+    }
+    
+    enum HomeEmptyTextType {
+        static let title = "No Workspace"
+        static let mainText = "워크스페이스를 찾을 수 없어요."
+        static let detailText = "관리자에게 초대를 요청하거나, 다른 이메일로 시도하거나\n 새로운 워크스페이스를 생성해주세요."
+        static let create = "워크스페이스 생성"
     }
 }
