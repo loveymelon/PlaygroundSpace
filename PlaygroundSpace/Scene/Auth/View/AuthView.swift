@@ -17,14 +17,15 @@ struct AuthView: View {
     @Perception.Bindable var store: StoreOf<AuthFeature>
     
     var body: some View {
-        VStack(spacing: 8) {
+        WithPerceptionTracking {
+            VStack(spacing: 8) {
                 makeAppleButton()
                 makeKakaoButton()
                 makeEmailButton()
                 makeSignUpButton()
+            }
+            .padding(.horizontal, 20)
         }
-        .padding(.horizontal, 20)
-        
     }
 }
 
@@ -100,7 +101,7 @@ extension AuthView {
     
     func makeEmailButton() -> some View {
         Button {
-            print("tap")
+            store.send(.emailLoginTapped)
         } label: {
             Image(ImageNames.emailLogin)
                 .resizable()

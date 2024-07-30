@@ -27,10 +27,11 @@ struct RootCoordinatorView: View {
                     switch screen.case {
                     case .completeView(let store):
                         CompleteView(store: store)
-                    case .HomeEmptyView(let store):
-                        HomeEmptyView(store: store)
                     }
                 }
+            case .empty:
+                
+                HomeEmptyView(store: store.scope(state: \.homeEmptyState, action: \.homeEmptyAction))
             }
             
         }
@@ -42,15 +43,12 @@ extension RootScreen.State: Identifiable {
         switch self {
         case .completeView:
             return ID.root
-        case .HomeEmptyView:
-            return ID.homeEmpty
         }
     }
     
     enum ID: Identifiable {
         
         case root
-        case homeEmpty
         
         var id: ID { self }
     }

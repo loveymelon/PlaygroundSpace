@@ -22,9 +22,9 @@ struct OnboardingView: View {
                     makeButton()
                 case .loading:
                     SplashView()
-                case .login:
-                    IfLetStore(store.scope(state: \.completeViewState, action: \.completeViewAction)) { store in
-                        CompleteView(store: store)
+                case .coordinator:
+                    IfLetStore(store.scope(state: \.rootCoordinatorState, action: \.rootCoordinatorAction)) { store in
+                        RootCoordinatorView(store: store)
                     }
                 case .logout:
                     EmptyView()
@@ -36,11 +36,16 @@ struct OnboardingView: View {
                     .presentationDetents([.height(250)])
                     .presentationDragIndicator(.visible)
             }
-            .sheet(item: $store.scope(state: \.signUpViewState, action: \.signUpViewAction), content: { store in
+            .sheet(item: $store.scope(state: \.emailLoginState, action: \.emailLoginAction)) { store in
+                EmailLoginView(store: store)
+                    .presentationDetents([.large])
+                    .presentationDragIndicator(.visible)
+            }
+            .sheet(item: $store.scope(state: \.signUpViewState, action: \.signUpViewAction)) { store in
                 SignUpView(store: store)
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
-            })
+            }
             .onAppear {
                 store.send(.onAppear)
             }

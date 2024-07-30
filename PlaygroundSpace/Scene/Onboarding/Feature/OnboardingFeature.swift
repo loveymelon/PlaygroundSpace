@@ -19,7 +19,8 @@ struct OnboardingFeature {
         // @Presents?
         @Presents var authViewState: AuthFeature.State?
         @Presents var signUpViewState: SignUpFeature.State?
-        var completeViewState: CompleteFeature.State?
+        @Presents var emailLoginState: EmailLoginFeature.State? 
+        var rootCoordinatorState: RootCoordinator.State?
     }
     
     enum Action {
@@ -31,18 +32,20 @@ struct OnboardingFeature {
         
         case startButtonTapped
         case showSignUpView
-        case changeViewComplete
+        case changeHome
+        case showEmailLoginView
         
         case authViewAction(PresentationAction<AuthFeature.Action>)
         case signUpViewAction(PresentationAction<SignUpFeature.Action>)
-        case completeViewAction(CompleteFeature.Action)
+        case rootCoordinatorAction(RootCoordinator.Action)
+        case emailLoginAction(PresentationAction<EmailLoginFeature.Action>)
     }
     
     // 사이드 이펙트
     enum ViewState {
         case loading
         case on
-        case login
+        case coordinator
         case logout
     }
     
@@ -52,18 +55,17 @@ struct OnboardingFeature {
         case splash
     }
     
-    var body: some Reducer<State, Action> {
+    var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .onAppear:
                 
-//                return .send(<#T##action: Action##Action#>) // 동기적으로 처리
+//                return .send(T##action: Action##Action) // 동기적으로 처리
                 return .run { send in // 비동기적으로 처리
                     await send(.onSplash)
                 }
                 
             case .onSplash:
-                
                 return .run { send in
                     await send(.onView(.on))
                 }
@@ -84,21 +86,45 @@ struct OnboardingFeature {
                     await send(.authViewAction(.dismiss))
                     await send(.showSignUpView)
                 }
-            case .showSignUpView:
-                state.signUpViewState = SignUpFeature.State()
+                
+            case .authViewAction(.presented(.delegate(.emailPresentAction))):
+                return .run { send in
+                    await send(.authViewAction(.dismiss))
+                    await send(.showEmailLoginView)
+                }
+                
+            case .emailLoginAction(.presented(.delegate(.showCompleteView))):
+                return .run { send in
+                    await send(.emailLoginAction(.dismiss))
+                    await send(.changeHome)
+                    await send(.onView(.coordinator))
+                }
                 
             case .signUpViewAction(.presented(.delegate(.signUpAction))):
                 return .run { send in
                     await send(.signUpViewAction(.dismiss))
                 }
+                
             case .signUpViewAction(.presented(.delegate(.signUpFinish))):
                 return .run { send in
                     await send(.signUpViewAction(.dismiss))
-                    await send(.changeViewComplete)
-                    await send(.onView(.login))
+                    await send(.changeHome)
+                    await send(.onView(.coordinator))
                 }
-            case .changeViewComplete:
-                state.completeViewState = CompleteFeature.State()
+                
+            case .emailLoginAction(.presented(.delegate(.emailLoginBackAction))):
+                return .run { send in
+                    await send(.emailLoginAction(.dismiss))
+                }
+                
+            case .showSignUpView:
+                state.signUpViewState = SignUpFeature.State()
+                
+            case .showEmailLoginView:
+                state.emailLoginState = EmailLoginFeature.State()
+                
+            case .changeHome:
+                state.rootCoordinatorState = RootCoordinator.State.inital
             default:
                 break
                 
@@ -112,8 +138,11 @@ struct OnboardingFeature {
         .ifLet(\.$signUpViewState, action: \.signUpViewAction) {
             SignUpFeature()
         }
-        .ifLet(\.completeViewState, action: \.completeViewAction) {
-            CompleteFeature()
+        .ifLet(\.rootCoordinatorState, action: \.rootCoordinatorAction) {
+            RootCoordinator()
+        }
+        .ifLet(\.$emailLoginState, action: \.emailLoginAction) {
+            EmailLoginFeature()
         }
     }
 }
