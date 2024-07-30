@@ -17,10 +17,12 @@ struct AuthFeature {
     
     enum Action {
         case signUpButtonTapped
+        case emailLoginTapped
         
         case delegate(Delegate)
         enum Delegate {
             case authViewAction
+            case emailPresentAction
         }
     }
     
@@ -30,6 +32,10 @@ struct AuthFeature {
             case .signUpButtonTapped:
                 return .run { send in
                     await send(.delegate(.authViewAction))
+                }
+            case .emailLoginTapped:
+                return .run { send in
+                    await send(.delegate(.emailPresentAction))
                 }
             default:
                 break
