@@ -33,6 +33,8 @@ struct SignUpFeature {
         case phoneRegex
         case showCompleteView
         
+        case userDefaultSetting(TokenEntity, String)
+        
         case completeViewAction(CompleteFeature.Action)
         
         case networking(NetworkType)
@@ -80,19 +82,30 @@ struct SignUpFeature {
             case .signUpButtonTapped:
                 return .run { send in
                     await send(.networking(.signUpEnter))
-                    await send(.delegate(.signUpFinish))
                 }
             case .showCompleteView:
                 state.completeViewState = CompleteFeature.State()
                 
             case .networking(.duplicate):
                 return .run { [emailText = state.emailText] send in
-                    repository.duplicatedEmail(email: emailText)
+                    await repository.duplicatedEmail(email: emailText)
                 }
             case .networking(.signUpEnter):
                 return .run { [emailText = state.emailText, nickname = state.nicknameText, number = state.phoneText, password = state.passwordText] send in
-                    repository.signUpEnter(email: emailText, nick: nickname, number: number, password: password)
+                    let result = await repository.signUpEnter(email: emailText, nick: nickname, number: number, password: password)
+                    
+                    guard let entityData = result else { return }
+                    
+                    await send(.userDefaultSetting(entityData.token, entityData.nickname))
                 }
+            case .userDefaultSetting(let token, let nick):
+                UserDefaultsManager.shared.accessToken = token.accessToken
+                UserDefaultsManager.shared.refreshToken = token.refreshToken
+                UserDefaultsManager.shared.userNickname = nick
+                
+                // 데이터 레이스 상황
+                // 상위에 알려줄때 메인쓰레드로 보내기 위해서 send UI작업은 메인쓰레드
+                return .send(.delegate(.signUpFinish))
                 // networking Type을 받자
 //            case .networking(.one):
 //                
