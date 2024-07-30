@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import ComposableArchitecture
 
 final class NetworkManager {
     
@@ -14,57 +15,72 @@ final class NetworkManager {
     
     private init() { }
     
-    func duplicateEmail(userEmailDTO: UserEmailRequestDTO) {
-        do {
-            let request = try UserRouter.duplicate(userEmailDTO).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .response { result in
-                    switch result.result {
-                    case .success(_):
-                        print("success")
-                    case .failure(let error):
-                        guard let data = result.data else { return }
-                        let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
-                        switch errorResult {
-                        case .success(let success):
-                            print(success.errorCode)
-                        case .failure(let failure):
-                            print(failure)
+    // DTO 없는 버전
+    func requestNetwork<R: Router/*, E: Error*/>(router: R) async throws -> Result<Void, APIError> {
+        return try await withCheckedThrowingContinuation { continuation in
+            do {
+                let request = try router.asURLRequest()
+                
+                AF.request(request)
+                    .validate(statusCode: 200..<300)
+                    .response { result in
+                        switch result.result {
+                        case .success(_):
+                            continuation.resume(returning: .success(()))
+                        case .failure(let error):
+                            guard let data = result.data else { return }
+                            let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
+                            switch errorResult {
+                            case .success(let success):
+                                continuation.resume(returning: .failure(.httpError(success.errorCode)))
+                            case .failure(let failure):
+                                print(failure)
+                            }
                         }
                     }
-                }
-            
-        } catch {
-            print(error)
+            } catch {
+                print(error)
+            }
         }
-        
     }
     
-    func signUpFinish(userInfo: UserSignUpRequestDTO) {
-        do {
-            let request = try UserRouter.signUpEnter(userInfo).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: UserDTOModel.self) { result in
-                    switch result.result {
-                    case .success(let data):
-                        print(data)
-                    case .failure(let error):
-                        guard let data = result.data else { return }
-                        let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
-                        switch errorResult {
-                        case .success(let success):
-                            print(success.errorCode)
-                        case .failure(let failure):
-                            print(failure)
+    // DTO 있는 버전,
+    func requestNetwork<T: DTO, R: Router/*, E: Error*/>(dto: T.Type, router: R) async throws -> Result<T, APIError> {
+        return try await withCheckedThrowingContinuation { continuation in
+            do {
+                let request = try router.asURLRequest()
+                
+                AF.request(request)
+                    .responseDecodable(of: T.self) { result in
+                        switch result.result {
+                        case .success(let data):
+                            continuation.resume(returning: .success(data))
+                        case .failure(let error):
+                            guard let data = result.data else { return }
+                            let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
+                            switch errorResult {
+                            case .success(let success):
+                                continuation.resume(returning: .failure(.httpError(success.errorCode)))
+                            case .failure(let failure):
+                                print(failure)
+                            }
                         }
                     }
-                }
-        } catch {
-            print(error)
+            } catch {
+                print(error)
+            }
         }
+    }
+    
+}
+
+extension NetworkManager: DependencyKey {
+    static var liveValue: NetworkManager = NetworkManager.shared
+}
+
+extension DependencyValues {
+    var networkManager: NetworkManager {
+        get { self[NetworkManager.self] }
+        set { self[NetworkManager.self] = newValue }
     }
 }
