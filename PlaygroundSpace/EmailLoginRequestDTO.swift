@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct EmailLoginRequestDTO: RequestDTO {
+    let email: String
+    let password: String
+}
