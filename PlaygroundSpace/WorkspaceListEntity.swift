@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct WorkspaceListEntity {
+    let workspaceID: String
+    let name: String
+    let description: String
+    let coverImage: String
+    let ownerID: String
+    let createdAt: String
+}
