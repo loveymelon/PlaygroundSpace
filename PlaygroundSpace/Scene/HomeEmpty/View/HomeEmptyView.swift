@@ -85,10 +85,10 @@ extension HomeEmptyView {
 //    }
 }
 
-#if DEBUG
-#Preview {
-    HomeEmptyView(store: Store(initialState: HomeEmptyFeature.State(), reducer: {
-        HomeEmptyFeature()
-    }))
-}
-#endif
+//#if DEBUG
+//#Preview {
+//    HomeEmptyView(store: Store(initialState: HomeEmptyFeature.State(), reducer: {
+//        HomeEmptyFeature()
+//    }))
+//}
+//#endif

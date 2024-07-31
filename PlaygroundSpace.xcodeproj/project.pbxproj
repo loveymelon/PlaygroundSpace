@@ -13,6 +13,8 @@
 		DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A482C53F44D004EC293 /* RootCoordinator.swift */; };
 		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
 		DF784A512C54B7CE004EC293 /* SignUpFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A502C54B7CE004EC293 /* SignUpFeature.swift */; };
+		DF7C62042C59D57000A541D7 /* WorkSpaceCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C62032C59D57000A541D7 /* WorkSpaceCreateView.swift */; };
+		DF7C62062C59DB4400A541D7 /* WorkSpaceCreateFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C62052C59DB4400A541D7 /* WorkSpaceCreateFeature.swift */; };
 		DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */; };
 		DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F1F2C538BFA000DACFD /* SignUpView.swift */; };
 		DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF844F212C5399B4000DACFD /* SignUpType.swift */; };
@@ -98,6 +100,8 @@
 		DF784A482C53F44D004EC293 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
 		DF784A502C54B7CE004EC293 /* SignUpFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFeature.swift; sourceTree = "<group>"; };
+		DF7C62032C59D57000A541D7 /* WorkSpaceCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceCreateView.swift; sourceTree = "<group>"; };
+		DF7C62052C59DB4400A541D7 /* WorkSpaceCreateFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceCreateFeature.swift; sourceTree = "<group>"; };
 		DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredSubstringModifier.swift; sourceTree = "<group>"; };
 		DF844F1F2C538BFA000DACFD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		DF844F212C5399B4000DACFD /* SignUpType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpType.swift; sourceTree = "<group>"; };
@@ -226,6 +230,31 @@
 			isa = PBXGroup;
 			children = (
 				DF784A502C54B7CE004EC293 /* SignUpFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF7C62002C59D52300A541D7 /* WorkSpaceCreate */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C62022C59D54200A541D7 /* Feature */,
+				DF7C62012C59D53E00A541D7 /* View */,
+			);
+			path = WorkSpaceCreate;
+			sourceTree = "<group>";
+		};
+		DF7C62012C59D53E00A541D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C62032C59D57000A541D7 /* WorkSpaceCreateView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF7C62022C59D54200A541D7 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C62052C59DB4400A541D7 /* WorkSpaceCreateFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -521,6 +550,7 @@
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF7C62002C59D52300A541D7 /* WorkSpaceCreate */,
 				DF9279BA2C58DF3F00E2002D /* HomeEmpty */,
 				DF9279A52C58A25300E2002D /* EmailLogin */,
 				DF902BFB2C577FAC00334769 /* Complete */,
@@ -779,9 +809,11 @@
 				DF902BFA2C576C4000334769 /* ErrorDTO.swift in Sources */,
 				DF8544032C55110B00DC80A8 /* RequestDTO.swift in Sources */,
 				DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */,
+				DF7C62042C59D57000A541D7 /* WorkSpaceCreateView.swift in Sources */,
 				DF9279B52C58A8BA00E2002D /* EmailLoginMapper.swift in Sources */,
 				DF8543F12C55064E00DC80A8 /* String+Extension.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,
+				DF7C62062C59DB4400A541D7 /* WorkSpaceCreateFeature.swift in Sources */,
 				DF9279B22C58A89500E2002D /* EmailLoginRepository.swift in Sources */,
 				DF9279AD2C58A38900E2002D /* EmailLoginFeature.swift in Sources */,
 				DF902C0F2C57C3A800334769 /* UserDefaultManager.swift in Sources */,

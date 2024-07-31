@@ -82,7 +82,6 @@ extension EmailLoginView {
                 .asText(type: .title2, foreColor: .brWhite, backColor: store.requiredIsValid ? .brGreen: .brInactive)
         }
         .disabled(!store.requiredIsValid)
-        
     }
     
     private func makeTopBar() -> some View {
