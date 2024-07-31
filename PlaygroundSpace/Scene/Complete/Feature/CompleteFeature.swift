@@ -13,11 +13,16 @@ struct CompleteFeature {
     @ObservableState
     struct State: Equatable {
         var textState = ViewTextState()
+        @Presents var workSpaceCreateState: WorkSpaceCreateFeature.State?
     }
     
     enum Action {
         case onAppear
         case backButtonTapped
+        case workSpaceCreateButtonTapped
+        case showWorkSpaceCreate
+        
+        case workSpaceCreateAction(PresentationAction<WorkSpaceCreateFeature.Action>)
         
         case delegate(Delegate)
         enum Delegate {
@@ -38,14 +43,27 @@ struct CompleteFeature {
             switch action {
             case .onAppear:
                 state.textState.nickname = UserDefaultsManager.shared.userNickname
+            case .showWorkSpaceCreate:
+                state.workSpaceCreateState = WorkSpaceCreateFeature.State()
+            case .workSpaceCreateButtonTapped:
+                return .run { send in
+                    await send(.showWorkSpaceCreate)
+                }
             case .backButtonTapped:
                 return .run { send in
                     await send(.delegate(.backButtonTap))
+                }
+            case .workSpaceCreateAction(.presented(.delegate(.backButtonTapped))):
+                return .run { send in
+                    await send(.workSpaceCreateAction(.dismiss))
                 }
             default:
                 break
             }
             return .none
+        }
+        .ifLet(\.$workSpaceCreateState, action: \.workSpaceCreateAction) {
+            WorkSpaceCreateFeature()
         }
     }
 }

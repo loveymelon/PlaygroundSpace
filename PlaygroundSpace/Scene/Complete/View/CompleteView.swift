@@ -13,21 +13,26 @@ struct CompleteView: View {
     
     var body: some View {
         WithPerceptionTracking {
-            makeCompleteView()
-                .onAppear {
-                    store.send(.onAppear)
-                }
-                .navigationTitle(store.textState.start)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button {
-                            store.send(.backButtonTapped)
-                        } label: {
-                            Image(store.textState.backImgae)
+            NavigationStack {
+                makeCompleteView()
+                    .onAppear {
+                        store.send(.onAppear)
+                    }
+                    .navigationTitle(store.textState.start)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button {
+                                store.send(.backButtonTapped)
+                            } label: {
+                                Image(store.textState.backImgae)
+                            }
                         }
                     }
-                }
+                    .sheet(item: $store.scope(state: \.workSpaceCreateState, action: \.workSpaceCreateAction)) { store in
+                        WorkSpaceCreateView(store: store)
+                    }
+            }
         }
     }
 }
@@ -48,34 +53,6 @@ extension CompleteView {
         }
     }
     
-    private func makeTopBar() -> some View {
-        VStack {
-            Color(.clear)
-                .frame(height: 2)
-            HStack(alignment: .center) {
-                Button {
-                    print("back")
-                } label: {
-                    Image(ImageNames.backButton)
-                }
-                .padding(.leading, 8)
-                
-                Spacer()
-                
-                Text(InfoText.start)
-                    .setTextStyle(type: .title2)
-                    .foregroundStyle(.brBlack)
-                    .padding(.trailing, 28)
-                
-                Spacer()
-                    
-            }
-        }
-        .frame(height: 44)
-        .frame(maxWidth: .infinity)
-        .ignoresSafeArea()
-    }
-    
     private func makeText(text: String, type: PSTypography) -> some View {
         Text(text)
             .setTextStyle(type: type)
@@ -92,7 +69,7 @@ extension CompleteView {
     private func makeButton() -> some View {
         
         Button {
-            print("next")
+            store.send(.workSpaceCreateButtonTapped)
         } label: {
             Text(InfoText.HomeEmptyTextType.create)
                 .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
