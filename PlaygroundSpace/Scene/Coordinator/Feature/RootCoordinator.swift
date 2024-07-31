@@ -19,12 +19,12 @@ enum RootScreen {
 struct RootCoordinator {
     @ObservableState
       struct State: Equatable {
+          
+          static let inital = Self(routes: [.root(.completeView(CompleteFeature.State()), embedInNavigationView: true)])
+                                   
           var routes: IdentifiedArrayOf<Route<RootScreen.State>>
           var viewState: ViewState = .loading
           var homeEmptyState = HomeEmptyFeature.State()
-          
-          static let inital = Self(routes: [.root(.completeView(CompleteFeature.State()), embedInNavigationView: true)]
-          )
       }
     
     enum Action {
@@ -56,6 +56,7 @@ struct RootCoordinator {
             switch action {
             case .router(.routeAction(id: _, action: .completeView(.delegate(.backButtonTap)))):
                 print("tapbackback")
+                
             case .onAppear:
                 return .run { send in
                     await send(.fetchWorkspaceList)
@@ -73,13 +74,12 @@ struct RootCoordinator {
                 }
             case let .workspaceResultScene(entity):
                 state.viewState = entity.isEmpty ? .empty : .show
-                
             default:
                 break
             }
             return .none
         }
-        .forEachRoute(\.routes, action: \.router)
     }
+        
 }
 

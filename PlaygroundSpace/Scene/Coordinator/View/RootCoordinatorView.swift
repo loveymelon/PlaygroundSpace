@@ -30,7 +30,6 @@ struct RootCoordinatorView: View {
                     }
                 }
             case .empty:
-                
                 HomeEmptyView(store: store.scope(state: \.homeEmptyState, action: \.homeEmptyAction))
             }
             
