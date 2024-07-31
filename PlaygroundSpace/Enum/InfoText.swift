@@ -40,4 +40,18 @@ enum InfoText {
         static let detailText = "관리자에게 초대를 요청하거나, 다른 이메일로 시도하거나\n 새로운 워크스페이스를 생성해주세요."
         static let create = "워크스페이스 생성"
     }
+    
+    enum WorkSpaceCreateType: String, CaseIterable {
+        case workSpaceName = "워크스페이스 이름"
+        case workSpaceExplain = "워크스페이스 설명"
+        
+        var placeHolder: String {
+            switch self {
+            case .workSpaceName:
+                return "워크스페이스 이름을 입력하세요 (필수)"
+            case .workSpaceExplain:
+                return "워크스페이스를 설명하세요 (옵션)"
+            }
+        }
+    }
 }

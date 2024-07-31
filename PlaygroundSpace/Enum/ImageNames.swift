@@ -16,4 +16,5 @@ enum ImageNames {
     static let complete = "Complete"
     static let homeEmptyImage = "HomeEmptyImage"
     static let workSpaceDefaultImage = "WorkSpaceDefault"
+    static let camera = "Camera"
 }
