@@ -65,7 +65,7 @@ extension WorkSpaceCreateView {
     
     private func makeCancleButton() -> some View {
         Button {
-            store.send(.completeButtonTapped)
+            store.send(.backButtonTapped)
         } label: {
             Image(store.workSpaceImage.backButton)
         }
@@ -122,10 +122,10 @@ extension WorkSpaceCreateView {
     }
 }
 
-#if DEBUG
-#Preview {
-    WorkSpaceCreateView(store: Store(initialState: WorkSpaceCreateFeature.State(), reducer: {
-        WorkSpaceCreateFeature()
-    }))
-}
-#endif
+//#if DEBUG
+//#Preview {
+//    WorkSpaceCreateView(store: Store(initialState: WorkSpaceCreateFeature.State(), reducer: {
+//        WorkSpaceCreateFeature()
+//    }))
+//}
+//#endif
