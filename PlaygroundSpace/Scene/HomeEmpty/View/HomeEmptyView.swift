@@ -25,8 +25,11 @@ struct HomeEmptyView: View {
                                     
                             }
                         }
-                         
+                        
                     }
+            }
+            .sheet(item: $store.scope(state: \.workSpaceCreateState, action: \.workSpaceCreateAction)) { store in
+                WorkSpaceCreateView(store: store)
             }
         }
     }
@@ -44,6 +47,7 @@ extension HomeEmptyView {
             
             makeText(text: store.viewTextState.detailText, type: .bodyBold)
                 .padding(.top, 20)
+            Spacer()
             makeImage()
             Spacer()
             makeButton()
@@ -68,7 +72,7 @@ extension HomeEmptyView {
     
     func makeButton() -> some View {
         Button {
-            print("create")
+            store.send(.workSpaceCreateButtonTapped)
         } label: {
             Text(store.viewTextState.createText)
                 .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
