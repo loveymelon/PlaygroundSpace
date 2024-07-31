@@ -21,6 +21,7 @@ struct OnboardingFeature {
         @Presents var signUpViewState: SignUpFeature.State?
         @Presents var emailLoginState: EmailLoginFeature.State? 
         var rootCoordinatorState: RootCoordinator.State?
+        var completeState: CompleteFeature.State?
     }
     
     enum Action {
@@ -32,6 +33,7 @@ struct OnboardingFeature {
         
         case startButtonTapped
         case showSignUpView
+        case showCompleteView
         case changeHome
         case showEmailLoginView
         
@@ -39,6 +41,7 @@ struct OnboardingFeature {
         case signUpViewAction(PresentationAction<SignUpFeature.Action>)
         case rootCoordinatorAction(RootCoordinator.Action)
         case emailLoginAction(PresentationAction<EmailLoginFeature.Action>)
+        case completeAction(CompleteFeature.Action)
     }
     
     // 사이드 이펙트
@@ -47,6 +50,7 @@ struct OnboardingFeature {
         case on
         case coordinator
         case logout
+        case signUp
     }
     
     // 이거의 용도눈??
@@ -108,8 +112,8 @@ struct OnboardingFeature {
             case .signUpViewAction(.presented(.delegate(.signUpFinish))):
                 return .run { send in
                     await send(.signUpViewAction(.dismiss))
-                    await send(.changeHome)
-                    await send(.onView(.coordinator))
+                    await send(.showCompleteView)
+                    await send(.onView(.signUp))
                 }
                 
             case .emailLoginAction(.presented(.delegate(.emailLoginBackAction))):
@@ -117,12 +121,20 @@ struct OnboardingFeature {
                     await send(.emailLoginAction(.dismiss))
                 }
                 
+            case .completeAction(.delegate(.backButtonTap)):
+                return .run { send in
+                    await send(.changeHome)
+                    await send(.onView(.coordinator))
+                }
+                
             case .showSignUpView:
                 state.signUpViewState = SignUpFeature.State()
                 
+            case .showCompleteView:
+                state.completeState = CompleteFeature.State()
+                
             case .showEmailLoginView:
                 state.emailLoginState = EmailLoginFeature.State()
-                
             case .changeHome:
                 state.rootCoordinatorState = RootCoordinator.State.inital
             default:
@@ -143,6 +155,9 @@ struct OnboardingFeature {
         }
         .ifLet(\.$emailLoginState, action: \.emailLoginAction) {
             EmailLoginFeature()
+        }
+        .ifLet(\.completeState, action: \.completeAction) {
+            CompleteFeature()
         }
     }
 }

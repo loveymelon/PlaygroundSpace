@@ -28,6 +28,10 @@ struct OnboardingView: View {
                     }
                 case .logout:
                     EmptyView()
+                case .signUp:
+                    IfLetStore(store.scope(state: \.completeState, action: \.completeAction)) { store in
+                        CompleteView(store: store)
+                    }
                 }
                 
             }
