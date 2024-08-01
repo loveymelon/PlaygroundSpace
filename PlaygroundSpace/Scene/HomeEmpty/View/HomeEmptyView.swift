@@ -81,12 +81,6 @@ extension HomeEmptyView {
         }
     }
     
-//    func seperatorLine() -> some View {
-//        Divider()
-//            .frame(height: 1)
-//            .overlay(Color.gray)
-//            .opacity(0.2)
-//    }
 }
 
 //#if DEBUG
