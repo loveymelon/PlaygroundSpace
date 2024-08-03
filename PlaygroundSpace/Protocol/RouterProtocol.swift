@@ -55,7 +55,6 @@ extension Router {
             urlRequest = try JSONEncoding.default.encode(urlRequest, withJSONObject: jsonObject)
             return urlRequest
         case .multiPart:
-            urlRequest.httpBody = body
             return urlRequest
         }
     }
