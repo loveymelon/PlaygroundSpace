@@ -12,7 +12,7 @@ import TCACoordinators
 
 @Reducer(state: .equatable)
 enum RootScreen {
-    case completeView(CompleteFeature)
+    case homeInitView(HomeInitFeature)
 }
 
 @Reducer
@@ -20,7 +20,7 @@ struct RootCoordinator {
     @ObservableState
       struct State: Equatable {
           
-          static let inital = Self(routes: [.root(.completeView(CompleteFeature.State()), embedInNavigationView: true)])
+          static let inital = Self(routes: [.root(.homeInitView(HomeInitFeature.State()), embedInNavigationView: true)])
                                    
           var routes: IdentifiedArrayOf<Route<RootScreen.State>>
           var viewState: ViewState = .loading
@@ -54,9 +54,6 @@ struct RootCoordinator {
         
         Reduce { state, action in
             switch action {
-            case .router(.routeAction(id: _, action: .completeView(.delegate(.backButtonTap)))):
-                print("tapbackback")
-                
             case .onAppear:
                 return .run { send in
                     await send(.fetchWorkspaceList)
@@ -74,11 +71,17 @@ struct RootCoordinator {
                 }
             case let .workspaceResultScene(entity):
                 state.viewState = entity.isEmpty ? .empty : .show
+                return .send(.router(.routeAction(id: .root, action: .homeInitView(.catchData(entity)))))
+            case .homeEmptyAction(.delegate(.createSuccess)):
+                return .run { send in
+                    await send(.fetchWorkspaceList)
+                }
             default:
                 break
             }
             return .none
         }
+        .forEachRoute(\.routes, action: \.router)
     }
         
 }

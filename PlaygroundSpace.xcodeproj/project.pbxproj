@@ -58,6 +58,20 @@
 		DF9279CD2C5906E400E2002D /* WorkspaceListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9279CC2C5906E400E2002D /* WorkspaceListDTO.swift */; };
 		DF9279CF2C59075100E2002D /* WorkspaceListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9279CE2C59075100E2002D /* WorkspaceListEntity.swift */; };
 		DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */; };
+		DF9B6BAC2C5C8528002090B3 /* HomeInitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BAB2C5C8528002090B3 /* HomeInitView.swift */; };
+		DF9B6BAE2C5C87BB002090B3 /* HomeInitFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BAD2C5C87BB002090B3 /* HomeInitFeature.swift */; };
+		DF9B6BB12C5CB26D002090B3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BB02C5CB26D002090B3 /* ImagePicker.swift */; };
+		DF9B6BB42C5CC71E002090B3 /* WorkSpaceCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BB32C5CC71E002090B3 /* WorkSpaceCreateRepository.swift */; };
+		DF9B6BB62C5CD405002090B3 /* WorkSpaceInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BB52C5CD405002090B3 /* WorkSpaceInfoDTO.swift */; };
+		DF9B6BB82C5CDB07002090B3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BB72C5CDB07002090B3 /* UIImage+Extension.swift */; };
+		DF9B6BBA2C5CF574002090B3 /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BB92C5CF574002090B3 /* ChannelRouter.swift */; };
+		DF9B6BBC2C5CF6A9002090B3 /* ChannelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BBB2C5CF6A9002090B3 /* ChannelDTO.swift */; };
+		DF9B6BBF2C5D3B9F002090B3 /* HomeInitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BBE2C5D3B9F002090B3 /* HomeInitRepository.swift */; };
+		DF9B6BC12C5D3BC7002090B3 /* ChannelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BC02C5D3BC7002090B3 /* ChannelEntity.swift */; };
+		DF9B6BC42C5D3C38002090B3 /* HomeInitMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BC32C5D3C38002090B3 /* HomeInitMapper.swift */; };
+		DF9B6BC92C5D4BE1002090B3 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF9B6BC82C5D4BE1002090B3 /* Kingfisher */; };
+		DF9B6BCB2C5D4CD1002090B3 /* KingfisherRequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BCA2C5D4CD1002090B3 /* KingfisherRequestModifier.swift */; };
+		DF9B6BCD2C5D4CFE002090B3 /* DownSamplingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9B6BCC2C5D4CFE002090B3 /* DownSamplingImageView.swift */; };
 		DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF9DF5BB2C4FBAF5007649DB /* .gitignore */; };
 		DF9DF5BF2C4FBC6F007649DB /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */; };
 		DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DF9DF5C42C4FE9AB007649DB /* Alamofire */; };
@@ -148,6 +162,19 @@
 		DF9279CC2C5906E400E2002D /* WorkspaceListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceListDTO.swift; sourceTree = "<group>"; };
 		DF9279CE2C59075100E2002D /* WorkspaceListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceListEntity.swift; sourceTree = "<group>"; };
 		DF94E7C32C50AD01005494B7 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
+		DF9B6BAB2C5C8528002090B3 /* HomeInitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInitView.swift; sourceTree = "<group>"; };
+		DF9B6BAD2C5C87BB002090B3 /* HomeInitFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInitFeature.swift; sourceTree = "<group>"; };
+		DF9B6BB02C5CB26D002090B3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DF9B6BB32C5CC71E002090B3 /* WorkSpaceCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceCreateRepository.swift; sourceTree = "<group>"; };
+		DF9B6BB52C5CD405002090B3 /* WorkSpaceInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceInfoDTO.swift; sourceTree = "<group>"; };
+		DF9B6BB72C5CDB07002090B3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		DF9B6BB92C5CF574002090B3 /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
+		DF9B6BBB2C5CF6A9002090B3 /* ChannelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDTO.swift; sourceTree = "<group>"; };
+		DF9B6BBE2C5D3B9F002090B3 /* HomeInitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInitRepository.swift; sourceTree = "<group>"; };
+		DF9B6BC02C5D3BC7002090B3 /* ChannelEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelEntity.swift; sourceTree = "<group>"; };
+		DF9B6BC32C5D3C38002090B3 /* HomeInitMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInitMapper.swift; sourceTree = "<group>"; };
+		DF9B6BCA2C5D4CD1002090B3 /* KingfisherRequestModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherRequestModifier.swift; sourceTree = "<group>"; };
+		DF9B6BCC2C5D4CFE002090B3 /* DownSamplingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownSamplingImageView.swift; sourceTree = "<group>"; };
 		DF9DF5BB2C4FBAF5007649DB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DF9DF5CA2C4FED59007649DB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DF9DF5D02C4FF004007649DB /* PSTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSTypography.swift; sourceTree = "<group>"; };
@@ -167,6 +194,7 @@
 			files = (
 				DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */,
 				DF9DF5CE2C4FEE4C007649DB /* TCACoordinators in Frameworks */,
+				DF9B6BC92C5D4BE1002090B3 /* Kingfisher in Frameworks */,
 				DFD83DDB2C52ACD2009F8A5E /* KakaoSDKUser in Frameworks */,
 				DF9DF5BF2C4FBC6F007649DB /* ComposableArchitecture in Frameworks */,
 				DFD83DD92C52ACD2009F8A5E /* KakaoSDKCommon in Frameworks */,
@@ -237,6 +265,7 @@
 		DF7C62002C59D52300A541D7 /* WorkSpaceCreate */ = {
 			isa = PBXGroup;
 			children = (
+				DF9B6BB22C5CC6CA002090B3 /* Repository */,
 				DF7C62022C59D54200A541D7 /* Feature */,
 				DF7C62012C59D53E00A541D7 /* View */,
 			);
@@ -274,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8543F02C55064E00DC80A8 /* String+Extension.swift */,
+				DF9B6BB72C5CDB07002090B3 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -305,6 +335,8 @@
 				DF8544042C5511CD00DC80A8 /* Token.swift */,
 				DF902BF92C576C4000334769 /* ErrorDTO.swift */,
 				DF9279CC2C5906E400E2002D /* WorkspaceListDTO.swift */,
+				DF9B6BB52C5CD405002090B3 /* WorkSpaceInfoDTO.swift */,
+				DF9B6BBB2C5CF6A9002090B3 /* ChannelDTO.swift */,
 			);
 			name = DTO;
 			sourceTree = "<group>";
@@ -313,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				DF9279A32C57EEED00E2002D /* UserEntity.swift */,
+				DF9B6BC02C5D3BC7002090B3 /* ChannelEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -332,6 +365,7 @@
 			children = (
 				DF8544092C55163F00DC80A8 /* UserRouter.swift */,
 				DF9279C52C59040E00E2002D /* WorkspaceRouter.swift */,
+				DF9B6BB92C5CF574002090B3 /* ChannelRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -547,9 +581,71 @@
 			path = Mapper;
 			sourceTree = "<group>";
 		};
+		DF9B6BA82C5C84C3002090B3 /* HomeInit */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BC22C5D3C23002090B3 /* Mapper */,
+				DF9B6BBD2C5D3B8A002090B3 /* Repository */,
+				DF9B6BAA2C5C851A002090B3 /* Feature */,
+				DF9B6BA92C5C8515002090B3 /* View */,
+			);
+			path = HomeInit;
+			sourceTree = "<group>";
+		};
+		DF9B6BA92C5C8515002090B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BAB2C5C8528002090B3 /* HomeInitView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF9B6BAA2C5C851A002090B3 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BAD2C5C87BB002090B3 /* HomeInitFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF9B6BAF2C5CB258002090B3 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BB02C5CB26D002090B3 /* ImagePicker.swift */,
+				DF9B6BCC2C5D4CFE002090B3 /* DownSamplingImageView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		DF9B6BB22C5CC6CA002090B3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BB32C5CC71E002090B3 /* WorkSpaceCreateRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF9B6BBD2C5D3B8A002090B3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BBE2C5D3B9F002090B3 /* HomeInitRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF9B6BC22C5D3C23002090B3 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF9B6BC32C5D3C38002090B3 /* HomeInitMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF9B6BAF2C5CB258002090B3 /* Custom */,
+				DF9B6BA82C5C84C3002090B3 /* HomeInit */,
 				DF7C62002C59D52300A541D7 /* WorkSpaceCreate */,
 				DF9279BA2C58DF3F00E2002D /* HomeEmpty */,
 				DF9279A52C58A25300E2002D /* EmailLogin */,
@@ -608,6 +704,7 @@
 				DF9DF5D32C4FF1A2007649DB /* DynamicTextModifier.swift */,
 				DF844F1C2C538809000DACFD /* ColoredSubstringModifier.swift */,
 				DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */,
+				DF9B6BCA2C5D4CD1002090B3 /* KingfisherRequestModifier.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -677,6 +774,7 @@
 				DFD83DD62C52ACD2009F8A5E /* KakaoSDKAuth */,
 				DFD83DD82C52ACD2009F8A5E /* KakaoSDKCommon */,
 				DFD83DDA2C52ACD2009F8A5E /* KakaoSDKUser */,
+				DF9B6BC82C5D4BE1002090B3 /* Kingfisher */,
 			);
 			productName = PlaygroundSpace;
 			productReference = DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */;
@@ -755,6 +853,7 @@
 				DF9DF5C32C4FE9AB007649DB /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */,
 				DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				DF9B6BC72C5D4BE1002090B3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = DF8B09AE2C4F8B7F000B768A /* Products */;
 			projectDirPath = "";
@@ -799,7 +898,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF9B6BCD2C5D4CFE002090B3 /* DownSamplingImageView.swift in Sources */,
 				DF784A512C54B7CE004EC293 /* SignUpFeature.swift in Sources */,
+				DF9B6BAE2C5C87BB002090B3 /* HomeInitFeature.swift in Sources */,
 				DF7313CF2C56BF22001793AC /* SignUpRepository.swift in Sources */,
 				DF8544192C564C7300DC80A8 /* NetworkError.swift in Sources */,
 				DF9279C02C58DF7000E2002D /* HomeEmptyFeature.swift in Sources */,
@@ -808,27 +909,35 @@
 				DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */,
 				DF902BFA2C576C4000334769 /* ErrorDTO.swift in Sources */,
 				DF8544032C55110B00DC80A8 /* RequestDTO.swift in Sources */,
+				DF9B6BBF2C5D3B9F002090B3 /* HomeInitRepository.swift in Sources */,
 				DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */,
 				DF7C62042C59D57000A541D7 /* WorkSpaceCreateView.swift in Sources */,
 				DF9279B52C58A8BA00E2002D /* EmailLoginMapper.swift in Sources */,
 				DF8543F12C55064E00DC80A8 /* String+Extension.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,
+				DF9B6BBA2C5CF574002090B3 /* ChannelRouter.swift in Sources */,
 				DF7C62062C59DB4400A541D7 /* WorkSpaceCreateFeature.swift in Sources */,
 				DF9279B22C58A89500E2002D /* EmailLoginRepository.swift in Sources */,
 				DF9279AD2C58A38900E2002D /* EmailLoginFeature.swift in Sources */,
 				DF902C0F2C57C3A800334769 /* UserDefaultManager.swift in Sources */,
+				DF9B6BC42C5D3C38002090B3 /* HomeInitMapper.swift in Sources */,
 				DF8544172C564C5100DC80A8 /* JSONManager.swift in Sources */,
 				DF9279C62C59040E00E2002D /* WorkspaceRouter.swift in Sources */,
 				DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */,
+				DF9B6BBC2C5CF6A9002090B3 /* ChannelDTO.swift in Sources */,
 				DF8544072C55133500DC80A8 /* RouterProtocol.swift in Sources */,
 				DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */,
 				DF9279AB2C58A29400E2002D /* EmailLoginView.swift in Sources */,
 				DF9279B92C58CFC800E2002D /* RootCoordinatorView.swift in Sources */,
 				DF8544152C564B0500DC80A8 /* UserEmailRequestDTO.swift in Sources */,
+				DF9B6BB82C5CDB07002090B3 /* UIImage+Extension.swift in Sources */,
 				DF9279CF2C59075100E2002D /* WorkspaceListEntity.swift in Sources */,
 				DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */,
 				DF8543FC2C550FED00DC80A8 /* UserDTOModel.swift in Sources */,
 				DF902C042C57817800334769 /* CompleteFeature.swift in Sources */,
+				DF9B6BB42C5CC71E002090B3 /* WorkSpaceCreateRepository.swift in Sources */,
+				DF9B6BC12C5D3BC7002090B3 /* ChannelEntity.swift in Sources */,
+				DF9B6BAC2C5C8528002090B3 /* HomeInitView.swift in Sources */,
 				DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */,
 				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
 				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,
@@ -839,15 +948,18 @@
 				DF784A492C53F44D004EC293 /* RootCoordinator.swift in Sources */,
 				DF8544102C5518BC00DC80A8 /* EncodingType.swift in Sources */,
 				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
+				DF9B6BB62C5CD405002090B3 /* WorkSpaceInfoDTO.swift in Sources */,
 				DF8543F72C550DE200DC80A8 /* NetworkManager.swift in Sources */,
 				DF8544052C5511CD00DC80A8 /* Token.swift in Sources */,
 				DF85440A2C55163F00DC80A8 /* UserRouter.swift in Sources */,
+				DF9B6BB12C5CB26D002090B3 /* ImagePicker.swift in Sources */,
 				DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */,
 				DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */,
 				DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */,
 				DF902BFD2C577FC700334769 /* CompleteView.swift in Sources */,
 				DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */,
 				DF9279CD2C5906E400E2002D /* WorkspaceListDTO.swift in Sources */,
+				DF9B6BCB2C5D4CD1002090B3 /* KingfisherRequestModifier.swift in Sources */,
 				DFD83DDF2C52ADAC009F8A5E /* APIKey.swift in Sources */,
 				DF9279B72C58A90500E2002D /* EmailLoginRequestDTO.swift in Sources */,
 				DF85440C2C55172100DC80A8 /* HeaderType.swift in Sources */,
@@ -1196,6 +1308,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DF9B6BC72C5D4BE1002090B3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 		DF9DF5BD2C4FBC6F007649DB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
@@ -1231,6 +1351,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DF9B6BC82C5D4BE1002090B3 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF9B6BC72C5D4BE1002090B3 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		DF9DF5BE2C4FBC6F007649DB /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DF9DF5BD2C4FBC6F007649DB /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

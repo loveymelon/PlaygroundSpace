@@ -25,8 +25,8 @@ struct RootCoordinatorView: View {
             case .show:
                 TCARouter(store.scope(state: \.routes, action: \.router)) { screen in
                     switch screen.case {
-                    case .completeView(let store):
-                        CompleteView(store: store)
+                    case .homeInitView(let store):
+                        HomeInitView(store: store)
                     }
                 }
             case .empty:
@@ -40,7 +40,7 @@ struct RootCoordinatorView: View {
 extension RootScreen.State: Identifiable {
     var id: ID {
         switch self {
-        case .completeView:
+        case .homeInitView:
             return ID.root
         }
     }
