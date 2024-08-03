@@ -6,13 +6,23 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct DownSamplingImageView: View {
+    
+    let url: URL?
+    let size: CGSize
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        KFImage(url)
+            .requestModifier(KFImageRequestModifier())
+            .setProcessor(
+                DownsamplingImageProcessor(
+                    size: size
+                )
+            )
+            .cacheOriginalImage()
+            .resizable()
+            .aspectRatio(1, contentMode: .fill)
     }
-}
-
-#Preview {
-    DownSamplingImageView()
 }
