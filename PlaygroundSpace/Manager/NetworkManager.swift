@@ -50,22 +50,47 @@ final class NetworkManager {
             do {
                 let request = try router.asURLRequest()
                 
-                AF.request(request)
-                    .responseDecodable(of: T.self) { result in
-                        switch result.result {
-                        case .success(let data):
-                            continuation.resume(returning: .success(data))
-                        case .failure(let error):
-                            guard let data = result.data else { return }
-                            let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
-                            switch errorResult {
-                            case .success(let success):
-                                continuation.resume(returning: .failure(.httpError(success.errorCode)))
-                            case .failure(let failure):
-                                print(failure)
+                if case let .multiPart(multipartFormData) = router.encodingType {
+                    AF.upload(multipartFormData: multipartFormData, to: request.url!, method: request.method!, headers: request.headers)
+                        .responseDecodable(of: T.self) { result in
+                            switch result.result {
+                            case let .success(data):
+                                continuation.resume(returning: .success(data))
+                            case let .failure(error):
+                                guard let data = result.data else {
+                                    continuation.resume(throwing: APIError.httpError("badURL"))
+                                    return
+                                }
+                                let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
+                                switch errorResult {
+                                case .success(let success):
+                                    print(success)
+                                    continuation.resume(returning: .failure(.httpError(success.errorCode)))
+                                case .failure(let failure):
+                                    print(failure)
+                                }
                             }
                         }
-                    }
+                } else {
+                    
+                    AF.request(request)
+                        .responseDecodable(of: T.self) { result in
+                            switch result.result {
+                            case .success(let data):
+                                continuation.resume(returning: .success(data))
+                            case .failure(let error):
+                                guard let data = result.data else { return }
+                                let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
+                                switch errorResult {
+                                case .success(let success):
+                                    continuation.resume(returning: .failure(.httpError(success.errorCode)))
+                                case .failure(let failure):
+                                    print(failure)
+                                }
+                            }
+                        }
+                    
+                }
             } catch {
                 print(error)
             }
