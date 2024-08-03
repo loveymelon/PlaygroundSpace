@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Alamofire
 
 enum EncodingType {
     case url
     case json
-    case multiPart
+    case multiPart(MultipartFormData)
 }
