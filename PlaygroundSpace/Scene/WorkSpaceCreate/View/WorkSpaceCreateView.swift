@@ -24,6 +24,14 @@ struct WorkSpaceCreateView: View {
                     .navigationTitle(store.workSpaceType.workSpaceCreate)
                     .navigationBarTitleDisplayMode(.inline)
             }
+            .sheet(isPresented: $store.state.showImagePicker) { 
+                
+                ImagePicker { imageData in
+                    store.send(.selectedFinish(imageData))
+                }
+
+            }
+
         }
     }
 }
@@ -51,15 +59,26 @@ extension WorkSpaceCreateView {
     }
     
     private func makeWorkSpaceImage() -> some View {
-        ZStack(alignment: .bottomTrailing) {
-            Image(store.workSpaceImage.workSpaceImage)
-                .resizable()
-                .frame(width: 70, height: 70)
+        Button {
+            store.send(.workSpaceImageTapped)
+        } label: {
+            Group {
+                if let imageData = store.state.selectedUIImage  {
+                    Image(uiImage: UIImage(data: imageData) ?? UIImage(named: store.state.workSpaceImage.workSpaceImage)!)
+                        .resizable()
+                } else {
+                    Image(store.workSpaceImage.workSpaceImage)
+                        .resizable()
+                }
+            }
+            .aspectRatio(1, contentMode: .fit)
+            .frame(width: 70, height: 70)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             
             Image(store.workSpaceImage.camerImage)
                 .resizable()
                 .frame(width: 24, height: 24)
-                .offset(x: 8.0, y: 8.0)
+                .offset(x: -23.0, y: 30.0)
         }
     }
     
@@ -111,7 +130,7 @@ extension WorkSpaceCreateView {
     
     private func makeButton() -> some View {
         Button {
-            store.send(.completeButtonTapped)
+            store.send(.completeButtonTapped((UIImage(named: store.state.workSpaceImage.workSpaceImage)?.imageZipLimit(zipRate: 1)!)!))
         } label: {
             Text(store.workSpaceType.workSpaceCreate)
                 .asText(type: .title2, foreColor: .brWhite, backColor: store.requiredIsValid ? .brGreen: .brInactive)

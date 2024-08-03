@@ -16,6 +16,8 @@ struct WorkSpaceCreateFeature {
         var workSpaceExplain = ""
         let workSpaceType = ViewStateText()
         let workSpaceImage = ViewStateImage()
+        var selectedUIImage: Data?
+        var showImagePicker = false
         
         var requiredIsValid: Bool = false
     }
@@ -24,11 +26,17 @@ struct WorkSpaceCreateFeature {
         case binding(BindingAction<State>)
         
         case backButtonTapped
-        case completeButtonTapped
+        case completeButtonTapped(Data)
+        case workSpaceImageTapped
+        case selectedFinish(Data)
+        case workSpaceCreateNetwork(Data)
+//        case workSpaceCreateSuccess
+//        case loadImage
         
         case delegate(Delegate)
         enum Delegate {
             case backButtonTapped
+            case workSpaceCreate
         }
     }
     
@@ -43,6 +51,8 @@ struct WorkSpaceCreateFeature {
         let camerImage = ImageNames.camera
     }
     
+    let repository = WorkSpaceCreateRepository()
+    
     var body: some ReducerOf<Self> {
         BindingReducer()
         
@@ -52,12 +62,29 @@ struct WorkSpaceCreateFeature {
                 return .run { send in
                     await send(.delegate(.backButtonTapped))
                 }
-            case .completeButtonTapped:
-                print("tap")
             case .binding:
                 let requiredValid = (!state.workSpaceNameText.isEmpty && !state.workSpaceExplain.isEmpty)
                 
                 state.requiredIsValid = requiredValid
+            case .workSpaceImageTapped:
+                state.showImagePicker = true
+//            case .loadImage:
+//                guard let selectedImage = state.selectedUIImage else { return }
+            case let .selectedFinish(imageData):
+                state.selectedUIImage = imageData
+            case let .completeButtonTapped(imageData):
+                
+                return .run { [image = state.selectedUIImage] send in
+                    await send(.workSpaceCreateNetwork(image ?? imageData))
+                }
+            case let .workSpaceCreateNetwork(image):
+                return .run { [state = state] send in
+                    let result = await repository.workSpaceCreateFinish(name: state.workSpaceNameText, description: state.workSpaceExplain, imageData: image)
+                    
+                    guard let success = result else { return }
+                    
+                    await send(.delegate(.workSpaceCreate))
+                }
             default:
                 break
             }
