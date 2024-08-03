@@ -29,11 +29,11 @@ extension UserRouter {
     var path: String {
         switch self {
         case .duplicate:
-            return APIKey.version + "users/validation/email"
+            return APIKey.version + "/users/validation/email"
         case .signUpEnter:
-            return APIKey.version + "users/join"
+            return APIKey.version + "/users/join"
         case .emailLogin:
-            return APIKey.version + "users/login"
+            return APIKey.version + "/users/login"
         }
     }
     
