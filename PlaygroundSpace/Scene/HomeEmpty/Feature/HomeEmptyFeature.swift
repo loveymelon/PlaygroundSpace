@@ -20,6 +20,11 @@ struct HomeEmptyFeature {
         case workSpaceCreateButtonTapped
         case showWorkSpaceCreate
         case workSpaceCreateAction(PresentationAction<WorkSpaceCreateFeature.Action>)
+        
+        case delegate(Delegate)
+        enum Delegate {
+            case createSuccess
+        }
     }
     
     struct ViewTextState: Equatable {
@@ -41,6 +46,11 @@ struct HomeEmptyFeature {
             case .workSpaceCreateAction(.presented(.delegate(.backButtonTapped))):
                 return .run { send in
                     await send(.workSpaceCreateAction(.dismiss))
+                }
+            case .workSpaceCreateAction(.presented(.delegate(.workSpaceCreate))):
+                return .run { send in
+                    await send(.workSpaceCreateAction(.dismiss))
+                    await send(.delegate(.createSuccess))
                 }
             default:
                 break
