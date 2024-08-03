@@ -477,8 +477,6 @@
 				DF8543FD2C55100000DC80A8 /* Protocol */,
 				DF8544082C5515B800DC80A8 /* Router */,
 				DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */,
-				DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */,
-				DF8B09B42C4F8B82000B768A /* Assets.xcassets */,
 				DFD83DDC2C52AD0E009F8A5E /* Info.plist */,
 			);
 			path = Resources;
@@ -487,6 +485,8 @@
 		DF908D812C5E069700B4AC3D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */,
+				DF8B09B42C4F8B82000B768A /* Assets.xcassets */,
 				DF9DF5D22C4FF181007649DB /* Modifier */,
 				DF9B6BAF2C5CB258002090B3 /* Custom */,
 				DF8543EF2C55063E00DC80A8 /* Extension */,
@@ -1142,14 +1142,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PlaygroundSpace/PlaygroundSpace.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PlaygroundSpace/Resources/PlaygroundSpace.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PlaygroundSpace/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PlaygroundSpace/Sources/Preview Content\"";
 				DEVELOPMENT_TEAM = QQ67S8HZ4F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PlaygroundSpace/Info.plist;
+				INFOPLIST_FILE = PlaygroundSpace/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1177,14 +1177,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = PlaygroundSpace/PlaygroundSpace.entitlements;
+				CODE_SIGN_ENTITLEMENTS = PlaygroundSpace/Resources/PlaygroundSpace.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PlaygroundSpace/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PlaygroundSpace/Sources/Preview Content\"";
 				DEVELOPMENT_TEAM = QQ67S8HZ4F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PlaygroundSpace/Info.plist;
+				INFOPLIST_FILE = PlaygroundSpace/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
