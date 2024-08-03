@@ -9,4 +9,5 @@ import Foundation
 
 enum HeaderType {
     static let secretHeader = "SesacKey"
+    static let auth = "Authorization"
 }
