@@ -183,7 +183,7 @@
 		DF9DF5D72C501CFA007649DB /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
 		DF9DF5DC2C5023BA007649DB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DFD83DD22C52A53E009F8A5E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		DFD83DDC2C52AD0E009F8A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DFD83DDC2C52AD0E009F8A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD83DDE2C52ADAC009F8A5E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -326,6 +326,7 @@
 				DF8543F92C550F9200DC80A8 /* DTO */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DF8543F92C550F9200DC80A8 /* DTO */ = {
@@ -413,20 +414,8 @@
 		DF8B09AF2C4F8B7F000B768A /* PlaygroundSpace */ = {
 			isa = PBXGroup;
 			children = (
-				DF8544082C5515B800DC80A8 /* Router */,
-				DF8543FD2C55100000DC80A8 /* Protocol */,
-				DF8543F82C550F8A00DC80A8 /* Model */,
-				DF8543F42C550DA600DC80A8 /* Manager */,
-				DF8543EF2C55063E00DC80A8 /* Extension */,
-				DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */,
-				DFD83DDD2C52AD94009F8A5E /* Keys */,
-				DFD83DDC2C52AD0E009F8A5E /* Info.plist */,
-				DF9DF5D22C4FF181007649DB /* Modifier */,
-				DF9DF5CF2C4FEFD4007649DB /* Enum */,
-				DF9DF5C62C4FED32007649DB /* Scene */,
-				DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */,
-				DF8B09B42C4F8B82000B768A /* Assets.xcassets */,
-				DF8B09B62C4F8B82000B768A /* Preview Content */,
+				DF908D812C5E069700B4AC3D /* Sources */,
+				DF908D802C5E060300B4AC3D /* Resources */,
 			);
 			path = PlaygroundSpace;
 			sourceTree = "<group>";
@@ -479,6 +468,35 @@
 				DF902C032C57817800334769 /* CompleteFeature.swift */,
 			);
 			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF908D802C5E060300B4AC3D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DFD83DDD2C52AD94009F8A5E /* Keys */,
+				DF8543FD2C55100000DC80A8 /* Protocol */,
+				DF8544082C5515B800DC80A8 /* Router */,
+				DF58C2442C53CEAD00CC1D38 /* PlaygroundSpace.entitlements */,
+				DF8B09B02C4F8B7F000B768A /* PlaygroundSpaceApp.swift */,
+				DF8B09B42C4F8B82000B768A /* Assets.xcassets */,
+				DFD83DDC2C52AD0E009F8A5E /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DF908D812C5E069700B4AC3D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DF9DF5D22C4FF181007649DB /* Modifier */,
+				DF9B6BAF2C5CB258002090B3 /* Custom */,
+				DF8543EF2C55063E00DC80A8 /* Extension */,
+				DF8B09B62C4F8B82000B768A /* Preview Content */,
+				DF9DF5C62C4FED32007649DB /* Scene */,
+				DF9DF5CF2C4FEFD4007649DB /* Enum */,
+				DF8543F82C550F8A00DC80A8 /* Model */,
+				DF8543F42C550DA600DC80A8 /* Manager */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		DF9279A52C58A25300E2002D /* EmailLogin */ = {
@@ -644,7 +662,6 @@
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				DF9B6BAF2C5CB258002090B3 /* Custom */,
 				DF9B6BA82C5C84C3002090B3 /* HomeInit */,
 				DF7C62002C59D52300A541D7 /* WorkSpaceCreate */,
 				DF9279BA2C58DF3F00E2002D /* HomeEmpty */,
