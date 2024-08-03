@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorkspaceListEntity {
+struct WorkspaceListEntity: Equatable {
     let workspaceID: String
     let name: String
     let description: String
