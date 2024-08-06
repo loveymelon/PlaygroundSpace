@@ -17,4 +17,12 @@ enum ImageNames {
     static let homeEmptyImage = "HomeEmptyImage"
     static let workSpaceDefaultImage = "WorkSpaceDefault"
     static let camera = "Camera"
+    static let dot = "Dot"
+    static let plus = "Plus"
+    static let help = "Help"
+    static let home = "Home"
+    static let message = "Message"
+    static let homeSelect = "HomeSelect"
+    static let messageSelect = "MessageSelect"
+    static let profile = "Profile"
 }
