@@ -18,6 +18,7 @@ class UserDefaultsManager {
         case userNickname
         case accessToken
         case refreshToken
+        case workSpaceId
     }
 
     var userNickname: String {
@@ -44,6 +45,15 @@ class UserDefaultsManager {
         }
         set {
             ud.set(newValue, forKey: UDKey.refreshToken.rawValue)
+        }
+    }
+    
+    var currentWorkSpaceId: String {
+        get {
+            ud.string(forKey: UDKey.workSpaceId.rawValue) ?? "없음"
+        }
+        set {
+            ud.set(newValue, forKey: UDKey.workSpaceId.rawValue)
         }
     }
     
