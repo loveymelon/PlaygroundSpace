@@ -19,7 +19,6 @@ final class CoordinatorRepository {
             
             switch result {
             case .success(let data):
-                print(data)
                 return mapper.dtoToEntity(dto: data)
             case .failure(let error):
                 print(error)

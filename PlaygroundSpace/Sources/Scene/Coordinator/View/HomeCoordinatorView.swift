@@ -6,13 +6,38 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+import TCACoordinators
 
 struct HomeCoordinatorView: View {
+    @Perception.Bindable var store: StoreOf<HomeCoordinator>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithPerceptionTracking {
+            
+            TCARouter(store.scope(state: \.routes, action: \.router)) { screen in
+                switch screen.case {
+                case .homeInitView(let store):
+                    HomeInitView(store: store)
+                }
+            }
+            
+        }
     }
 }
 
-#Preview {
-    HomeCoordinatorView()
+extension HomeScreen.State: Identifiable {
+    var id: ID {
+        switch self {
+        case .homeInitView:
+            return ID.root
+        }
+    }
+    
+    enum ID: Identifiable {
+        
+        case root
+        
+        var id: ID { self }
+    }
 }
