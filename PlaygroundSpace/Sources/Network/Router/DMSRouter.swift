@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum DMSRouter: Router {
-    case fetchDMList(String)
+    case fetchDMList
 }
 
 extension DMSRouter {
@@ -22,15 +22,15 @@ extension DMSRouter {
     
     var path: String {
         switch self {
-        case let .fetchDMList(workSpaceId):
-            return APIKey.version + "/workspaces/" + "\(workSpaceId)/" + "dms"
+        case .fetchDMList:
+            return APIKey.version + "/workspaces/" + "\(UserDefaultsManager.shared.currentWorkSpaceId)/" + "dms"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
         case .fetchDMList:
-            return nil
+            return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
