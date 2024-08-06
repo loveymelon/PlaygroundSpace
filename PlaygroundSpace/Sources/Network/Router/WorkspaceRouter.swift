@@ -11,6 +11,7 @@ import Alamofire
 enum WorkspaceRouter: Router {
     case fetch
     case create(String, String, Data)
+    case fetchMember
 }
 
 extension WorkspaceRouter {
@@ -20,6 +21,8 @@ extension WorkspaceRouter {
             return .get
         case .create:
             return .post
+        case .fetchMember:
+            return .get
         }
     }
     
@@ -27,33 +30,35 @@ extension WorkspaceRouter {
         switch self {
         case .fetch, .create:
             return APIKey.version + "/workspaces"
+        case .fetchMember:
+            return APIKey.version + "/workspaces/" + UserDefaultsManager.shared.currentWorkSpaceId + "/members"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
-        case .fetch, .create:
+        case .fetch, .create, .fetchMember:
             return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .fetch, .create:
+        case .fetch, .create, .fetchMember:
             return nil
         }
     }
     
     var body: Data? {
         switch self {
-        case .fetch, .create:
+        case .fetch, .create, .fetchMember:
             return nil
         }
     }
     
     var encodingType: EncodingType {
         switch self {
-        case .fetch:
+        case .fetch, .fetchMember:
             return .url
         case let .create(name, description, imageData):
             let data = MultipartFormData()
