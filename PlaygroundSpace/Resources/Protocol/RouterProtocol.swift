@@ -37,7 +37,6 @@ extension Router {
                 combine.add(header)
             }
         }
-        print("헤더 합침: ",combine)
         return combine
     }
     

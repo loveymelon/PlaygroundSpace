@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChannelEntity: Equatable {
+struct ChannelEntity: Entity {
     let channelId: String
     let name: String
     let description: String?
@@ -25,6 +25,6 @@ struct ChannelEntity: Equatable {
     }
 }
 
-struct ChannelListEntity {
+struct ChannelListEntity: Entity {
     let channelList: [ChannelEntity]
 }
