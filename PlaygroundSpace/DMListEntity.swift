@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct DMSEntity: Entity {
+    let roomId: String
+    let createdAt: String
+    let user: MemberInfoEntity
+}
+
+struct DMListEntity: Entity {
+    let dmlist: [DMSEntity]
+}
+
