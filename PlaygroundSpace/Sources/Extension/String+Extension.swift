@@ -43,5 +43,7 @@ extension String {
         return result
     }
     
-
+    var toDate: Date? {
+        return DateManager.shared.toDateISO(self)
+    }
 }
