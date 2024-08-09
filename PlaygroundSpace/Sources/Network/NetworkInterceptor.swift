@@ -12,36 +12,33 @@ import ComposableArchitecture
 class NetworkInterceptor: RequestInterceptor {
     
     @Dependency(\.networkManager) var network
+    let retryLimit = 3
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, any Error>) -> Void) {
         
-        // 이게 다시 새로운 accessToken세팅해주는 것일까?
+        print(urlRequest.url)
         var modifiedURLRequest = urlRequest
         modifiedURLRequest.setValue(UserDefaultsManager.shared.accessToken, forHTTPHeaderField: HeaderType.auth)
         completion(.success(modifiedURLRequest))
-        
     }
     
     func retry(_ request: Request, for session: Session, dueTo error: any Error, completion: @escaping (RetryResult) -> Void) {
-        guard let responses = request.task?.response as? HTTPURLResponse, responses.statusCode == 419 else {
-            completion(.doNotRetryWithError(error))
-            return
-        }
         
-        do {
-            Task {
-                let result = try await network.requestNetwork(dto: TokenDTO.self, router: AuthRouter.token)
-                
-                switch result {
-                case .success(let data):
-                    UserDefaultsManager.shared.accessToken = data.accessToken
-                    completion(.retry)
-                case .failure(let error):
+        if request.retryCount < retryLimit {
+            network.refreshNetwork { isValid in
+                if isValid {
+                    completion(.retryWithDelay(1))
+                } else {
+                    UserDefaultsManager.shared.accessToken = ""
+                    NotificationCenter.default.post(name: .refreshTokenDie, object: nil)
                     completion(.doNotRetryWithError(error))
                 }
             }
-        } catch {
-            print(error)
+        } else {
+            UserDefaultsManager.shared.accessToken = ""
+            NotificationCenter.default.post(name: .refreshTokenDie, object: nil)
+            completion(.doNotRetryWithError(error))
         }
+        
     }
 }
