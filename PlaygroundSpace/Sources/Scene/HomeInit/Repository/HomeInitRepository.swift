@@ -36,9 +36,9 @@ extension HomeInitRepository {
     }
     
     /// fetchDMS
-    func fetchData() async -> DMListEntity? {
+    func fetchData() async -> DMRoomListEntity? {
         do {
-            let result = try await network.requestNetwork(dto: DMListDTO.self, router: DMSRouter.fetchDMList)
+            let result = try await network.requestNetwork(dto: DMRoomList.self, router: DMSRouter.fetchDMRoomList)
             
             switch result {
             case .success(let data):
