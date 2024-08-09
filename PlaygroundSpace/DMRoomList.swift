@@ -13,7 +13,7 @@ struct DMSDTO: DTO {
     let user: MemberInfoDTO
 }
 
-struct DMListDTO: DTO {
+struct DMRoomList: DTO {
     let dmListDTO: [DMSDTO]
     
     init(from decoder: any Decoder) throws {

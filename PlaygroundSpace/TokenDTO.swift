@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Token: DTO {
+struct TokenDTO: DTO {
     let accessToken: String
     let refreshToken: String
 }
