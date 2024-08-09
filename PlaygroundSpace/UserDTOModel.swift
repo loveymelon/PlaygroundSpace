@@ -15,7 +15,7 @@ struct UserDTOModel: DTO {
     let phone: String?
     let provider: String?
     let createdAt: String
-    let token: Token
+    let token: TokenDTO
     
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"

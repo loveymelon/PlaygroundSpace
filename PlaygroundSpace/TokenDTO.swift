@@ -11,3 +11,7 @@ struct TokenDTO: DTO {
     let accessToken: String
     let refreshToken: String
 }
+
+struct RefreshDTO: DTO {
+    let accessToken: String
+}

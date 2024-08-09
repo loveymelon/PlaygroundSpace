@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserEntity {
+struct UserEntity: Entity {
     let userId: String
     let email: String
     let nickname: String
@@ -18,7 +18,7 @@ struct UserEntity {
     let token: TokenEntity
 }
 
-struct TokenEntity {
+struct TokenEntity: Entity {
     let accessToken: String
     let refreshToken: String
 }
