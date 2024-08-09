@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct InviteMapper {
+    func emailToRequestDTO(email: String) -> EmailRequestDTO {
+        return EmailRequestDTO(email: email)
+    }
+    
+    func dtoToEntity(dto: MemberInfoDTO) -> MemberInfoEntity {
+        return MemberInfoEntity(userId: dto.userId, email: dto.email, nickname: dto.nickname, profileImage: dto.profileImage)
+    }
+}
