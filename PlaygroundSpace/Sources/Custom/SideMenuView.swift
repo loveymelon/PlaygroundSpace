@@ -7,12 +7,33 @@
 
 import SwiftUI
 
-struct SideMenuView: View {
+struct SideMenuView<RenderView: View>: View {
+    
+    @Binding
+    var isShowing: Bool
+    
+    var direction: Edge
+    
+    @ViewBuilder
+    var content: RenderView
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .leading) {
+            if isShowing {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        isShowing.toggle()
+                    }
+                content
+                    .transition(.move(edge: direction))
+                    .background(
+                        Color.white
+                    )
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .ignoresSafeArea()
+        .animation(.easeInOut, value: isShowing)
     }
-}
-
-#Preview {
-    SideMenuView()
 }
