@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct DMEmptyView: View {
+    
+    @Perception.Bindable var store: StoreOf<DMListFeature>
+    
     var body: some View {
-        makeDMEmptyView()
+        WithPerceptionTracking {
+            makeDMEmptyView()
+        }
     }
 }
 
@@ -23,7 +29,7 @@ extension DMEmptyView {
                 .setTextStyle(type: .body)
             Text("팀원 초대하기")
                 .asButton {
-                    print("tap")
+                    store.send(.viewTouchEvent(.inviteButtonTapped))
                 }
                 .asText(type: .title2, foreColor: .brWhite, backColor: .brGreen)
                 .padding(.horizontal, 50)
@@ -33,6 +39,6 @@ extension DMEmptyView {
     
 }
 
-#Preview {
-    DMEmptyView()
-}
+//#Preview {
+//    DMEmptyView()
+//}
