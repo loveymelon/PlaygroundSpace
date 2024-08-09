@@ -19,6 +19,8 @@ struct DMCoordinatorView: View {
                 switch screen.case {
                 case let .dmListView(store):
                     DMListView(store: store)
+                case let .chatView(store):
+                    ChatView(store: store)
                 }
             }
             
@@ -31,12 +33,15 @@ extension DMScreen.State: Identifiable {
         switch self {
         case .dmListView:
             return ID.root
+        case .chatView:
+            return ID.dm
         }
     }
     
     enum ID: Identifiable {
         
         case root
+        case dm
         
         var id: ID { self }
     }

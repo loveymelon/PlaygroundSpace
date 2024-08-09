@@ -12,6 +12,7 @@ import TCACoordinators
 @Reducer(state: .equatable)
 enum DMScreen {
     case dmListView(DMListFeature)
+    case chatView(ChatFeature)
 }
 
 @Reducer
@@ -19,7 +20,6 @@ struct DMCoordinator {
     
     @ObservableState
     struct State: Equatable {
-        
         static let inital = Self(routes: [.root(.dmListView(DMListFeature.State()), embedInNavigationView: true)])
         
         var routes: IdentifiedArrayOf<Route<DMScreen.State>>
@@ -42,6 +42,8 @@ struct DMCoordinator {
                 return .run { send in
                     await send(.router(.routeAction(id: .root, action: .dmListView(.catchWorkSpaceData(entity)))))
                 }
+            case let .router(.routeAction(id: .root, action: .dmListView(.delegate(.memberTapped(entity))))):
+                state.routes.push(.chatView(.init(chatRoomData: entity)))
             default:
                 break
             }
