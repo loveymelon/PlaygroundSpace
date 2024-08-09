@@ -12,6 +12,7 @@ enum WorkspaceRouter: Router {
     case fetch
     case create(String, String, Data)
     case fetchMember
+    case invite(EmailRequestDTO)
 }
 
 extension WorkspaceRouter {
@@ -23,6 +24,8 @@ extension WorkspaceRouter {
             return .post
         case .fetchMember:
             return .get
+        case .invite:
+            return .post
         }
     }
     
@@ -30,21 +33,21 @@ extension WorkspaceRouter {
         switch self {
         case .fetch, .create:
             return APIKey.version + "/workspaces"
-        case .fetchMember:
+        case .fetchMember, .invite:
             return APIKey.version + "/workspaces/" + UserDefaultsManager.shared.currentWorkSpaceId + "/members"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
-        case .fetch, .create, .fetchMember:
+        case .fetch, .create, .fetchMember, .invite:
             return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .fetch, .create, .fetchMember:
+        case .fetch, .create, .fetchMember, .invite:
             return nil
         }
     }
@@ -53,6 +56,8 @@ extension WorkspaceRouter {
         switch self {
         case .fetch, .create, .fetchMember:
             return nil
+        case let .invite(data):
+            return requestToBody(data)
         }
     }
     
@@ -68,6 +73,8 @@ extension WorkspaceRouter {
             data.append(imageData, withName: "image", fileName: "workSpaceImage.jpeg", mimeType: "image/jpeg")
             
             return .multiPart(data)
+        case .invite:
+            return .json
         }
     }
     
