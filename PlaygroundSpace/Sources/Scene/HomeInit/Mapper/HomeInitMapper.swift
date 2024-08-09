@@ -27,8 +27,8 @@ struct HomeInitMapper {
         return DMSEntity(roomId: dmsDTO.roomId, createdAt: dmsDTO.createdAt, user: dtoToEntity(dmsDTO.user))
     }
     
-    /// DMListDTO -> DMListEntity
-    func dtoToEntity(_ dmListDTO: DMListDTO) -> DMListEntity {
-        return DMListEntity(dmlist: dmListDTO.dmListDTO.map { dtoToEntity($0) } )
+    /// DMListDTO -> DMRoomListEntity
+    func dtoToEntity(_ dmListDTO: DMRoomList) -> DMRoomListEntity {
+        return DMRoomListEntity(dmlist: dmListDTO.dmListDTO.map { dtoToEntity($0) } )
     }
 }
