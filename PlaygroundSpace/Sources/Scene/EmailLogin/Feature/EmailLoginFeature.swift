@@ -27,7 +27,7 @@ struct EmailLoginFeature {
         
         case showCompleteView
         
-        case userDefaultSetting(TokenEntity, String)
+        case userDefaultSetting(TokenEntity, String, String)
         
         case delegate(Delegate)
         enum Delegate{
@@ -59,13 +59,14 @@ struct EmailLoginFeature {
                 return .run { [email = state.emailText, password = state.passwordText] send in
                     guard let entity = await repository.login(email: email, password: password) else { return }
                     
-                    await send(.userDefaultSetting(entity.token, entity.nickname))
+                    await send(.userDefaultSetting(entity.token, entity.nickname, entity.userId))
                 }
                 
-            case .userDefaultSetting(let token, let nickname):
+            case .userDefaultSetting(let token, let nickname, let userId):
                 UserDefaultsManager.shared.accessToken = token.accessToken
                 UserDefaultsManager.shared.refreshToken = token.refreshToken
                 UserDefaultsManager.shared.userNickname = nickname
+                UserDefaultsManager.shared.userId = userId
                 
                 return .send(.showCompleteView)
                 
