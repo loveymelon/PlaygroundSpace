@@ -14,4 +14,13 @@ struct WorkspaceListEntity: Equatable {
     let coverImage: String
     let ownerID: String
     let createdAt: String
+    
+    init(workspaceID: String = "", name: String = "", description: String = "", coverImage: String = "", ownerID: String = "", createdAt: String = "") {
+        self.workspaceID = workspaceID
+        self.name = name
+        self.description = description
+        self.coverImage = coverImage
+        self.ownerID = ownerID
+        self.createdAt = createdAt
+    }
 }
