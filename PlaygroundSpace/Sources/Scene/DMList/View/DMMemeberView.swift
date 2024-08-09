@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct DMMemeberView: View {
-    var memberInfo: MemberInfoListEntity
+    @Perception.Bindable var store: StoreOf<DMListFeature>
     
     var body: some View {
-        VStack {
+        WithPerceptionTracking {
             makeDMMemberView()
-            Spacer()
         }
     }
 }
@@ -22,10 +22,14 @@ extension DMMemeberView {
     func makeDMMemberView() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(memberInfo.memberInfoList, id: \.userId) { item in
+                ForEach(store.state.memberData, id: \.userId) { item in
                     makeMemberProfile(item: item)
+                        .onTapGesture {
+                            store.send(.viewTouchEvent(.memberTapped(item)))
+                        }
                 }
             }
+            .frame(width: 84)
         }
     }
     
@@ -42,7 +46,7 @@ extension DMMemeberView {
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
-            .frame(width: 44, height: 44)
+            .frame(width: 40, height: 40)
             
             Text(item.nickname)
                 .setTextStyle(type: .body)
