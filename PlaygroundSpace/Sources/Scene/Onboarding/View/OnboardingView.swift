@@ -23,8 +23,8 @@ struct OnboardingView: View {
                 case .loading:
                     SplashView()
                 case .coordinator:
-                    IfLetStore(store.scope(state: \.rootCoordinatorState, action: \.rootCoordinatorAction)) { store in
-                        RootCoordinatorView(store: store)
+                    IfLetStore(store.scope(state: \.tabCoordinatorState, action: \.tabCoordinatorAction)) { store in
+                        TabCoordinatorView(store: store)
                     }
                 case .logout:
                     EmptyView()
@@ -52,6 +52,11 @@ struct OnboardingView: View {
             }
             .onAppear {
                 store.send(.onAppear)
+            }
+            .task {
+                NotificationCenter.default.addObserver(forName: .refreshTokenDie, object: nil, queue: .main) { _ in
+                    store.send(.refreshTokenTest)
+                }
             }
         }
     }

@@ -20,7 +20,7 @@ struct OnboardingFeature {
         @Presents var authViewState: AuthFeature.State?
         @Presents var signUpViewState: SignUpFeature.State?
         @Presents var emailLoginState: EmailLoginFeature.State? 
-        var rootCoordinatorState: RootCoordinator.State?
+        var tabCoordinatorState: TabCoordinator.State?
         var completeState: CompleteFeature.State?
     }
     
@@ -36,10 +36,12 @@ struct OnboardingFeature {
         case showCompleteView
         case changeHome
         case showEmailLoginView
+        case refreshTokenTest
+        case refreshDie
         
         case authViewAction(PresentationAction<AuthFeature.Action>)
         case signUpViewAction(PresentationAction<SignUpFeature.Action>)
-        case rootCoordinatorAction(RootCoordinator.Action)
+        case tabCoordinatorAction(TabCoordinator.Action)
         case emailLoginAction(PresentationAction<EmailLoginFeature.Action>)
         case completeAction(CompleteFeature.Action)
     }
@@ -57,6 +59,7 @@ struct OnboardingFeature {
     // 액션을 정확하게 끊기 위해서 아이디 등록 후 나중에 정리할때 한 번에 한다.
     enum cancelID: Hashable {
         case splash
+        case debouce
     }
     
     var body: some ReducerOf<Self> {
@@ -71,7 +74,13 @@ struct OnboardingFeature {
                 
             case .onSplash:
                 return .run { send in
-                    await send(.onView(.on))
+                    
+                    if !UserDefaultsManager.shared.accessToken.isEmpty {
+                        await send(.changeHome)
+                        await send(.onView(.coordinator))
+                    } else {
+                        await send(.onView(.on))
+                    }
                 }
                 .debounce(id: cancelID.splash, for: 1, scheduler: RunLoop.main, options: .none) // 타이머
                 
@@ -79,12 +88,24 @@ struct OnboardingFeature {
                 state.currentViewState = viewState
             case .startButtonTapped:
                 state.authViewState = AuthFeature.State()
-              
+                
+            case .refreshTokenTest:
+                
+                return .run { @MainActor send in
+                    if UserDefaultsManager.shared.accessToken.isEmpty {
+                        await send(.refreshDie)
+                    }
+                }
+                .debounce(id: cancelID.debouce, for: 1, scheduler: RunLoop.main)
 //            case .authViewAction(.dismiss):
                 // 이벤트가 하나다(dismiss)만 감지
                 // 그래서 어떤 버튼을 눌러서 돌아왔는지 알 수가 없다
                 // 물론 아무런 동작을 하지 않는 뷰라면 해도된다. 왜냐하면 유저가 그냥 내렸을때도 감지하기 때문이다.
 //                print("asd")
+                
+            case .refreshDie:
+                state.currentViewState = .on
+                
             case .authViewAction(.presented(.delegate(.authViewAction))):
                 return .run { send in
                     await send(.authViewAction(.dismiss))
@@ -127,6 +148,13 @@ struct OnboardingFeature {
                     await send(.onView(.coordinator))
                 }
                 
+            case .authViewAction(.presented(.delegate(.loginSuccess))):
+                return .run { send in
+                    await send(.authViewAction(.dismiss))
+                    await send(.changeHome)
+                    await send(.onView(.coordinator))
+                }
+                
             case .showSignUpView:
                 state.signUpViewState = SignUpFeature.State()
                 
@@ -136,7 +164,7 @@ struct OnboardingFeature {
             case .showEmailLoginView:
                 state.emailLoginState = EmailLoginFeature.State()
             case .changeHome:
-                state.rootCoordinatorState = RootCoordinator.State.inital
+                state.tabCoordinatorState = TabCoordinator.State.initial
             default:
                 break
                 
@@ -150,8 +178,8 @@ struct OnboardingFeature {
         .ifLet(\.$signUpViewState, action: \.signUpViewAction) {
             SignUpFeature()
         }
-        .ifLet(\.rootCoordinatorState, action: \.rootCoordinatorAction) {
-            RootCoordinator()
+        .ifLet(\.tabCoordinatorState, action: \.tabCoordinatorAction) {
+            TabCoordinator()
         }
         .ifLet(\.$emailLoginState, action: \.emailLoginAction) {
             EmailLoginFeature()
