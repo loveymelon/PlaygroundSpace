@@ -47,12 +47,18 @@ extension AuthView {
                             switch authResults.credential{
                             case let appleIDCredential as ASAuthorizationAppleIDCredential:
                                 // 계정 정보 가져오기
-                                let userIdentifier = appleIDCredential.user
+                                
                                 let fullName = appleIDCredential.fullName
-                                let name = (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
+                                var name = (fullName?.familyName ?? "") + (fullName?.givenName ?? "")
                                 let email = appleIDCredential.email
                                 let identityToken = String(data: appleIDCredential.identityToken!, encoding: .utf8)
-                                let authorizationCode = String(data: appleIDCredential.authorizationCode!, encoding: .utf8)
+                                
+                                if let email {
+                                    store.send(.appleLoginTapped(identityToken ?? "empty", name))
+                                } else {
+                                    store.send(.appleLoginTapped(identityToken ?? "empty", ""))
+                                }
+                                
                             default:
                                 break
                             }
@@ -74,9 +80,9 @@ extension AuthView {
                     if let error = error {
                         print(error)
                     }
-                    if let oauthToken = oauthToken{
+                    if let oauthToken = oauthToken {
                         //                        ## 소셜 로그인(회원가입 API CALL)
-                        fetchKakaoUserInfo()
+                        store.send(.kakaoLoginTapped(oauthToken.accessToken))
                     }
                 }
             } else {
@@ -87,7 +93,7 @@ extension AuthView {
                     if let oauthToken = oauthToken{
                         print("kakao success")
                         //                        ## 소셜 로그인(회원가입 API CALL)
-                        fetchKakaoUserInfo()
+                        store.send(.kakaoLoginTapped(oauthToken.accessToken))
                     }
                 }
             }
@@ -120,17 +126,4 @@ extension AuthView {
         }
     }
     
-}
-
-extension AuthView {
-    func fetchKakaoUserInfo() {
-        UserApi.shared.me { User, Error in
-             if let name = User?.kakaoAccount?.profile?.nickname {
-//                userName = name
-             }
-             if let mail = User?.kakaoAccount?.email {
-//                userMail = mail
-             }
-        }
-    }
 }
