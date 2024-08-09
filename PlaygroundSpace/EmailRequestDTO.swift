@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct EmailRequestDTO: RequestDTO {
+    let email: String
+}

@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct KakaoLoginRequestDTO: RequestDTO {
+    let oauthToken: String
+}
+
+struct AppleLoginRequestDTO: RequestDTO {
+    let idToken: String
+    let nickname: String
+}

@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct DMRequestDTO: RequestDTO {
+    let opponent_id: String
+}
