@@ -23,14 +23,17 @@ extension AuthRouter {
     var path: String {
         switch self {
         case .token:
-            return APIKey.version + "/auth/" + "refresh"
+            return APIKey.version + "/auth/refresh"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
         case .token:
-            return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
+            return [
+                HTTPHeader(name: HeaderType.auth, value: UserDefaultsManager.shared.accessToken),
+                HTTPHeader(name: "RefreshToken", value: UserDefaultsManager.shared.refreshToken)
+            ]
         }
     }
     
