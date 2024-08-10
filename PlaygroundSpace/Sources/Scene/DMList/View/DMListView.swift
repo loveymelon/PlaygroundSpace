@@ -80,7 +80,7 @@ extension DMListView {
                 Spacer()
                 if let date = store.dmListData[item.roomId]?.createdAt.toDate {
                     Text(DateManager.shared.dateToStringToRoomList(date))
-                        .setTextStyle(type: .body)
+                        .setTextStyle(type: .caption)
                 }
             }
             
