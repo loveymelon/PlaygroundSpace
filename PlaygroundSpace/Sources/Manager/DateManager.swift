@@ -58,7 +58,7 @@ final class DateManager {
         if isMe {
             dateFormatter.dateFormat = dateFormatType.rightChatType.format
         } else {
-            dateFormatter.dateFormat = dateFormatType.leftChatType.format
+            dateFormatter.dateFormat = dateFormatType.rightChatType.format
         }
         
         dateFormatter.locale = locale
