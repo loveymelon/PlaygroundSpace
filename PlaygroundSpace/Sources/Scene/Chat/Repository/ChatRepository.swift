@@ -48,4 +48,22 @@ struct ChatRepository {
             return nil
         }
     }
+    
+    func connectSocket(roomId: String) -> AsyncStream<DMEntity?> {
+        return AsyncStream { continues in
+            Task {
+                let result = SocketIOManager.shared.connectDTO(to: .dmsChat(roomID: roomId), type: DMDTO.self)
+                
+                for await item in result {
+                    switch item {
+                    case .success(let data):
+                        continues.yield(mapper.dtoToEntity(dto: data))
+                    case .failure(let error):
+                        continues.yield(nil)
+                    }
+                }
+            }
+        }
+        
+    }
 }

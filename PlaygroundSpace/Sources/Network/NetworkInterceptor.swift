@@ -16,7 +16,6 @@ class NetworkInterceptor: RequestInterceptor {
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, any Error>) -> Void) {
         
-        print(urlRequest.url)
         var modifiedURLRequest = urlRequest
         modifiedURLRequest.setValue(UserDefaultsManager.shared.accessToken, forHTTPHeaderField: HeaderType.auth)
         completion(.success(modifiedURLRequest))

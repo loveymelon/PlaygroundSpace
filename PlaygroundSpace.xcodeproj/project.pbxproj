@@ -30,6 +30,9 @@
 		DF6412562C63634600CA5E96 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6412552C63634600CA5E96 /* AuthRepository.swift */; };
 		DF64125D2C63641800CA5E96 /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64125C2C63641800CA5E96 /* LoginRequestDTO.swift */; };
 		DF6BEDB82C63CB4C00673866 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6BEDB72C63CB4C00673866 /* Notification+Extension.swift */; };
+		DF71BE172C674A3300546A72 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DF71BE162C674A3300546A72 /* SocketIO */; };
+		DF71BE192C674A4D00546A72 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE182C674A4D00546A72 /* SocketManager.swift */; };
+		DF71BE1B2C674AEC00546A72 /* SocketCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE1A2C674AEC00546A72 /* SocketCase.swift */; };
 		DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CB2C56BE96001793AC /* SignUpMapper.swift */; };
 		DF7313CF2C56BF22001793AC /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CE2C56BF22001793AC /* SignUpRepository.swift */; };
 		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
@@ -171,6 +174,8 @@
 		DF6412552C63634600CA5E96 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		DF64125C2C63641800CA5E96 /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
 		DF6BEDB72C63CB4C00673866 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		DF71BE182C674A4D00546A72 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		DF71BE1A2C674AEC00546A72 /* SocketCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCase.swift; sourceTree = "<group>"; };
 		DF7313CB2C56BE96001793AC /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
 		DF7313CE2C56BF22001793AC /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
@@ -273,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF9DF5C52C4FE9AB007649DB /* Alamofire in Frameworks */,
+				DF71BE172C674A3300546A72 /* SocketIO in Frameworks */,
 				DF9DF5CE2C4FEE4C007649DB /* TCACoordinators in Frameworks */,
 				DF9B6BC92C5D4BE1002090B3 /* Kingfisher in Frameworks */,
 				DFD83DDB2C52ACD2009F8A5E /* KakaoSDKUser in Frameworks */,
@@ -457,6 +463,7 @@
 				DF8544162C564C5100DC80A8 /* JSONManager.swift */,
 				DF902C0E2C57C3A800334769 /* UserDefaultManager.swift */,
 				DF8F42F62C660DF10051B965 /* DateManager.swift */,
+				DF71BE182C674A4D00546A72 /* SocketManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -990,6 +997,7 @@
 				DF85440D2C55184B00DC80A8 /* APIError.swift */,
 				DF85440F2C5518BC00DC80A8 /* EncodingType.swift */,
 				DF8544182C564C7300DC80A8 /* NetworkError.swift */,
+				DF71BE1A2C674AEC00546A72 /* SocketCase.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1072,6 +1080,7 @@
 				DFD83DD82C52ACD2009F8A5E /* KakaoSDKCommon */,
 				DFD83DDA2C52ACD2009F8A5E /* KakaoSDKUser */,
 				DF9B6BC82C5D4BE1002090B3 /* Kingfisher */,
+				DF71BE162C674A3300546A72 /* SocketIO */,
 			);
 			productName = PlaygroundSpace;
 			productReference = DF8B09AD2C4F8B7F000B768A /* PlaygroundSpace.app */;
@@ -1151,6 +1160,7 @@
 				DF9DF5CC2C4FEE4C007649DB /* XCRemoteSwiftPackageReference "TCACoordinators" */,
 				DFD83DD52C52ACD2009F8A5E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				DF9B6BC72C5D4BE1002090B3 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DF71BE152C674A3300546A72 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = DF8B09AE2C4F8B7F000B768A /* Products */;
 			projectDirPath = "";
@@ -1230,6 +1240,7 @@
 				DF8FB2A72C64A8FA00D12097 /* ChatRepository.swift in Sources */,
 				DF8544172C564C5100DC80A8 /* JSONManager.swift in Sources */,
 				DF5C9E702C624AD1006B89F5 /* NetworkInterceptor.swift in Sources */,
+				DF71BE1B2C674AEC00546A72 /* SocketCase.swift in Sources */,
 				DF9279C62C59040E00E2002D /* WorkspaceRouter.swift in Sources */,
 				DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */,
 				DF5265BC2C5FDD550042D56F /* Entity.swift in Sources */,
@@ -1301,6 +1312,7 @@
 				DF844F1D2C53880A000DACFD /* ColoredSubstringModifier.swift in Sources */,
 				DF61CFBD2C613DA300E19F6F /* MemberInfoEntity.swift in Sources */,
 				DF35463E2C66922200E98F21 /* Collection+Extension.swift in Sources */,
+				DF71BE192C674A4D00546A72 /* SocketManager.swift in Sources */,
 				DF8544012C55105700DC80A8 /* DTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1645,6 +1657,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DF71BE152C674A3300546A72 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 16.1.0;
+			};
+		};
 		DF9B6BC72C5D4BE1002090B3 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1688,6 +1708,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DF71BE162C674A3300546A72 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF71BE152C674A3300546A72 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
+		};
 		DF9B6BC82C5D4BE1002090B3 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DF9B6BC72C5D4BE1002090B3 /* XCRemoteSwiftPackageReference "Kingfisher" */;

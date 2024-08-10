@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct ChatView: View {
     @Perception.Bindable var store: StoreOf<ChatFeature>
-    @State var messageText: String = ""
+    
     
     var body: some View {
         WithPerceptionTracking {
@@ -19,28 +19,45 @@ struct ChatView: View {
                 .onAppear {
                     store.send(.onAppear)
                 }
+                .navigationTitle(store.state.chatRoomData.user.nickname)
         }
     }
 }
 
 extension ChatView {
     private func makeChatView() -> some View {
-        ZStack(alignment: .bottom) {
-            VStack {
-                List {
-                    ForEach(store.dmList ,id: \.dmId) { item in
-                        MessageView(messageData: item)
-                            
+        VStack {
+            ScrollViewReader { proxy in
+                WithPerceptionTracking {
+                    
+                    ScrollView {
+                        ForEach(store.dmList, id: \.dmId) { item in
+                            LazyVStack {
+                                MessageView(messageData: item)
+                                //                                .id(item.dmId)
+                            }
+                            //                        .listRowSeparator(.hidden)
+                        }
+                        Color.clear
+                            .id("bottom")
+                    }
+                    
+                }
+                .onChange(of: store.dmList) { newValue in
+                    // 데이터가 변경될 때 마지막 항목으로 스크롤합니다.
+                    if let lastItem = newValue.last {
+                        DispatchQueue.main.async {
+                            proxy.scrollTo("bottom", anchor: .bottom)
+                        }
                     }
                 }
                 .listStyle(.plain)
-                .listRowSeparator(.hidden)
                 
-                Spacer()
             }
-            
+            Spacer()
             makeTextField()
         }
+        
     }
     
     private func makeTextField() -> some View {
@@ -48,7 +65,7 @@ extension ChatView {
             Image(ImageNames.plus)
                 .padding(.leading, 10)
             
-            TextField("메세지를 입력하세요", text: $messageText, axis: .vertical)
+            TextField("메세지를 입력하세요", text: $store.state.messageText, axis: .vertical)
                 .textFieldStyle(.plain)
                 .frame(minHeight: 40)
                 .lineLimit(3)
@@ -56,7 +73,7 @@ extension ChatView {
             
             Image(ImageNames.messageSelect)
                 .onTapGesture {
-                    store.send(.pushChat(messageText))
+                    store.send(.pushChat)
                 }
                 .padding(.trailing, 10)
         }

@@ -14,27 +14,35 @@ struct ChatFeature {
     struct State: Equatable {
         var chatRoomData: DMSEntity
         var dmList: [DMEntity] = []
+        var messageText: String = ""
     }
     
-    enum Action {
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
+        
         case onAppear
         case dataTransType(DataTransType)
-        case pushChat(String)
+        case pushChat
         case network(NetworkType)
+        case finishPush
     }
     
     enum NetworkType {
         case fetchDMList
+        case socketConnect
         case pushMessage(String)
     }
     
     enum DataTransType {
         case dmList([DMEntity])
+        case dmAppend(DMEntity)
     }
     
     private let repository = ChatRepository()
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
+        
         Reduce { state, action in
             switch action {
             case .onAppear:
@@ -42,9 +50,9 @@ struct ChatFeature {
                     await send(.network(.fetchDMList))
                 }
                 
-            case let .pushChat(content):
-                return .run { send in
-                    await send(.network(.pushMessage(content)))
+            case .pushChat:
+                return .run { [state = state] send in
+                    await send(.network(.pushMessage(state.messageText)))
                 }
                 
             case let .network(.pushMessage(content)):
@@ -53,7 +61,7 @@ struct ChatFeature {
                     
                     guard let data = result else { return }
                     
-                    print(data)
+                    await send(.finishPush)
                 }
                 
             case .network(.fetchDMList):
@@ -67,6 +75,25 @@ struct ChatFeature {
                 
             case let .dataTransType(.dmList(dmList)):
                 state.dmList = dmList
+                
+                return .run { send in
+                    await send(.network(.socketConnect))
+                }
+                
+            case .network(.socketConnect):
+                return .run { [state = state] send in
+                    for await item in repository.connectSocket(roomId: state.chatRoomData.roomId) {
+                        guard let dm = item else { return }
+                        
+                        await send(.dataTransType(.dmAppend(dm)))
+                    }
+                }
+                
+            case let .dataTransType(.dmAppend(dmEntity)):
+                state.dmList.append(dmEntity)
+                
+            case .finishPush:
+                state.messageText = ""
                 
             default:
                 break
