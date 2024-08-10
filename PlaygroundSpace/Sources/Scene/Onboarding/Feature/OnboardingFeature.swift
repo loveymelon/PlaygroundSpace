@@ -93,7 +93,7 @@ struct OnboardingFeature {
                 
                 return .run { @MainActor send in
                     if UserDefaultsManager.shared.accessToken.isEmpty {
-                        await send(.refreshDie)
+                        send(.refreshDie)
                     }
                 }
                 .debounce(id: cancelID.debouce, for: 1, scheduler: RunLoop.main)

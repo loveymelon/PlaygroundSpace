@@ -45,15 +45,18 @@ extension MessageView {
                 Spacer()
                 makeDateView()
                 HStack {
-                    makeProfileImageView()
                     checkImageOrContentView()
                 }
             }
         } else {
-            HStack {
-                HStack {
+            HStack(alignment: .bottom) {
+                HStack(alignment: .top) {
                     makeProfileImageView()
-                    checkImageOrContentView()
+                    VStack(alignment: .leading) {
+                        Text(messageData.user.nickname)
+                            .setTextStyle(type: .caption)
+                        checkImageOrContentView()
+                    }
                 }
                 makeDateView()
                 Spacer()
@@ -73,22 +76,31 @@ extension MessageView {
         }
     }
     
-    // 유저일때 닉네임 보이게 하는지 여부 파악 뷰
-    @ViewBuilder
-    private func makeNickAndContentView(content: String) -> some View {
-        if userType == .me {
-            HStack {
-                Text(content)
-            }
-        } else {
-            HStack {
-                VStack {
-                    Text(messageData.user.nickname)
-                    Text(content)
-                }
-            }
-        }
+    private func makeContentView(content: String) -> some View {
+        Text(content)
+            .padding(.all, 8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.brGray, lineWidth: 2)
+            )
     }
+    
+    // 유저일때 닉네임 보이게 하는지 여부 파악 뷰
+//    @ViewBuilder
+//    private func makeNickAndContentView(content: String) -> some View {
+//        if userType == .me {
+//            HStack {
+//                Text(content)
+//            }
+//        } else {
+//            HStack {
+//                VStack {
+//                    Text(messageData.user.nickname)
+//                    Text(content)
+//                }
+//            }
+//        }
+//    }
     
     // 날짜를 만드는 뷰
     @ViewBuilder
@@ -96,6 +108,7 @@ extension MessageView {
         if let date = messageData.createdAt.toDate {
             Text(DateManager.shared.dateToStringToChat(date, isMe: userType == .me ? true : false))
                 .setTextStyle(type: .body)
+                .foregroundStyle(Color.viAlpa)
         } else {
             EmptyView()
         }
@@ -212,10 +225,12 @@ extension MessageView {
     @ViewBuilder
     private func checkImageOrContentView() -> some View {
         if messageData.content != nil && !messageData.files.isEmpty {
-            makeNickAndContentView(content: messageData.content!)
+            makeContentView(content: messageData.content!)
+                .setTextStyle(type: .body)
             makeImageView()
         } else if let message = messageData.content {
-            makeNickAndContentView(content: message)
+            makeContentView(content: message)
+                .setTextStyle(type: .body)
         } else {
             makeImageView()
         }
