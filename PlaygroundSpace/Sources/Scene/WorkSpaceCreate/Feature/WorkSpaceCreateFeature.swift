@@ -30,8 +30,6 @@ struct WorkSpaceCreateFeature {
         case workSpaceImageTapped
         case selectedFinish(Data)
         case workSpaceCreateNetwork(Data)
-//        case workSpaceCreateSuccess
-//        case loadImage
         
         case delegate(Delegate)
         enum Delegate {
@@ -68,8 +66,6 @@ struct WorkSpaceCreateFeature {
                 state.requiredIsValid = requiredValid
             case .workSpaceImageTapped:
                 state.showImagePicker = true
-//            case .loadImage:
-//                guard let selectedImage = state.selectedUIImage else { return }
             case let .selectedFinish(imageData):
                 state.selectedUIImage = imageData
             case let .completeButtonTapped(imageData):

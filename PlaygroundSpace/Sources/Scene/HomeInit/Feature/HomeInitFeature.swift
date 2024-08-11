@@ -15,12 +15,22 @@ struct HomeInitFeature {
         var workSpaceData: WorkspaceListEntity?
         var channelListDatas: [ChannelEntity] = []
         var dmsListDatas: [DMSEntity] = []
+        var channelAddButtonBool: Bool = false
+        
+        @Presents var channelCreateState: ChannelCreateFeature.State?
     }
-    enum Action {
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
+        
         case catchWorkSpaceData(WorkspaceListEntity)
         case onAppear
         case fetchChannel
         case fetchDMList
+        case channelCreateButtonTapped
+        case channelCreate
+        case searchChannel
+        
+        case channelCreateAction(PresentationAction<ChannelCreateFeature.Action>)
         
         case showModel(ShowModel)
         case delegate(Delegate)
@@ -37,6 +47,8 @@ struct HomeInitFeature {
     let repository = HomeInitRepository()
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
+        
         Reduce { state, action in
             switch action {
             case .onAppear:
@@ -62,16 +74,37 @@ struct HomeInitFeature {
                     guard let result = await repository.fetchData() else { return }
                     await send(.showModel(.showDM(result)))
                 }
+            
+            case .channelCreateButtonTapped:
+                state.channelAddButtonBool.toggle()
+                
+            case .channelCreate:
+                state.channelCreateState = ChannelCreateFeature.State()
                 
             case let .showModel(.showChannel(channelListEntity)):
                 state.channelListDatas = channelListEntity.channelList
                 
             case let .showModel(.showDM(dmRoomlistEntity)):
                 state.dmsListDatas = dmRoomlistEntity.dmlist
+                
+            case .channelCreateAction(.presented(.delegate(.backButtonTapped))):
+                return .run { send in
+                    await send(.channelCreateAction(.dismiss))
+                }
+                
+            case .channelCreateAction(.presented(.delegate(.complete))):
+                return .run { send in
+                    await send(.fetchChannel)
+                    await send(.channelCreateAction(.dismiss))
+                }
+                
             default:
                 break
             }
             return .none
+        }
+        .ifLet(\.$channelCreateState, action: \.channelCreateAction) {
+            ChannelCreateFeature()
         }
     }
 }

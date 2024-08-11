@@ -33,6 +33,9 @@
 		DF71BE172C674A3300546A72 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DF71BE162C674A3300546A72 /* SocketIO */; };
 		DF71BE192C674A4D00546A72 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE182C674A4D00546A72 /* SocketManager.swift */; };
 		DF71BE1B2C674AEC00546A72 /* SocketCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE1A2C674AEC00546A72 /* SocketCase.swift */; };
+		DF71BE202C68D54300546A72 /* ChannelCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE1F2C68D54300546A72 /* ChannelCreateView.swift */; };
+		DF71BE222C68D57000546A72 /* ChannelCreateFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE212C68D57000546A72 /* ChannelCreateFeature.swift */; };
+		DF71BE282C68DA4800546A72 /* ChannelCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE272C68DA4800546A72 /* ChannelCreateRepository.swift */; };
 		DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CB2C56BE96001793AC /* SignUpMapper.swift */; };
 		DF7313CF2C56BF22001793AC /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CE2C56BF22001793AC /* SignUpRepository.swift */; };
 		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
@@ -176,6 +179,9 @@
 		DF6BEDB72C63CB4C00673866 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		DF71BE182C674A4D00546A72 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		DF71BE1A2C674AEC00546A72 /* SocketCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCase.swift; sourceTree = "<group>"; };
+		DF71BE1F2C68D54300546A72 /* ChannelCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateView.swift; sourceTree = "<group>"; };
+		DF71BE212C68D57000546A72 /* ChannelCreateFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateFeature.swift; sourceTree = "<group>"; };
+		DF71BE272C68DA4800546A72 /* ChannelCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateRepository.swift; sourceTree = "<group>"; };
 		DF7313CB2C56BE96001793AC /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
 		DF7313CE2C56BF22001793AC /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
@@ -360,6 +366,40 @@
 			isa = PBXGroup;
 			children = (
 				DF6412552C63634600CA5E96 /* AuthRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF71BE1C2C68D52200546A72 /* ChannelCreate */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE232C68DA1100546A72 /* Repository */,
+				DF71BE1E2C68D53300546A72 /* Feature */,
+				DF71BE1D2C68D52B00546A72 /* View */,
+			);
+			path = ChannelCreate;
+			sourceTree = "<group>";
+		};
+		DF71BE1D2C68D52B00546A72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE1F2C68D54300546A72 /* ChannelCreateView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF71BE1E2C68D53300546A72 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE212C68D57000546A72 /* ChannelCreateFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF71BE232C68DA1100546A72 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE272C68DA4800546A72 /* ChannelCreateRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -944,6 +984,7 @@
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				DF71BE1C2C68D52200546A72 /* ChannelCreate */,
 				DF8FB29D2C649E4600D12097 /* Chat */,
 				DF8FB28E2C64718E00D12097 /* Invite */,
 				DF95DBDA2C6095C300628284 /* DMList */,
@@ -1243,6 +1284,7 @@
 				DF71BE1B2C674AEC00546A72 /* SocketCase.swift in Sources */,
 				DF9279C62C59040E00E2002D /* WorkspaceRouter.swift in Sources */,
 				DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */,
+				DF71BE202C68D54300546A72 /* ChannelCreateView.swift in Sources */,
 				DF5265BC2C5FDD550042D56F /* Entity.swift in Sources */,
 				DF95DBD92C60947200628284 /* TabCoordinator.swift in Sources */,
 				DF9B6BBC2C5CF6A9002090B3 /* ChannelDTO.swift in Sources */,
@@ -1266,12 +1308,14 @@
 				DF8FB2A92C64AEB300D12097 /* DMRequestDTO.swift in Sources */,
 				DF5265B82C5FDB630042D56F /* DMRoomList.swift in Sources */,
 				DF5265BE2C5FE8490042D56F /* SideMenuView.swift in Sources */,
+				DF71BE222C68D57000546A72 /* ChannelCreateFeature.swift in Sources */,
 				DF95DBE42C6097DF00628284 /* HomeCoordinator.swift in Sources */,
 				DF8FB2A32C649EF600D12097 /* ChatView.swift in Sources */,
 				DF9B6BC12C5D3BC7002090B3 /* ChannelEntity.swift in Sources */,
 				DF9B6BAC2C5C8528002090B3 /* HomeInitView.swift in Sources */,
 				DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */,
 				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
+				DF71BE282C68DA4800546A72 /* ChannelCreateRepository.swift in Sources */,
 				DF6412562C63634600CA5E96 /* AuthRepository.swift in Sources */,
 				DF8FB2922C6471CE00D12097 /* InviteView.swift in Sources */,
 				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,

@@ -90,10 +90,6 @@ extension WorkSpaceCreateView {
         }
     }
     
-    private func makeText() -> some View {
-        Text(InfoText.HomeEmptyTextType.create)
-    }
-    
     private func makeLabeledTextField(type: InfoText.WorkSpaceCreateType) -> some View {
         VStack {
             HStack {

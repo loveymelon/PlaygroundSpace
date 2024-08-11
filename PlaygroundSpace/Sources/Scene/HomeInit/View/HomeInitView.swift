@@ -39,6 +39,9 @@ struct HomeInitView: View {
                     }
                 }
             }
+            .sheet(item: $store.scope(state: \.channelCreateState, action: \.channelCreateAction)) { store in
+                ChannelCreateView(store: store)
+            }
             .onAppear {
                 store.send(.onAppear)
             }
@@ -72,16 +75,24 @@ extension HomeInitView {
                         print("item")
                     }
             }
-            HStack(spacing: 12) {
-                Text("+")
-                Text("채널 추가")
+            Button {
+                store.send(.channelCreateButtonTapped)
+            } label: {
+                HStack(spacing: 12) {
+                    Text("+")
+                    Text("채널 추가")
+                }
             }
             .listRowInsets(EdgeInsets())
             .alignmentGuide(.listRowSeparatorLeading, computeValue: { dimension in
                 return -dimension.width
             })
-            .onTapGesture {
-                print("tap")
+            .confirmationDialog("title", isPresented: $store.state.channelAddButtonBool, titleVisibility: .hidden) {
+                Button("채널 생성") {
+                    store.send(.channelCreate)
+                } // 첫 번째 버튼
+                Button("채널 탐색") {} // 두 번째 버튼
+                Button("취소", role: .cancel) {}
             }
             
         }
