@@ -6,19 +6,33 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    var imageData: (Data) -> Void
+    @Binding var isPresented: Bool
+    
+    var imageData: ([Data]) -> Void
     @Environment(\.presentationMode) var mode
+    var selectedCount: Int
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        let picker = UIImagePickerController()
+       
+        if selectedCount == 0 {
+            isPresented = false
+        }
+        
+        var config = PHPickerConfiguration()
+        config.selectionLimit = selectedCount
+        
+        let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
+        
+        
         return picker
     }
     
@@ -28,21 +42,42 @@ struct ImagePicker: UIViewControllerRepresentable {
 }
 
 extension ImagePicker {
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+        
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            var imageArray: [UIImage] = []
+            let dispatchGroup = DispatchGroup()
+            
+            for result in results {
+                dispatchGroup.enter()
+                result.itemProvider.loadObject(ofClass: UIImage.self) { objects, error in
+                    DispatchQueue.main.async {
+                        guard let image = objects as? UIImage else {
+                            dispatchGroup.leave()
+                            return
+                        }
+                        
+                        imageArray.append(image)
+                        
+                        dispatchGroup.leave()
+                    }
+                }
+                
+            }
+            
+            dispatchGroup.notify(queue: .main) { [unowned self] in
+                
+                parent.imageData(imageArray.compactMap { $0.imageZipLimit(zipRate: 1) })
+                parent.isPresented = false
+                
+            }
+        }
+        
         let parent: ImagePicker
         
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
         
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            guard let image = info[.originalImage] as? UIImage else {
-                parent.mode.wrappedValue.dismiss()
-                return
-            }
-            
-            parent.imageData(image.imageZipLimit(zipRate: 1)!)
-            parent.mode.wrappedValue.dismiss()
-        }
     }
 }
