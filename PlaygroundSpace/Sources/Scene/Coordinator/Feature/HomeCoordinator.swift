@@ -11,6 +11,8 @@ import ComposableArchitecture
 @Reducer(state: .equatable)
 enum HomeScreen {
     case homeInitView(HomeInitFeature)
+    case channelCoordinatorView(ChannelCoordinator)
+    case chatView(ChatFeature)
 }
 
 @Reducer
@@ -27,8 +29,11 @@ struct HomeCoordinator {
     enum Action {
         case router(IdentifiedRouterActionOf<HomeScreen>)
         
-//        case catchWorkSpaceData(WorkspaceListEntity)
         case workspaceResultScene(WorkspaceListEntity)
+        case goBackToRoot
+        case nextChannelChatView(ChannelEntity)
+        case nextDMChatView(DMSEntity)
+        
         case delegate(Delegate)
         enum Delegate {
             case sideMenuTrigger
@@ -46,6 +51,41 @@ struct HomeCoordinator {
                 }
             case .router(.routeAction(id: _, action: .homeInitView(.delegate(.showSideMenu)))):
                 return .send(.delegate(.sideMenuTrigger))
+                
+            case .router(.routeAction(id: _, action: .homeInitView(.delegate(.fetchAllChannelTapped)))):
+                state.routes.presentCover(.channelCoordinatorView(.initial))
+                
+            case .router(.routeAction(id: _, action: .channelCoordinatorView(.delegate(.dismissPresent)))):
+                return .run { send in
+                    await send(.goBackToRoot)
+                }
+            case let .router(.routeAction(id: _, action: .homeInitView(.delegate(.channelTapped(entity))))):
+                return .run { send in
+                    await send(.nextChannelChatView(entity))
+                }
+                
+            case let .router(.routeAction(id: _, action: .homeInitView(.delegate(.dmTapped(entity))))):
+                return .run { send in
+                    await send(.nextDMChatView(entity))
+                }
+                
+            case let .router(.routeAction(id: _, action: .channelCoordinatorView(.delegate(.channelTouch(entity))))):
+                return .run { send in
+                    await send(.goBackToRoot)
+                    try await Task.sleep(for: .seconds(1))
+                    await send(.nextChannelChatView(entity))
+                }
+                
+            case let .nextChannelChatView(entity):
+                state.routes.push(.chatView(.init(chatRoomData: DMSEntity(), channelId: entity.channelId, beforeView: .allChannel)))
+                
+            case let .nextDMChatView(entity):
+                state.routes.push(.chatView(.init(chatRoomData: entity, beforeView: .dmList)))
+                
+            case .goBackToRoot:
+                // 네비게이션이 내려가는 것을 기다리지말고 다 내려
+                return .routeWithDelaysIfUnsupported(state.routes, action: \.router, scheduler: .main) { $0.goBackToRoot() }
+                
             default:
                 break
             }
