@@ -43,7 +43,7 @@ struct DMCoordinator {
                     await send(.router(.routeAction(id: .root, action: .dmListView(.catchWorkSpaceData(entity)))))
                 }
             case let .router(.routeAction(id: .root, action: .dmListView(.delegate(.memberTapped(entity))))):
-                state.routes.push(.chatView(.init(chatRoomData: entity)))
+                state.routes.push(.chatView(.init(chatRoomData: entity, beforeView: .dmList)))
             default:
                 break
             }
