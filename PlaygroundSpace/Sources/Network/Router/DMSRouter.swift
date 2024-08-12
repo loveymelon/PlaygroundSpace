@@ -12,7 +12,7 @@ enum DMSRouter: Router {
     case fetchDMRoomList
     case fetchDMList(String)
     case createDMRoom(DMRequestDTO)
-    case pushMessage(String, String, [String])
+    case pushMessage(String, String, [Data])
 }
 
 extension DMSRouter {
@@ -70,11 +70,12 @@ extension DMSRouter {
         case let .pushMessage(_, content, files):
             let data = MultipartFormData()
             
-            data.append(content.data(using: .utf8)!, withName: "content")
-            
+            if !content.isEmpty {
+                data.append(content.data(using: .utf8)!, withName: "content")
+            }
             for (index, file) in files.enumerated() {
-                let fieldName = "file[\(index)]"
-                data.append(file.data(using: .utf8)!, withName: fieldName)
+                let fieldName = "files[\(index)]"
+                data.append(file, withName: "files", fileName: fieldName, mimeType: "image/jpeg")
             }
             
             return .multiPart(data)
