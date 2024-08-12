@@ -6,13 +6,38 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+import TCACoordinators
 
 struct ChannelCoordinatorView: View {
+    @Perception.Bindable var store: StoreOf<ChannelCoordinator>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithPerceptionTracking {
+            
+            TCARouter(store.scope(state: \.routes, action: \.router)) { screen in
+                switch screen.case {
+                case let .channelAllView(store):
+                    AllChannelView(store: store)
+                }
+            }
+            
+        }
     }
 }
 
-#Preview {
-    ChannelCoordinatorView()
+extension ChannelScreen.State: Identifiable {
+    var id: ID {
+        switch self {
+        case .channelAllView:
+            return ID.root
+        }
+    }
+    
+    enum ID: Identifiable {
+        
+        case root
+        
+        var id: ID { self }
+    }
 }
