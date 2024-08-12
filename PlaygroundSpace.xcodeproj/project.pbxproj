@@ -30,12 +30,26 @@
 		DF6412562C63634600CA5E96 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6412552C63634600CA5E96 /* AuthRepository.swift */; };
 		DF64125D2C63641800CA5E96 /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF64125C2C63641800CA5E96 /* LoginRequestDTO.swift */; };
 		DF6BEDB82C63CB4C00673866 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6BEDB72C63CB4C00673866 /* Notification+Extension.swift */; };
+		DF6C354E2C6A0041008DB2A1 /* ChannelSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C354D2C6A0041008DB2A1 /* ChannelSettingView.swift */; };
+		DF6C35502C6A0137008DB2A1 /* ChannelSettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C354F2C6A0137008DB2A1 /* ChannelSettingFeature.swift */; };
+		DF6C35542C6A03A0008DB2A1 /* ChannelSettingMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C35532C6A03A0008DB2A1 /* ChannelSettingMapper.swift */; };
+		DF6C35562C6A03B0008DB2A1 /* ChannelSettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C35552C6A03B0008DB2A1 /* ChannelSettingRepository.swift */; };
+		DF6C35582C6A0510008DB2A1 /* PointChannelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C35572C6A0510008DB2A1 /* PointChannelDTO.swift */; };
+		DF6C355A2C6A0575008DB2A1 /* PointChannelEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C35592C6A0575008DB2A1 /* PointChannelEntity.swift */; };
 		DF71BE172C674A3300546A72 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DF71BE162C674A3300546A72 /* SocketIO */; };
 		DF71BE192C674A4D00546A72 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE182C674A4D00546A72 /* SocketManager.swift */; };
 		DF71BE1B2C674AEC00546A72 /* SocketCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE1A2C674AEC00546A72 /* SocketCase.swift */; };
 		DF71BE202C68D54300546A72 /* ChannelCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE1F2C68D54300546A72 /* ChannelCreateView.swift */; };
 		DF71BE222C68D57000546A72 /* ChannelCreateFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE212C68D57000546A72 /* ChannelCreateFeature.swift */; };
 		DF71BE282C68DA4800546A72 /* ChannelCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE272C68DA4800546A72 /* ChannelCreateRepository.swift */; };
+		DF71BE2D2C68E63000546A72 /* AllChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE2C2C68E63000546A72 /* AllChannelView.swift */; };
+		DF71BE2F2C68E64400546A72 /* AllChannelFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE2E2C68E64400546A72 /* AllChannelFeature.swift */; };
+		DF71BE332C68FABC00546A72 /* AllChannelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE322C68FABC00546A72 /* AllChannelMapper.swift */; };
+		DF71BE352C68FBF100546A72 /* AllChannelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE342C68FBF100546A72 /* AllChannelRepository.swift */; };
+		DF71BE372C69004300546A72 /* ChannelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE362C69004300546A72 /* ChannelCoordinator.swift */; };
+		DF71BE392C69005900546A72 /* ChannelCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE382C69005900546A72 /* ChannelCoordinatorView.swift */; };
+		DF71BE3B2C691DF600546A72 /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE3A2C691DF600546A72 /* ChatDTO.swift */; };
+		DF71BE3D2C691EB500546A72 /* ChatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF71BE3C2C691EB500546A72 /* ChatEntity.swift */; };
 		DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CB2C56BE96001793AC /* SignUpMapper.swift */; };
 		DF7313CF2C56BF22001793AC /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7313CE2C56BF22001793AC /* SignUpRepository.swift */; };
 		DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */; };
@@ -177,11 +191,25 @@
 		DF6412552C63634600CA5E96 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		DF64125C2C63641800CA5E96 /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
 		DF6BEDB72C63CB4C00673866 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		DF6C354D2C6A0041008DB2A1 /* ChannelSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingView.swift; sourceTree = "<group>"; };
+		DF6C354F2C6A0137008DB2A1 /* ChannelSettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingFeature.swift; sourceTree = "<group>"; };
+		DF6C35532C6A03A0008DB2A1 /* ChannelSettingMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingMapper.swift; sourceTree = "<group>"; };
+		DF6C35552C6A03B0008DB2A1 /* ChannelSettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingRepository.swift; sourceTree = "<group>"; };
+		DF6C35572C6A0510008DB2A1 /* PointChannelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointChannelDTO.swift; sourceTree = "<group>"; };
+		DF6C35592C6A0575008DB2A1 /* PointChannelEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointChannelEntity.swift; sourceTree = "<group>"; };
 		DF71BE182C674A4D00546A72 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		DF71BE1A2C674AEC00546A72 /* SocketCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketCase.swift; sourceTree = "<group>"; };
 		DF71BE1F2C68D54300546A72 /* ChannelCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateView.swift; sourceTree = "<group>"; };
 		DF71BE212C68D57000546A72 /* ChannelCreateFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateFeature.swift; sourceTree = "<group>"; };
 		DF71BE272C68DA4800546A72 /* ChannelCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateRepository.swift; sourceTree = "<group>"; };
+		DF71BE2C2C68E63000546A72 /* AllChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChannelView.swift; sourceTree = "<group>"; };
+		DF71BE2E2C68E64400546A72 /* AllChannelFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChannelFeature.swift; sourceTree = "<group>"; };
+		DF71BE322C68FABC00546A72 /* AllChannelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChannelMapper.swift; sourceTree = "<group>"; };
+		DF71BE342C68FBF100546A72 /* AllChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChannelRepository.swift; sourceTree = "<group>"; };
+		DF71BE362C69004300546A72 /* ChannelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCoordinator.swift; sourceTree = "<group>"; };
+		DF71BE382C69005900546A72 /* ChannelCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCoordinatorView.swift; sourceTree = "<group>"; };
+		DF71BE3A2C691DF600546A72 /* ChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
+		DF71BE3C2C691EB500546A72 /* ChatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEntity.swift; sourceTree = "<group>"; };
 		DF7313CB2C56BE96001793AC /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
 		DF7313CE2C56BF22001793AC /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		DF784A4C2C53FD1D004EC293 /* AuthFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFeature.swift; sourceTree = "<group>"; };
@@ -370,6 +398,86 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		DF6C35472C69FF82008DB2A1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C62002C59D52300A541D7 /* WorkSpaceCreate */,
+				DF9279BA2C58DF3F00E2002D /* HomeEmpty */,
+				DF5265BF2C5FEA7B0042D56F /* WorkSpaceSide */,
+				DF71BE1C2C68D52200546A72 /* ChannelCreate */,
+				DF71BE292C68E61000546A72 /* AllChannel */,
+				DF9B6BA82C5C84C3002090B3 /* HomeInit */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DF6C35482C69FF93008DB2A1 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				DF902BFB2C577FAC00334769 /* Complete */,
+				DF9279A52C58A25300E2002D /* EmailLogin */,
+				DF9DF5D92C502393007649DB /* Onboarding */,
+				DF9DF5C72C4FED37007649DB /* Splash */,
+				DFD83DD02C52A4EE009F8A5E /* Auth */,
+				DF844F1E2C538BEB000DACFD /* SignUp */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		DF6C35492C69FFF9008DB2A1 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C354A2C6A001F008DB2A1 /* ChannelSetting */,
+				DF95DBDA2C6095C300628284 /* DMList */,
+				DF8FB28E2C64718E00D12097 /* Invite */,
+				DF8FB29D2C649E4600D12097 /* Chat */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		DF6C354A2C6A001F008DB2A1 /* ChannelSetting */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C35522C6A038F008DB2A1 /* Mapper */,
+				DF6C35512C6A0387008DB2A1 /* Repository */,
+				DF6C354C2C6A0031008DB2A1 /* Feature */,
+				DF6C354B2C6A002D008DB2A1 /* View */,
+			);
+			path = ChannelSetting;
+			sourceTree = "<group>";
+		};
+		DF6C354B2C6A002D008DB2A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C354D2C6A0041008DB2A1 /* ChannelSettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF6C354C2C6A0031008DB2A1 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C354F2C6A0137008DB2A1 /* ChannelSettingFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF6C35512C6A0387008DB2A1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C35552C6A03B0008DB2A1 /* ChannelSettingRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF6C35522C6A038F008DB2A1 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C35532C6A03A0008DB2A1 /* ChannelSettingMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		DF71BE1C2C68D52200546A72 /* ChannelCreate */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +510,49 @@
 				DF71BE272C68DA4800546A72 /* ChannelCreateRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF71BE292C68E61000546A72 /* AllChannel */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE312C68FAA600546A72 /* Mapper */,
+				DF71BE302C68FAA000546A72 /* Repository */,
+				DF71BE2B2C68E61F00546A72 /* Feature */,
+				DF71BE2A2C68E61A00546A72 /* View */,
+			);
+			path = AllChannel;
+			sourceTree = "<group>";
+		};
+		DF71BE2A2C68E61A00546A72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE2C2C68E63000546A72 /* AllChannelView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF71BE2B2C68E61F00546A72 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE2E2C68E64400546A72 /* AllChannelFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF71BE302C68FAA000546A72 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE342C68FBF100546A72 /* AllChannelRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF71BE312C68FAA600546A72 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF71BE322C68FABC00546A72 /* AllChannelMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		DF7313CD2C56BF12001793AC /* Repository */ = {
@@ -531,6 +682,8 @@
 				DF5265B72C5FDB630042D56F /* DMRoomList.swift */,
 				DF61CFBA2C613D5900E19F6F /* MemberInfoDTO.swift */,
 				DF6412502C634AB100CA5E96 /* DMDTO.swift */,
+				DF71BE3A2C691DF600546A72 /* ChatDTO.swift */,
+				DF6C35572C6A0510008DB2A1 /* PointChannelDTO.swift */,
 			);
 			name = DTO;
 			sourceTree = "<group>";
@@ -545,6 +698,8 @@
 				DF61CFBC2C613DA300E19F6F /* MemberInfoEntity.swift */,
 				DF6412522C634B6400CA5E96 /* DMEntity.swift */,
 				DF64125C2C63641800CA5E96 /* LoginRequestDTO.swift */,
+				DF71BE3C2C691EB500546A72 /* ChatEntity.swift */,
+				DF6C35592C6A0575008DB2A1 /* PointChannelEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -861,6 +1016,7 @@
 				DF95DBD82C60947200628284 /* TabCoordinator.swift */,
 				DF95DBE32C6097DF00628284 /* HomeCoordinator.swift */,
 				DF95DBE72C6097FE00628284 /* DMCoordinator.swift */,
+				DF71BE362C69004300546A72 /* ChannelCoordinator.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -871,6 +1027,7 @@
 				DF95DBD62C60945300628284 /* TabCoordinatorView.swift */,
 				DF95DBEB2C6099DF00628284 /* HomeCoordinatorView.swift */,
 				DF95DBEF2C60B00D00628284 /* DMCoordinatorView.swift */,
+				DF71BE382C69005900546A72 /* ChannelCoordinatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -984,21 +1141,10 @@
 		DF9DF5C62C4FED32007649DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				DF71BE1C2C68D52200546A72 /* ChannelCreate */,
-				DF8FB29D2C649E4600D12097 /* Chat */,
-				DF8FB28E2C64718E00D12097 /* Invite */,
-				DF95DBDA2C6095C300628284 /* DMList */,
-				DF5265BF2C5FEA7B0042D56F /* WorkSpaceSide */,
-				DF9B6BA82C5C84C3002090B3 /* HomeInit */,
-				DF7C62002C59D52300A541D7 /* WorkSpaceCreate */,
-				DF9279BA2C58DF3F00E2002D /* HomeEmpty */,
-				DF9279A52C58A25300E2002D /* EmailLogin */,
-				DF902BFB2C577FAC00334769 /* Complete */,
+				DF6C35492C69FFF9008DB2A1 /* DM */,
+				DF6C35482C69FF93008DB2A1 /* Start */,
+				DF6C35472C69FF82008DB2A1 /* Home */,
 				DF784A4A2C53F451004EC293 /* Coordinator */,
-				DF844F1E2C538BEB000DACFD /* SignUp */,
-				DFD83DD02C52A4EE009F8A5E /* Auth */,
-				DF9DF5D92C502393007649DB /* Onboarding */,
-				DF9DF5C72C4FED37007649DB /* Splash */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -1271,11 +1417,13 @@
 				DF8543F12C55064E00DC80A8 /* String+Extension.swift in Sources */,
 				DF8B09B12C4F8B7F000B768A /* PlaygroundSpaceApp.swift in Sources */,
 				DF9B6BBA2C5CF574002090B3 /* ChannelRouter.swift in Sources */,
+				DF6C355A2C6A0575008DB2A1 /* PointChannelEntity.swift in Sources */,
 				DF8FB29C2C648E1600D12097 /* InviteRepository.swift in Sources */,
 				DF7C62062C59DB4400A541D7 /* WorkSpaceCreateFeature.swift in Sources */,
 				DF95DBE02C6095F800628284 /* DMListFeature.swift in Sources */,
 				DF9279B22C58A89500E2002D /* EmailLoginRepository.swift in Sources */,
 				DF9279AD2C58A38900E2002D /* EmailLoginFeature.swift in Sources */,
+				DF6C35542C6A03A0008DB2A1 /* ChannelSettingMapper.swift in Sources */,
 				DF902C0F2C57C3A800334769 /* UserDefaultManager.swift in Sources */,
 				DF9B6BC42C5D3C38002090B3 /* HomeInitMapper.swift in Sources */,
 				DF8FB2A72C64A8FA00D12097 /* ChatRepository.swift in Sources */,
@@ -1287,12 +1435,15 @@
 				DF71BE202C68D54300546A72 /* ChannelCreateView.swift in Sources */,
 				DF5265BC2C5FDD550042D56F /* Entity.swift in Sources */,
 				DF95DBD92C60947200628284 /* TabCoordinator.swift in Sources */,
+				DF71BE2D2C68E63000546A72 /* AllChannelView.swift in Sources */,
 				DF9B6BBC2C5CF6A9002090B3 /* ChannelDTO.swift in Sources */,
 				DF61CFB32C6139BE00E19F6F /* DMEmptyView.swift in Sources */,
 				DF5C9E722C624B5A006B89F5 /* AuthRouter.swift in Sources */,
 				DF8544072C55133500DC80A8 /* RouterProtocol.swift in Sources */,
 				DF5265C72C5FF0520042D56F /* View+Extension.swift in Sources */,
 				DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */,
+				DF71BE3D2C691EB500546A72 /* ChatEntity.swift in Sources */,
+				DF71BE3B2C691DF600546A72 /* ChatDTO.swift in Sources */,
 				DF9279AB2C58A29400E2002D /* EmailLoginView.swift in Sources */,
 				DF8FB2942C64738400D12097 /* InviteFeature.swift in Sources */,
 				DF6412532C634B6400CA5E96 /* DMEntity.swift in Sources */,
@@ -1302,13 +1453,16 @@
 				DF9B6BB82C5CDB07002090B3 /* UIImage+Extension.swift in Sources */,
 				DF9279CF2C59075100E2002D /* WorkspaceListEntity.swift in Sources */,
 				DF7313CC2C56BE96001793AC /* SignUpMapper.swift in Sources */,
+				DF6C35562C6A03B0008DB2A1 /* ChannelSettingRepository.swift in Sources */,
 				DF8543FC2C550FED00DC80A8 /* UserDTOModel.swift in Sources */,
 				DF902C042C57817800334769 /* CompleteFeature.swift in Sources */,
+				DF71BE352C68FBF100546A72 /* AllChannelRepository.swift in Sources */,
 				DF9B6BB42C5CC71E002090B3 /* WorkSpaceCreateRepository.swift in Sources */,
 				DF8FB2A92C64AEB300D12097 /* DMRequestDTO.swift in Sources */,
 				DF5265B82C5FDB630042D56F /* DMRoomList.swift in Sources */,
 				DF5265BE2C5FE8490042D56F /* SideMenuView.swift in Sources */,
 				DF71BE222C68D57000546A72 /* ChannelCreateFeature.swift in Sources */,
+				DF6C354E2C6A0041008DB2A1 /* ChannelSettingView.swift in Sources */,
 				DF95DBE42C6097DF00628284 /* HomeCoordinator.swift in Sources */,
 				DF8FB2A32C649EF600D12097 /* ChatView.swift in Sources */,
 				DF9B6BC12C5D3BC7002090B3 /* ChannelEntity.swift in Sources */,
@@ -1317,8 +1471,10 @@
 				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
 				DF71BE282C68DA4800546A72 /* ChannelCreateRepository.swift in Sources */,
 				DF6412562C63634600CA5E96 /* AuthRepository.swift in Sources */,
+				DF71BE2F2C68E64400546A72 /* AllChannelFeature.swift in Sources */,
 				DF8FB2922C6471CE00D12097 /* InviteView.swift in Sources */,
 				DF9DF5D12C4FF004007649DB /* PSTypography.swift in Sources */,
+				DF6C35582C6A0510008DB2A1 /* PointChannelDTO.swift in Sources */,
 				DF902C062C57839C00334769 /* UserSignUpRequestDTO.swift in Sources */,
 				DF5265C52C5FEB720042D56F /* WorkSpaceSideFeature.swift in Sources */,
 				DF85440E2C55184B00DC80A8 /* APIError.swift in Sources */,
@@ -1329,7 +1485,9 @@
 				DF9279A42C57EEED00E2002D /* UserEntity.swift in Sources */,
 				DF95DBE82C6097FE00628284 /* DMCoordinator.swift in Sources */,
 				DF95DBD72C60945300628284 /* TabCoordinatorView.swift in Sources */,
+				DF6C35502C6A0137008DB2A1 /* ChannelSettingFeature.swift in Sources */,
 				DF8544102C5518BC00DC80A8 /* EncodingType.swift in Sources */,
+				DF71BE372C69004300546A72 /* ChannelCoordinator.swift in Sources */,
 				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
 				DF9B6BB62C5CD405002090B3 /* WorkSpaceInfoDTO.swift in Sources */,
 				DF8FB29A2C648D8000D12097 /* EmailRequestDTO.swift in Sources */,
@@ -1347,7 +1505,9 @@
 				DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */,
 				DF9279CD2C5906E400E2002D /* WorkspaceListDTO.swift in Sources */,
 				DF5C9E6E2C620BBA006B89F5 /* DMListMapper.swift in Sources */,
+				DF71BE332C68FABC00546A72 /* AllChannelMapper.swift in Sources */,
 				DF9B6BCB2C5D4CD1002090B3 /* KingfisherRequestModifier.swift in Sources */,
+				DF71BE392C69005900546A72 /* ChannelCoordinatorView.swift in Sources */,
 				DF6412512C634AB100CA5E96 /* DMDTO.swift in Sources */,
 				DF5265C22C5FEB2C0042D56F /* WorkSpaceSideView.swift in Sources */,
 				DFD83DDF2C52ADAC009F8A5E /* APIKey.swift in Sources */,

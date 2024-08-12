@@ -17,8 +17,12 @@ struct HomeCoordinatorView: View {
             
             TCARouter(store.scope(state: \.routes, action: \.router)) { screen in
                 switch screen.case {
-                case .homeInitView(let store):
+                case let .homeInitView(store):
                     HomeInitView(store: store)
+                case let .channelCoordinatorView(store):
+                    ChannelCoordinatorView(store: store)
+                case let .chatView(store):
+                    ChatView(store: store)
                 }
             }
             
@@ -31,12 +35,18 @@ extension HomeScreen.State: Identifiable {
         switch self {
         case .homeInitView:
             return ID.root
+        case .channelCoordinatorView:
+            return ID.channel
+        case .chatView:
+            return ID.chat
         }
     }
     
     enum ID: Identifiable {
         
         case root
+        case channel
+        case chat
         
         var id: ID { self }
     }
