@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct PointChannelEntity: Entity {
+    let channelId: String
+    let name: String
+    let description: String?
+    let coverImage: String?
+    let ownerId: String
+    let createdAt: String
+    let channelMembers: [MemberInfoEntity]
+}
