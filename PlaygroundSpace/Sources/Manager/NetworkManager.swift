@@ -93,6 +93,8 @@ final class NetworkManager {
             do {
                 let request = try router.asURLRequest()
                 
+                print(request.url)
+                
                 if case let .multiPart(multipartFormData) = router.encodingType {
                     AF.upload(multipartFormData: multipartFormData, to: request.url!, method: request.method!, headers: request.headers, interceptor: NetworkInterceptor())
                         .responseDecodable(of: T.self) { result in

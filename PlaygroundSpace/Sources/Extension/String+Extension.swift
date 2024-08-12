@@ -9,8 +9,7 @@ import Foundation
 
 extension String {
     var formatPhoneNumber: String {
-        
-        print("before",self)
+
         var phoneNumber = self
         
         phoneNumber = phoneNumber.filter { $0.isNumber == true }
@@ -39,7 +38,6 @@ extension String {
             }
         }
         
-        print(result)
         return result
     }
     
