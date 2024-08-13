@@ -20,7 +20,7 @@ struct ChannelCreateView: View {
                             makeCancleButton()
                         }
                     }
-                    .navigationTitle("채널 생성")
+                    .navigationTitle(store.beforeView.title)
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
