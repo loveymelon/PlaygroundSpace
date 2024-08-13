@@ -113,7 +113,7 @@ extension MessageView {
     // 날짜를 만드는 뷰
     @ViewBuilder
     private func makeDateView() -> some View {
-        if let date = messageData.createdAt.toDate {
+        if let date = messageIsValid ? messageData.createdAt.toDate : chatData.createdAt.toDate {
             Text(DateManager.shared.dateToStringToChat(date, isMe: userType == .me ? true : false))
                 .setTextStyle(type: .body)
                 .foregroundStyle(Color.viAlpa)
@@ -238,7 +238,7 @@ extension MessageView {
         let files = messageIsValid ? messageData.files : chatData.files
         
         if content != nil && !files.isEmpty {
-            makeContentView(content: messageData.content!)
+            makeContentView(content: content ?? "empty")
                 .setTextStyle(type: .body)
             makeImageView()
         } else if let message = content {
