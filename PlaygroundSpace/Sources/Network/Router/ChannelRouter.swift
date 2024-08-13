@@ -15,15 +15,24 @@ enum ChannelRouter: Router {
     case fetchDMList(String)
     case pushMessage(String, String, [Data])
     case fetchPointChannel(String)
+    case channelEdit(String, String, String)
+    case changeOwner(String, OwnerRequestDTO)
+    case fetchMembers(String)
+    case channelOut(String)
+    case channelDelete(String)
 }
 
 extension ChannelRouter {
     var method: HTTPMethod {
         switch self {
-        case .fetchMyChannel, .fetchAllChannel, .fetchDMList, .fetchPointChannel:
+        case .fetchMyChannel, .fetchAllChannel, .fetchDMList, .fetchPointChannel, .fetchMembers, .channelOut:
             return .get
         case .createChannel, .pushMessage:
             return .post
+        case .channelEdit, .changeOwner:
+            return .put
+        case .channelDelete:
+            return .delete
         }
     }
     
@@ -35,35 +44,43 @@ extension ChannelRouter {
             return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/channels"
         case let .fetchDMList(channelId), let .pushMessage(channelId, _, _):
             return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/channels/\(channelId)/chats"
-        case let .fetchPointChannel(channelId):
+        case let .channelEdit(channelId, _, _), let .channelDelete(channelId), let .fetchPointChannel(channelId):
             return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/channels/\(channelId)"
+        case let .changeOwner(channelId, _):
+            return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/channels/\(channelId)/transfer/ownership"
+        case let .fetchMembers(channelId):
+            return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/channels/\(channelId)/members"
+        case let .channelOut(channelId):
+            return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/channels/\(channelId)/exit"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
-        case .fetchMyChannel, .createChannel, .fetchAllChannel, .fetchDMList, .pushMessage, .fetchPointChannel:
+        case .fetchMyChannel, .createChannel, .fetchAllChannel, .fetchDMList, .pushMessage, .fetchPointChannel, .channelEdit, .changeOwner, .fetchMembers, .channelOut, .channelDelete:
             return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .fetchMyChannel, .createChannel, .fetchAllChannel, .fetchDMList, .pushMessage, .fetchPointChannel:
+        case .fetchMyChannel, .createChannel, .fetchAllChannel, .fetchDMList, .pushMessage, .fetchPointChannel, .channelEdit, .changeOwner, .fetchMembers, .channelOut, .channelDelete:
             return nil
         }
     }
     
     var body: Data? {
         switch self {
-        case .fetchMyChannel, .createChannel, .fetchAllChannel, .fetchDMList, .pushMessage, .fetchPointChannel:
+        case .fetchMyChannel, .createChannel, .fetchAllChannel, .fetchDMList, .pushMessage, .fetchPointChannel, .channelEdit, .fetchMembers, .channelOut, .channelDelete:
             return nil
+        case let .changeOwner(_, requestDTO):
+            return requestToBody(requestDTO)
         }
     }
     
     var encodingType: EncodingType {
         switch self {
-        case .fetchMyChannel, .fetchAllChannel, .fetchDMList, .fetchPointChannel:
+        case .fetchMyChannel, .fetchAllChannel, .fetchDMList, .fetchPointChannel, .fetchMembers, .channelDelete, .channelOut:
             return .url
         case let .createChannel(name, description):
             let data = MultipartFormData()
@@ -85,6 +102,15 @@ extension ChannelRouter {
             }
             
             return .multiPart(data)
+        case let .channelEdit(_, name, description):
+            let data = MultipartFormData()
+            
+            data.append(name.data(using: .utf8)!, withName: "name")
+            data.append(description.data(using: .utf8)!, withName: "description")
+            
+            return .multiPart(data)
+        case .changeOwner:
+            return .json
         }
     }
     
