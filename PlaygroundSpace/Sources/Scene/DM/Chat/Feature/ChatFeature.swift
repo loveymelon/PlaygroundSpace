@@ -14,6 +14,7 @@ struct ChatFeature {
     struct State: Equatable {
         var chatRoomData: DMSEntity
         var channelId: String = ""
+        var channelTitle: String = ""
         var dmList: [DMEntity] = []
         var chatList: [ChatEntity] = []
         var messageText: String = ""
@@ -22,6 +23,9 @@ struct ChatFeature {
         var imageData: [Data] = []
         
         var imageLimit = 5
+        var title: String = ""
+        
+        var onAppearTrigger = true
     }
     
     enum Action: BindableAction {
@@ -33,9 +37,17 @@ struct ChatFeature {
         case finishPush
         case plusTapped
         case deleteImage(Int)
+        case channelSettingTapped
+        
+        case catchTitle(String)
         
         case dataTransType(DataTransType)
         case network(NetworkType)
+        
+        case delegate(Delegate)
+        enum Delegate {
+            case channelSettingTapped(String)
+        }
     }
     
     enum NetworkType {
@@ -50,6 +62,7 @@ struct ChatFeature {
         case dmAppend(DMEntity)
         case chatList([ChatEntity])
         case chatAppend(ChatEntity)
+        case title(String)
     }
     
     enum BeforeView {
@@ -68,8 +81,12 @@ struct ChatFeature {
                 return .run { [state = state] send in
                     if state.beforeView == .dmList {
                         await send(.network(.fetchDMList))
+                        await send(.dataTransType(.title(state.chatRoomData.user.nickname)))
                     } else {
                         await send(.network(.fetchChatList))
+                        if state.onAppearTrigger {
+                            await send(.dataTransType(.title(state.channelTitle)))
+                        }
                     }
                 }
                 
@@ -103,6 +120,7 @@ struct ChatFeature {
                     guard let dmList = result else { return }
                     
                     await send(.dataTransType(.dmList(dmList)))
+                    
                 }
                 
             case .network(.fetchChatList):
@@ -165,6 +183,19 @@ struct ChatFeature {
             case let .deleteImage(index):
                 state.imageData.remove(at: index)
                 state.imageLimit += 1
+                
+            case .channelSettingTapped:
+                return .run { [state = state] send in
+                    await send(.delegate(.channelSettingTapped(state.channelId)))
+                }
+                
+            case let .dataTransType(.title(title)):
+                state.title = title
+                state.onAppearTrigger = false
+                
+            case let .catchTitle(title):
+                print("catchcatchcatch", title)
+                state.title = title
                 
             case .finishPush:
                 state.messageText = ""

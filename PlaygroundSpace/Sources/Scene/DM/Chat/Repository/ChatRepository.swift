@@ -89,6 +89,7 @@ struct ChatRepository {
             
             switch result {
             case .success(let data):
+                print(data.chatListDTO.last)
                 return mapper.dtoToEntity(dto: data.chatListDTO)
             case .failure(let error):
                 print(error)

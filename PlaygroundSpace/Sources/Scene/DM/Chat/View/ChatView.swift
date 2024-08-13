@@ -15,16 +15,21 @@ struct ChatView: View {
         WithPerceptionTracking {
             makeChatView()
                 .toolbar(.hidden, for: .tabBar)
-                .onAppear {
-                    store.send(.onAppear)
+                .navigationTitle(store.state.title)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        makeTrailingToolbarItem()
+                    }
                 }
-                .navigationTitle(store.state.chatRoomData.user.nickname)
                 .sheet(isPresented: $store.state.showImage) {
                     
                     ImagePicker(isPresented: $store.state.showImage, imageData: { imageData in
                         store.send(.selectedFinish(imageData))
                     }, selectedCount: store.imageLimit)
 
+                }
+                .onAppear {
+                    store.send(.onAppear)
                 }
         }
     }
@@ -124,6 +129,21 @@ extension ChatView {
                 LazyVStack {
                     MessageView(messageData: DMEntity(), chatData: item, messageIsValid: false)
                 }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func makeTrailingToolbarItem() -> some View {
+        if store.beforeView == .dmList {
+            EmptyView()
+        } else {
+            Button {
+                store.send(.channelSettingTapped)
+            } label: {
+                Image(ImageNames.homeSelect)
+                    .resizable()
+                    .frame(width: 18, height: 18)
             }
         }
     }
