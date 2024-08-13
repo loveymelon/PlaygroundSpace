@@ -44,7 +44,7 @@ struct CompleteFeature {
             case .onAppear:
                 state.textState.nickname = UserDefaultsManager.shared.userNickname
             case .showWorkSpaceCreate:
-                state.workSpaceCreateState = WorkSpaceCreateFeature.State()
+                state.workSpaceCreateState = WorkSpaceCreateFeature.State(beforeViewType: .emptyView)
             case .workSpaceCreateButtonTapped:
                 return .run { send in
                     await send(.showWorkSpaceCreate)

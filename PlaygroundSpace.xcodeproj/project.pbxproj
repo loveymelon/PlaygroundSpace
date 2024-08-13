@@ -148,6 +148,7 @@
 		DF9DF5D62C5012A3007649DB /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D52C5012A3007649DB /* InfoText.swift */; };
 		DF9DF5D82C501CFA007649DB /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5D72C501CFA007649DB /* ImageNames.swift */; };
 		DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9DF5DC2C5023BA007649DB /* OnboardingView.swift */; };
+		DFB996C52C6BBBD400F40D64 /* WorkSpaceCreateMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB996C42C6BBBD400F40D64 /* WorkSpaceCreateMapper.swift */; };
 		DFD83DD32C52A53E009F8A5E /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD83DD22C52A53E009F8A5E /* AuthView.swift */; };
 		DFD83DD72C52ACD2009F8A5E /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DFD83DD62C52ACD2009F8A5E /* KakaoSDKAuth */; };
 		DFD83DD92C52ACD2009F8A5E /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = DFD83DD82C52ACD2009F8A5E /* KakaoSDKCommon */; };
@@ -313,6 +314,7 @@
 		DF9DF5D52C5012A3007649DB /* InfoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
 		DF9DF5D72C501CFA007649DB /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
 		DF9DF5DC2C5023BA007649DB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DFB996C42C6BBBD400F40D64 /* WorkSpaceCreateMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceCreateMapper.swift; sourceTree = "<group>"; };
 		DFD83DD22C52A53E009F8A5E /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		DFD83DDC2C52AD0E009F8A5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD83DDE2C52ADAC009F8A5E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 		DF7C62002C59D52300A541D7 /* WorkSpaceCreate */ = {
 			isa = PBXGroup;
 			children = (
+				DFB996C32C6BBBC200F40D64 /* Mapper */,
 				DF9B6BB22C5CC6CA002090B3 /* Repository */,
 				DF7C62022C59D54200A541D7 /* Feature */,
 				DF7C62012C59D53E00A541D7 /* View */,
@@ -1283,6 +1286,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DFB996C32C6BBBC200F40D64 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DFB996C42C6BBBD400F40D64 /* WorkSpaceCreateMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		DFD83DD02C52A4EE009F8A5E /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -1578,6 +1589,7 @@
 				DF5C9E6E2C620BBA006B89F5 /* DMListMapper.swift in Sources */,
 				DF71BE332C68FABC00546A72 /* AllChannelMapper.swift in Sources */,
 				DF6348F92C6B674D001DAD64 /* ChannelOwnerRepository.swift in Sources */,
+				DFB996C52C6BBBD400F40D64 /* WorkSpaceCreateMapper.swift in Sources */,
 				DF9B6BCB2C5D4CD1002090B3 /* KingfisherRequestModifier.swift in Sources */,
 				DF71BE392C69005900546A72 /* ChannelCoordinatorView.swift in Sources */,
 				DF6412512C634AB100CA5E96 /* DMDTO.swift in Sources */,

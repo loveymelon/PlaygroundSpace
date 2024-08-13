@@ -20,6 +20,31 @@ struct WorkSpaceCreateFeature {
         var showImagePicker = false
         
         var requiredIsValid: Bool = false
+        
+        var beforeViewType: BeforeViewType
+    }
+    
+    enum BeforeViewType {
+        case emptyView
+        case sideMenu
+        
+        var title: String {
+            return switch self {
+            case .emptyView:
+                "워크스페이스 생성"
+            case .sideMenu:
+                "워크스페이스 편집"
+            }
+        }
+        
+        var button: String {
+            return switch self {
+            case .emptyView:
+                "완료"
+            case .sideMenu:
+                "저장"
+            }
+        }
     }
     
     enum Action: BindableAction {
@@ -30,17 +55,18 @@ struct WorkSpaceCreateFeature {
         case workSpaceImageTapped
         case selectedFinish([Data])
         case workSpaceCreateNetwork(Data)
+        case workSpaceEditNetwork(Data)
         
         case delegate(Delegate)
         enum Delegate {
             case backButtonTapped
             case workSpaceCreate
+            case workSpaceEdit
         }
     }
     
     struct ViewStateText: Equatable {
         let workSpaceType = InfoText.WorkSpaceCreateType.allCases
-        let workSpaceCreate = InfoText.HomeEmptyTextType.create
     }
     
     struct ViewStateImage: Equatable {
@@ -70,9 +96,14 @@ struct WorkSpaceCreateFeature {
                 state.selectedUIImage = imageData.first
             case let .completeButtonTapped(imageData):
                 
-                return .run { [image = state.selectedUIImage] send in
-                    await send(.workSpaceCreateNetwork(image ?? imageData))
+                return .run { [image = state.selectedUIImage, state = state] send in
+                    if state.beforeViewType == .emptyView {
+                        await send(.workSpaceCreateNetwork(image ?? imageData))
+                    } else {
+                        await send(.workSpaceEditNetwork(image ?? imageData))
+                    }
                 }
+                
             case let .workSpaceCreateNetwork(image):
                 return .run { [state = state] send in
                     let result = await repository.workSpaceCreateFinish(name: state.workSpaceNameText, description: state.workSpaceExplain, imageData: image)
@@ -81,6 +112,16 @@ struct WorkSpaceCreateFeature {
                     
                     await send(.delegate(.workSpaceCreate))
                 }
+                
+            case let .workSpaceEditNetwork(image):
+                return .run { [state = state] send in
+                    let result = await repository.workSpaceEdit(name: state.workSpaceNameText, description: state.workSpaceExplain, imageData: image)
+                    
+                    guard let data = result else  { return }
+                    
+                    await send(.delegate(.workSpaceEdit))
+                }
+                
             default:
                 break
             }

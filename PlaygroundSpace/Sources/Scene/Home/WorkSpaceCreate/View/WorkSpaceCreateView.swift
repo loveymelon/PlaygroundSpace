@@ -21,7 +21,7 @@ struct WorkSpaceCreateView: View {
                             makeCancleButton()
                         }
                     }
-                    .navigationTitle(store.workSpaceType.workSpaceCreate)
+                    .navigationTitle(store.beforeViewType.title)
                     .navigationBarTitleDisplayMode(.inline)
             }
             .sheet(isPresented: $store.state.showImagePicker) {
@@ -126,7 +126,7 @@ extension WorkSpaceCreateView {
         Button {
             store.send(.completeButtonTapped((UIImage(named: store.state.workSpaceImage.workSpaceImage)?.imageZipLimit(zipRate: 1)!)!))
         } label: {
-            Text(store.workSpaceType.workSpaceCreate)
+            Text(store.beforeViewType.button)
                 .asText(type: .title2, foreColor: .brWhite, backColor: store.requiredIsValid ? .brGreen: .brInactive)
         }
         .disabled(!store.requiredIsValid)

@@ -15,18 +15,24 @@ struct WorkSpaceSideFeature {
         var currentCase: CurrentViewCase = .loading
         var currentModels: [WorkspaceListEntity] = []
         var currentWorkSpaceID: String = ""
+        var editIsOpen: Bool = false
         
         @Presents var workSpaceCreateState: WorkSpaceCreateFeature.State?
     }
     
-    enum Action {
+    enum Action: BindableAction {
+        case binding(BindingAction<State>)
+        
         case onAppear
+        case workSpaceEditButtonTapped
+        case workSpaceEditType(WorkSpaceEditType)
         
         case sendToMakeWorkSpace
         case networking
         case networkSuccess([WorkspaceListEntity])
         
         case workSpaceCreateAction(PresentationAction<WorkSpaceCreateFeature.Action>)
+        case workSpaceDelete
         
         case selectedModel(WorkspaceListEntity)
         case delegate(Delegate)
@@ -42,9 +48,18 @@ struct WorkSpaceSideFeature {
         case over
     }
     
+    enum WorkSpaceEditType {
+        case workSpaceEdit
+        case workSpaceOut
+        case workSpaceChangeOwner
+        case workSpaceDelete
+    }
+    
     private let repository = CoordinatorRepository()
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
+        
         Reduce { state, action in
             switch action {
             case .onAppear:
@@ -70,19 +85,22 @@ struct WorkSpaceSideFeature {
                     await send(.delegate(.selectWorkSpace(data)))
                 }
                 
-            case .sendToMakeWorkSpace:
-                state.workSpaceCreateState = WorkSpaceCreateFeature.State()
-                
             case .workSpaceCreateAction(.presented(.delegate(.backButtonTapped))):
                 return .run { send in
                     await send(.workSpaceCreateAction(.dismiss))
                 }
                 
-            case .workSpaceCreateAction(.presented(.delegate(.workSpaceCreate))):
+            case .workSpaceCreateAction(.presented(.delegate(.workSpaceEdit))):
                 return .run { send in
                     await send(.networking)
                     await send(.workSpaceCreateAction(.dismiss))
                 }
+                
+            case .workSpaceEditButtonTapped:
+                state.editIsOpen = true
+                
+            case .workSpaceEditType(.workSpaceEdit):
+                state.workSpaceCreateState = WorkSpaceCreateFeature.State(beforeViewType: .sideMenu)
                 
             default:
                 break

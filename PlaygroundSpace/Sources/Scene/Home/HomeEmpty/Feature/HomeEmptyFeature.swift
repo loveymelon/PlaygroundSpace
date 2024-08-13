@@ -42,7 +42,7 @@ struct HomeEmptyFeature {
                     await send(.showWorkSpaceCreate)
                 }
             case .showWorkSpaceCreate:
-                state.workSpaceCreateState = WorkSpaceCreateFeature.State()
+                state.workSpaceCreateState = WorkSpaceCreateFeature.State(beforeViewType: .emptyView)
             case .workSpaceCreateAction(.presented(.delegate(.backButtonTapped))):
                 return .run { send in
                     await send(.workSpaceCreateAction(.dismiss))

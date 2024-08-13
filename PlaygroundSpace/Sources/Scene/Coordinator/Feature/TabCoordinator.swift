@@ -23,33 +23,6 @@ struct TabCoordinator {
         case home, dm
     }
     
-    enum Action {
-        case homeAction(HomeCoordinator.Action)
-        case dmAction(DMCoordinator.Action)
-        case homeEmptyAction(HomeEmptyFeature.Action)
-        case sideMenuAction(WorkSpaceSideFeature.Action)
-        case workspaceResultScene([WorkspaceListEntity])
-        case tabSelected(Tab)
-        
-        case coordiAction(CoordiAction)
-        case onAppear
-        case sideMenuTrigger(Bool)
-        case fetchWorkSpaceList
-    }
-    
-    enum CoordiAction {
-        case home(HomeAction)
-        case dm(DMAction)
-        
-        enum HomeAction {
-            case homeEmptyAction(HomeEmptyFeature.Action)
-            case workspaceResultScene([WorkspaceListEntity])
-        }
-        enum DMAction {
-            case workspaceResultScene(WorkspaceListEntity)
-        }
-    }
-    
     @ObservableState
     struct State: Equatable {
         static let initial = State(
@@ -75,6 +48,33 @@ struct TabCoordinator {
         case loading
         case show
         case empty
+    }
+    
+    enum Action {
+        case homeAction(HomeCoordinator.Action)
+        case dmAction(DMCoordinator.Action)
+        case homeEmptyAction(HomeEmptyFeature.Action)
+        case sideMenuAction(WorkSpaceSideFeature.Action)
+        case workspaceResultScene([WorkspaceListEntity])
+        case tabSelected(Tab)
+        
+        case coordiAction(CoordiAction)
+        case onAppear
+        case sideMenuTrigger(Bool)
+        case fetchWorkSpaceList
+    }
+    
+    enum CoordiAction {
+        case home(HomeAction)
+        case dm(DMAction)
+        
+        enum HomeAction {
+            case homeEmptyAction(HomeEmptyFeature.Action)
+            case workspaceResultScene([WorkspaceListEntity])
+        }
+        enum DMAction {
+            case workspaceResultScene(WorkspaceListEntity)
+        }
     }
     
     let repository = CoordinatorRepository()
@@ -132,7 +132,6 @@ struct TabCoordinator {
                 }
                 state.isOpen = isValid
             case let .sideMenuAction(.delegate(.selectWorkSpace(entity))):
-                print("coordi", entity)
                 state.selectWorkSpace = entity
                 UserDefaultsManager.shared.currentWorkSpaceId = entity.workspaceID
                 
@@ -141,6 +140,7 @@ struct TabCoordinator {
                     await send(.dmAction(.workspaceResultScene(entity)))
                     await send(.sideMenuTrigger(false))
                 }
+                
             default:
                 break
             }

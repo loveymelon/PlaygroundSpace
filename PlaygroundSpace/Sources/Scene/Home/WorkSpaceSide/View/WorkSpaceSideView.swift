@@ -38,12 +38,24 @@ struct WorkSpaceSideView: View {
                 store.send(.onAppear)
             }
 //            .confirmationDialog($store.scope(state: \.alertSheet, action: \.alertSheetAction))
-//            .sheet(item: $store.scope(state: \.workSpaceEdit, action: \.workSpaceEditAction), content: { store in
-//                WorkSpaceEditView(store: store)
-//            })
-//            .sheet(item: $store.scope(state: \.workSpaceOwnerChange, action: \.workSpaceOwnerChange)) { store in
-//                WorkSpaceOwnerChangeView(store: store)
-//            }
+            .sheet(item: $store.scope(state: \.workSpaceCreateState, action: \.workSpaceCreateAction), content: { store in
+                WorkSpaceCreateView(store: store)
+            })
+            .confirmationDialog("title", isPresented: $store.editIsOpen, titleVisibility: .hidden) {
+                Button("워크스페이스 편집") {
+                    store.send(.workSpaceEditType(.workSpaceEdit))
+                } // 첫 번째 버튼
+                Button("워크스페이스 나가기") {
+                    store.send(.workSpaceEditType(.workSpaceOut))
+                } // 두 번째 버튼
+                Button("워크스페이스 관리자 변경") {
+                    store.send(.workSpaceEditType(.workSpaceChangeOwner))
+                } // 두 번째 버튼
+                Button("워크스페이스 삭제") {
+                    store.send(.workSpaceEditType(.workSpaceDelete))
+                } // 두 번째 버튼
+                Button("취소", role: .cancel) {}
+            }
         }
     }
 }
@@ -90,26 +102,28 @@ extension WorkSpaceSideView {
     
     private func makeWorkSpaceListView(_ model: WorkspaceListEntity) -> some View {
         HStack {
-            Group {
-                if let url = URL(string: model.coverImage) {
-                    DownSamplingImageView(url: url, size: CGSize(width: 44, height: 44))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                } else {
-                    EmptyView()
+            HStack {
+                Group {
+                    if let url = URL(string: model.coverImage) {
+                        DownSamplingImageView(url: url, size: CGSize(width: 44, height: 44))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                    } else {
+                        EmptyView()
+                    }
+                }
+                .frame(width: 50, height: 50)
+                
+                VStack(alignment: .leading) {
+                    Text(model.name)
+                        .setTextStyle(type: .title2)
+                        .foregroundStyle(.tePrimary)
+                    Text(model.createdAt)
+                        .setTextStyle(type: .body)
+                        .foregroundStyle(.teSecondary)
                 }
             }
-            .frame(width: 50, height: 50)
-            .asButton {
+            .onTapGesture {
                 store.send(.selectedModel(model))
-            }
-            
-            VStack(alignment: .leading) {
-                Text(model.name)
-                    .setTextStyle(type: .title2)
-                    .foregroundStyle(.tePrimary)
-                Text(model.createdAt)
-                    .setTextStyle(type: .body)
-                    .foregroundStyle(.teSecondary)
             }
             
             Spacer()
@@ -121,6 +135,10 @@ extension WorkSpaceSideView {
                     .padding(.vertical, 20)
                     .padding(.leading, 17)
                     .background(Color.white.opacity(0.2))
+                
+            }
+            .onTapGesture {
+                store.send(.workSpaceEditButtonTapped)
             }
         }
         .padding(.all, 10)

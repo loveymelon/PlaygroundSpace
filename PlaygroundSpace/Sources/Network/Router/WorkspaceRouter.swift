@@ -13,19 +13,18 @@ enum WorkspaceRouter: Router {
     case create(String, String, Data)
     case fetchMember
     case invite(EmailRequestDTO)
+    case edit(String, String, Data)
 }
 
 extension WorkspaceRouter {
     var method: HTTPMethod {
         switch self {
-        case .fetch:
+        case .fetch, .fetchMember:
             return .get
-        case .create:
+        case .create, .invite:
             return .post
-        case .fetchMember:
-            return .get
-        case .invite:
-            return .post
+        case .edit:
+            return .put
         }
     }
     
@@ -35,26 +34,28 @@ extension WorkspaceRouter {
             return APIKey.version + "/workspaces"
         case .fetchMember, .invite:
             return APIKey.version + "/workspaces/" + UserDefaultsManager.shared.currentWorkSpaceId + "/members"
+        case .edit:
+            return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
-        case .fetch, .create, .fetchMember, .invite:
+        case .fetch, .create, .fetchMember, .invite, .edit:
             return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .fetch, .create, .fetchMember, .invite:
+        case .fetch, .create, .fetchMember, .invite, .edit:
             return nil
         }
     }
     
     var body: Data? {
         switch self {
-        case .fetch, .create, .fetchMember:
+        case .fetch, .create, .fetchMember, .edit:
             return nil
         case let .invite(data):
             return requestToBody(data)
@@ -75,6 +76,14 @@ extension WorkspaceRouter {
             return .multiPart(data)
         case .invite:
             return .json
+        case let .edit(name, description, image):
+            let data = MultipartFormData()
+            
+            data.append(name.data(using: .utf8)!, withName: "name")
+            data.append(description.data(using: .utf8)!, withName: "description")
+            data.append(image, withName: "image", fileName: "workSpceImage.jpeg", mimeType: "image/jpeg")
+            
+            return .multiPart(data)
         }
     }
     
