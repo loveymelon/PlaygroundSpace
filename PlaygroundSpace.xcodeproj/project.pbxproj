@@ -25,6 +25,12 @@
 		DF61CFB52C613B9600E19F6F /* DMMemeberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61CFB42C613B9600E19F6F /* DMMemeberView.swift */; };
 		DF61CFBB2C613D5900E19F6F /* MemberInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61CFBA2C613D5900E19F6F /* MemberInfoDTO.swift */; };
 		DF61CFBD2C613DA300E19F6F /* MemberInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF61CFBC2C613DA300E19F6F /* MemberInfoEntity.swift */; };
+		DF6348E62C6B2896001DAD64 /* ChannelCreateMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6348E52C6B2896001DAD64 /* ChannelCreateMapper.swift */; };
+		DF6348EA2C6B6341001DAD64 /* OwnerRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6348E92C6B6341001DAD64 /* OwnerRequestDTO.swift */; };
+		DF6348F12C6B6553001DAD64 /* ChannelOwnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6348F02C6B6553001DAD64 /* ChannelOwnerView.swift */; };
+		DF6348F32C6B6571001DAD64 /* ChannelOwnerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6348F22C6B6571001DAD64 /* ChannelOwnerFeature.swift */; };
+		DF6348F72C6B673D001DAD64 /* ChannelOwnerMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6348F62C6B673D001DAD64 /* ChannelOwnerMapper.swift */; };
+		DF6348F92C6B674D001DAD64 /* ChannelOwnerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6348F82C6B674D001DAD64 /* ChannelOwnerRepository.swift */; };
 		DF6412512C634AB100CA5E96 /* DMDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6412502C634AB100CA5E96 /* DMDTO.swift */; };
 		DF6412532C634B6400CA5E96 /* DMEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6412522C634B6400CA5E96 /* DMEntity.swift */; };
 		DF6412562C63634600CA5E96 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6412552C63634600CA5E96 /* AuthRepository.swift */; };
@@ -186,6 +192,12 @@
 		DF61CFB42C613B9600E19F6F /* DMMemeberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMMemeberView.swift; sourceTree = "<group>"; };
 		DF61CFBA2C613D5900E19F6F /* MemberInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoDTO.swift; sourceTree = "<group>"; };
 		DF61CFBC2C613DA300E19F6F /* MemberInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberInfoEntity.swift; sourceTree = "<group>"; };
+		DF6348E52C6B2896001DAD64 /* ChannelCreateMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreateMapper.swift; sourceTree = "<group>"; };
+		DF6348E92C6B6341001DAD64 /* OwnerRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerRequestDTO.swift; sourceTree = "<group>"; };
+		DF6348F02C6B6553001DAD64 /* ChannelOwnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelOwnerView.swift; sourceTree = "<group>"; };
+		DF6348F22C6B6571001DAD64 /* ChannelOwnerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelOwnerFeature.swift; sourceTree = "<group>"; };
+		DF6348F62C6B673D001DAD64 /* ChannelOwnerMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelOwnerMapper.swift; sourceTree = "<group>"; };
+		DF6348F82C6B674D001DAD64 /* ChannelOwnerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelOwnerRepository.swift; sourceTree = "<group>"; };
 		DF6412502C634AB100CA5E96 /* DMDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMDTO.swift; sourceTree = "<group>"; };
 		DF6412522C634B6400CA5E96 /* DMEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMEntity.swift; sourceTree = "<group>"; };
 		DF6412552C63634600CA5E96 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
@@ -390,6 +402,57 @@
 			path = Mapper;
 			sourceTree = "<group>";
 		};
+		DF6348E42C6B2886001DAD64 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF6348E52C6B2896001DAD64 /* ChannelCreateMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		DF6348EB2C6B6524001DAD64 /* ChannelOwner */ = {
+			isa = PBXGroup;
+			children = (
+				DF6348EF2C6B6540001DAD64 /* Mapper */,
+				DF6348EE2C6B653A001DAD64 /* Repository */,
+				DF6348ED2C6B6535001DAD64 /* Feature */,
+				DF6348EC2C6B6531001DAD64 /* View */,
+			);
+			path = ChannelOwner;
+			sourceTree = "<group>";
+		};
+		DF6348EC2C6B6531001DAD64 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF6348F02C6B6553001DAD64 /* ChannelOwnerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF6348ED2C6B6535001DAD64 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				DF6348F22C6B6571001DAD64 /* ChannelOwnerFeature.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		DF6348EE2C6B653A001DAD64 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DF6348F82C6B674D001DAD64 /* ChannelOwnerRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		DF6348EF2C6B6540001DAD64 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				DF6348F62C6B673D001DAD64 /* ChannelOwnerMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
 		DF6412542C63633700CA5E96 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +490,7 @@
 		DF6C35492C69FFF9008DB2A1 /* DM */ = {
 			isa = PBXGroup;
 			children = (
+				DF6348EB2C6B6524001DAD64 /* ChannelOwner */,
 				DF6C354A2C6A001F008DB2A1 /* ChannelSetting */,
 				DF95DBDA2C6095C300628284 /* DMList */,
 				DF8FB28E2C64718E00D12097 /* Invite */,
@@ -481,6 +545,7 @@
 		DF71BE1C2C68D52200546A72 /* ChannelCreate */ = {
 			isa = PBXGroup;
 			children = (
+				DF6348E42C6B2886001DAD64 /* Mapper */,
 				DF71BE232C68DA1100546A72 /* Repository */,
 				DF71BE1E2C68D53300546A72 /* Feature */,
 				DF71BE1D2C68D52B00546A72 /* View */,
@@ -735,6 +800,7 @@
 				DF9279B62C58A90500E2002D /* EmailLoginRequestDTO.swift */,
 				DF8FB2992C648D8000D12097 /* EmailRequestDTO.swift */,
 				DF8FB2A82C64AEB300D12097 /* DMRequestDTO.swift */,
+				DF6348E92C6B6341001DAD64 /* OwnerRequestDTO.swift */,
 			);
 			name = RequestDTO;
 			sourceTree = "<group>";
@@ -1436,6 +1502,7 @@
 				DF5265BC2C5FDD550042D56F /* Entity.swift in Sources */,
 				DF95DBD92C60947200628284 /* TabCoordinator.swift in Sources */,
 				DF71BE2D2C68E63000546A72 /* AllChannelView.swift in Sources */,
+				DF6348F32C6B6571001DAD64 /* ChannelOwnerFeature.swift in Sources */,
 				DF9B6BBC2C5CF6A9002090B3 /* ChannelDTO.swift in Sources */,
 				DF61CFB32C6139BE00E19F6F /* DMEmptyView.swift in Sources */,
 				DF5C9E722C624B5A006B89F5 /* AuthRouter.swift in Sources */,
@@ -1443,6 +1510,7 @@
 				DF5265C72C5FF0520042D56F /* View+Extension.swift in Sources */,
 				DF9DF5D42C4FF1A2007649DB /* DynamicTextModifier.swift in Sources */,
 				DF71BE3D2C691EB500546A72 /* ChatEntity.swift in Sources */,
+				DF6348E62C6B2896001DAD64 /* ChannelCreateMapper.swift in Sources */,
 				DF71BE3B2C691DF600546A72 /* ChatDTO.swift in Sources */,
 				DF9279AB2C58A29400E2002D /* EmailLoginView.swift in Sources */,
 				DF8FB2942C64738400D12097 /* InviteFeature.swift in Sources */,
@@ -1466,6 +1534,7 @@
 				DF95DBE42C6097DF00628284 /* HomeCoordinator.swift in Sources */,
 				DF8FB2A32C649EF600D12097 /* ChatView.swift in Sources */,
 				DF9B6BC12C5D3BC7002090B3 /* ChannelEntity.swift in Sources */,
+				DF6348EA2C6B6341001DAD64 /* OwnerRequestDTO.swift in Sources */,
 				DF9B6BAC2C5C8528002090B3 /* HomeInitView.swift in Sources */,
 				DF94E7C42C50AD01005494B7 /* OnboardingFeature.swift in Sources */,
 				DF844F222C5399B4000DACFD /* SignUpType.swift in Sources */,
@@ -1488,6 +1557,7 @@
 				DF6C35502C6A0137008DB2A1 /* ChannelSettingFeature.swift in Sources */,
 				DF8544102C5518BC00DC80A8 /* EncodingType.swift in Sources */,
 				DF71BE372C69004300546A72 /* ChannelCoordinator.swift in Sources */,
+				DF6348F72C6B673D001DAD64 /* ChannelOwnerMapper.swift in Sources */,
 				DF9DF5CB2C4FED59007649DB /* SplashView.swift in Sources */,
 				DF9B6BB62C5CD405002090B3 /* WorkSpaceInfoDTO.swift in Sources */,
 				DF8FB29A2C648D8000D12097 /* EmailRequestDTO.swift in Sources */,
@@ -1498,6 +1568,7 @@
 				DF9B6BB12C5CB26D002090B3 /* ImagePicker.swift in Sources */,
 				DF784A4D2C53FD1D004EC293 /* AuthFeature.swift in Sources */,
 				DF8FB2AB2C64AF9E00D12097 /* ChatMapper.swift in Sources */,
+				DF6348F12C6B6553001DAD64 /* ChannelOwnerView.swift in Sources */,
 				DF9DF5DD2C5023BA007649DB /* OnboardingView.swift in Sources */,
 				DF844F202C538BFA000DACFD /* SignUpView.swift in Sources */,
 				DF8F42F72C660DF10051B965 /* DateManager.swift in Sources */,
@@ -1506,6 +1577,7 @@
 				DF9279CD2C5906E400E2002D /* WorkspaceListDTO.swift in Sources */,
 				DF5C9E6E2C620BBA006B89F5 /* DMListMapper.swift in Sources */,
 				DF71BE332C68FABC00546A72 /* AllChannelMapper.swift in Sources */,
+				DF6348F92C6B674D001DAD64 /* ChannelOwnerRepository.swift in Sources */,
 				DF9B6BCB2C5D4CD1002090B3 /* KingfisherRequestModifier.swift in Sources */,
 				DF71BE392C69005900546A72 /* ChannelCoordinatorView.swift in Sources */,
 				DF6412512C634AB100CA5E96 /* DMDTO.swift in Sources */,

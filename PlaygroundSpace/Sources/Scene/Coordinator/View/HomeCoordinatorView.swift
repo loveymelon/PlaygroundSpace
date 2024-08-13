@@ -23,6 +23,8 @@ struct HomeCoordinatorView: View {
                     ChannelCoordinatorView(store: store)
                 case let .chatView(store):
                     ChatView(store: store)
+                case let .channelSettingView(store):
+                    ChannelSettingView(store: store)
                 }
             }
             
@@ -39,6 +41,8 @@ extension HomeScreen.State: Identifiable {
             return ID.channel
         case .chatView:
             return ID.chat
+        case .channelSettingView:
+            return ID.channelSetting
         }
     }
     
@@ -47,6 +51,7 @@ extension HomeScreen.State: Identifiable {
         case root
         case channel
         case chat
+        case channelSetting
         
         var id: ID { self }
     }

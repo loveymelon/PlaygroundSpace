@@ -13,6 +13,7 @@ enum HomeScreen {
     case homeInitView(HomeInitFeature)
     case channelCoordinatorView(ChannelCoordinator)
     case chatView(ChatFeature)
+    case channelSettingView(ChannelSettingFeature)
 }
 
 @Reducer
@@ -76,8 +77,27 @@ struct HomeCoordinator {
                     await send(.nextChannelChatView(entity))
                 }
                 
+            case let .router(.routeAction(id: _, action: .channelSettingView(.delegate(.channelEditComplete(title))))):
+                return .run { send in
+                    await send(.router(.routeAction(id: .chat, action: .chatView(.catchTitle(title)))))
+                    await send(.router(.routeAction(id: .root, action: .homeInitView(.fetchChannel))))
+                }
+                
+            case let .router(.routeAction(id: _, action: .chatView(.delegate(.channelSettingTapped(channelId))))):
+                state.routes.push(.channelSettingView(.init(channelId: channelId)))
+                
+            case .router(.routeAction(id: _, action: .channelSettingView(.delegate(.channelDelete)))):
+                return .run { send in
+                    await send(.goBackToRoot)
+                }
+                
+            case .router(.routeAction(id: _, action: .channelSettingView(.delegate(.channelOut)))):
+                return .run { send in
+                    await send(.goBackToRoot)
+                }
+                
             case let .nextChannelChatView(entity):
-                state.routes.push(.chatView(.init(chatRoomData: DMSEntity(), channelId: entity.channelId, beforeView: .allChannel)))
+                state.routes.push(.chatView(.init(chatRoomData: DMSEntity(), channelId: entity.channelId, channelTitle: entity.name, beforeView: .allChannel)))
                 
             case let .nextDMChatView(entity):
                 state.routes.push(.chatView(.init(chatRoomData: entity, beforeView: .dmList)))

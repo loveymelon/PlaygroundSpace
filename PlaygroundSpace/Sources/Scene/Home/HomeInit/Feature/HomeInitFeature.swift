@@ -93,7 +93,7 @@ struct HomeInitFeature {
                 }
                 
             case .channelCreate:
-                state.channelCreateState = ChannelCreateFeature.State()
+                state.channelCreateState = ChannelCreateFeature.State(beforeView: .home, channelId: "")
                 
             case let .showModel(.showChannel(channelListEntity)):
                 state.channelListDatas = channelListEntity.channelList
@@ -131,8 +131,6 @@ struct HomeInitFeature {
                 return .run { send in
                     await send(.delegate(.dmTapped(entity)))
                 }
-                
-            
                 
             case .inviteTapped:
                 state.inviteState = InviteFeature.State()

@@ -51,9 +51,9 @@ struct TabCoordinatorView: View {
                     .tint(.brBlack)
                     
                     SideMenuView(isShowing: $store.isOpen.sending(\.sideMenuTrigger), direction: .leading) {
-                        WorkSpaceSideView(store: Store(initialState: WorkSpaceSideFeature.State()) {
-                            WorkSpaceSideFeature()
-                        })
+                        IfLetStore(store.scope(state: \.sideMenuState, action: \.sideMenuAction )) { store in
+                            WorkSpaceSideView(store: store)
+                        }
                         .frame(width: UIScreen.main.bounds.width * 0.8)
                     }
                     

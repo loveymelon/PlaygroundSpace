@@ -31,6 +31,9 @@ struct WorkSpaceSideView: View {
                     Spacer()
                 }
             }
+            .sheet(item: $store.scope(state: \.workSpaceCreateState, action: \.workSpaceCreateAction), content: { store in
+                WorkSpaceCreateView(store: store)
+            })
             .onAppear {
                 store.send(.onAppear)
             }

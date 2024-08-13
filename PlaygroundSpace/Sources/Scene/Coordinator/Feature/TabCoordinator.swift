@@ -67,6 +67,8 @@ struct TabCoordinator {
         var selectedTab: Tab
         var isOpen: Bool = false
         var selectWorkSpace: WorkspaceListEntity = WorkspaceListEntity()
+        
+        var sideMenuState: WorkSpaceSideFeature.State? = nil
     }
     
     enum ViewState {
@@ -123,19 +125,29 @@ struct TabCoordinator {
                     await send(.sideMenuTrigger(true))
                 }
             case let .sideMenuTrigger(isValid):
+                if isValid {
+                    state.sideMenuState = WorkSpaceSideFeature.State()
+                } else {
+                    state.sideMenuState = nil
+                }
                 state.isOpen = isValid
             case let .sideMenuAction(.delegate(.selectWorkSpace(entity))):
+                print("coordi", entity)
                 state.selectWorkSpace = entity
                 UserDefaultsManager.shared.currentWorkSpaceId = entity.workspaceID
                 
                 return .run { send in
                     await send(.homeAction(.workspaceResultScene(entity)))
                     await send(.dmAction(.workspaceResultScene(entity)))
+                    await send(.sideMenuTrigger(false))
                 }
             default:
                 break
             }
             return .none
+        }
+        .ifLet(\.sideMenuState, action: \.sideMenuAction) {
+            WorkSpaceSideFeature()
         }
     }
 }

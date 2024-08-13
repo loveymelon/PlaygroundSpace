@@ -11,10 +11,12 @@ import ComposableArchitecture
 @Reducer
 struct WorkSpaceSideFeature {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var currentCase: CurrentViewCase = .loading
         var currentModels: [WorkspaceListEntity] = []
         var currentWorkSpaceID: String = ""
+        
+        @Presents var workSpaceCreateState: WorkSpaceCreateFeature.State?
     }
     
     enum Action {
@@ -23,6 +25,8 @@ struct WorkSpaceSideFeature {
         case sendToMakeWorkSpace
         case networking
         case networkSuccess([WorkspaceListEntity])
+        
+        case workSpaceCreateAction(PresentationAction<WorkSpaceCreateFeature.Action>)
         
         case selectedModel(WorkspaceListEntity)
         case delegate(Delegate)
@@ -62,12 +66,31 @@ struct WorkSpaceSideFeature {
                 
             case let .selectedModel(data):
                 return .run { send in
+                    print("side", data)
                     await send(.delegate(.selectWorkSpace(data)))
                 }
+                
+            case .sendToMakeWorkSpace:
+                state.workSpaceCreateState = WorkSpaceCreateFeature.State()
+                
+            case .workSpaceCreateAction(.presented(.delegate(.backButtonTapped))):
+                return .run { send in
+                    await send(.workSpaceCreateAction(.dismiss))
+                }
+                
+            case .workSpaceCreateAction(.presented(.delegate(.workSpaceCreate))):
+                return .run { send in
+                    await send(.networking)
+                    await send(.workSpaceCreateAction(.dismiss))
+                }
+                
             default:
                 break
             }
             return .none
+        }
+        .ifLet(\.$workSpaceCreateState, action: \.workSpaceCreateAction) {
+            WorkSpaceCreateFeature()
         }
     }
 }
