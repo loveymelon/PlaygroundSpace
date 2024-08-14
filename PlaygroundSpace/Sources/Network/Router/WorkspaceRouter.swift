@@ -15,12 +15,14 @@ enum WorkspaceRouter: Router {
     case invite(EmailRequestDTO)
     case edit(String, String, Data)
     case changeOwner(OwnerRequestDTO)
+    case workSpaceOut
+    case fetchPointWorkSpace
 }
 
 extension WorkspaceRouter {
     var method: HTTPMethod {
         switch self {
-        case .fetch, .fetchMember:
+        case .fetch, .fetchMember, .workSpaceOut, .fetchPointWorkSpace:
             return .get
         case .create, .invite:
             return .post
@@ -35,30 +37,32 @@ extension WorkspaceRouter {
             return APIKey.version + "/workspaces"
         case .fetchMember, .invite:
             return APIKey.version + "/workspaces/" + UserDefaultsManager.shared.currentWorkSpaceId + "/members"
-        case .edit:
+        case .edit, .fetchPointWorkSpace:
             return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)"
         case .changeOwner:
             return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/transfer/ownership"
+        case .workSpaceOut:
+            return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/exit"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
-        case .fetch, .create, .fetchMember, .invite, .edit, .changeOwner:
+        case .fetch, .create, .fetchMember, .invite, .edit, .changeOwner, .workSpaceOut, .fetchPointWorkSpace:
             return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .fetch, .create, .fetchMember, .invite, .edit, .changeOwner:
+        case .fetch, .create, .fetchMember, .invite, .edit, .changeOwner, .workSpaceOut, .fetchPointWorkSpace:
             return nil
         }
     }
     
     var body: Data? {
         switch self {
-        case .fetch, .create, .fetchMember, .edit:
+        case .fetch, .create, .fetchMember, .edit, .workSpaceOut, .fetchPointWorkSpace:
             return nil
         case let .invite(data):
             return requestToBody(data)
@@ -69,7 +73,7 @@ extension WorkspaceRouter {
     
     var encodingType: EncodingType {
         switch self {
-        case .fetch, .fetchMember:
+        case .fetch, .fetchMember, .workSpaceOut, .fetchPointWorkSpace:
             return .url
         case let .create(name, description, imageData):
             let data = MultipartFormData()

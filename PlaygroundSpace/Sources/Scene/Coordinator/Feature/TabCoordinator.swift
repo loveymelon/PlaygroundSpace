@@ -132,15 +132,8 @@ struct TabCoordinator {
                 } else {
                     state.sideMenuState = nil
                     
-//                    return .send(.reload)
                 }
                 state.isOpen = isValid
-                
-//            case .reload:
-//                return .run { send in
-//                    try await Task.sleep(for: .seconds(2))
-//                    await send(.homeAction(.parentAction(.reloadHome)))
-//                }
                 
             case let .sideMenuAction(.delegate(.selectWorkSpace(entity))):
                 state.selectWorkSpace = entity
@@ -150,6 +143,27 @@ struct TabCoordinator {
                     await send(.homeAction(.workspaceResultScene(entity)))
                     await send(.dmAction(.workspaceResultScene(entity)))
                     await send(.sideMenuTrigger(false))
+                }
+                
+            case let .sideMenuAction(.delegate(.workSpaceOutComplete(entity))):
+                if let data = entity.first {
+                    state.selectWorkSpace = data
+                    UserDefaultsManager.shared.currentWorkSpaceId = data.workspaceID
+                    
+                    return .run { send in
+                        await send(.homeAction(.workspaceResultScene(data)))
+                        await send(.dmAction(.workspaceResultScene(data)))
+                    }
+                } else {
+                    return .run { send in
+                        await send(.sideMenuTrigger(false))
+                        await send(.coordiAction(.home(.workspaceResultScene([]))))
+                    }
+                }
+                
+            case .homeEmptyAction(.delegate(.createSuccess)):
+                return .run { send in
+                    await send(.fetchWorkSpaceList)
                 }
                 
             default:

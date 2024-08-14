@@ -29,4 +29,38 @@ final class CoordinatorRepository {
             return []
         }
     }
+    
+    func workSpaceOut() async -> [WorkspaceListEntity] {
+        do {
+            let result = try await network.requestNetwork(dto: WorkSpaceListDTO.self, router: WorkspaceRouter.workSpaceOut)
+            
+            switch result {
+            case .success(let data):
+                return mapper.dtoToEntity(dto: data)
+            case .failure(let error):
+                print("workOut", error)
+                return []
+            }
+        } catch {
+            print(error)
+            return []
+        }
+    }
+    
+    func fetchPointChannel() async -> [ChannelEntity] {
+        do {
+            let result = try await network.requestNetwork(dto: PointWorkSpaceInfoDTO.self, router: WorkspaceRouter.fetchPointWorkSpace)
+            
+            switch result {
+            case .success(let data):
+                return mapper.dtoToEntity(data.channels.channelList)
+            case .failure(let error):
+                print(error)
+                return []
+            }
+        } catch {
+            print(error)
+            return []
+        }
+    }
 }
