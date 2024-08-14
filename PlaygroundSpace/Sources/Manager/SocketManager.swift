@@ -5,7 +5,7 @@
 //  Created by 김진수 on 8/10/24.
 //
 
-import Foundation
+import UIKit
 import SocketIO
 
 final class SocketIOManager {
@@ -13,7 +13,9 @@ final class SocketIOManager {
     static let shared = SocketIOManager()
     private var manager: SocketManager?
     private var socket: SocketIOClient?
-    private init() {}
+    private init() {
+        setup()
+    }
     
     func startSocket() {
         print("소켓 시도 시작")
@@ -135,5 +137,24 @@ extension SocketIOManager {
                 continuation.finish()
             }
         }
+    }
+}
+
+extension SocketIOManager {
+    private func setup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(suspendSocket), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(restartSocket), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+}
+
+extension SocketIOManager {
+    @objc
+    private func suspendSocket() {
+        stopSocket()
+    }
+    
+    @objc
+    private func restartSocket() {
+        startSocket()
     }
 }
