@@ -161,6 +161,22 @@ struct TabCoordinator {
                     }
                 }
                 
+            case let .sideMenuAction(.delegate(.workSpaceDeleteComplete(entity))):
+                if let data = entity.first {
+                    state.selectWorkSpace = data
+                    UserDefaultsManager.shared.currentWorkSpaceId = data.workspaceID
+                    
+                    return .run { send in
+                        await send(.homeAction(.workspaceResultScene(data)))
+                        await send(.dmAction(.workspaceResultScene(data)))
+                    }
+                } else {
+                    return .run { send in
+                        await send(.sideMenuTrigger(false))
+                        await send(.coordiAction(.home(.workspaceResultScene([]))))
+                    }
+                }
+                
             case .homeEmptyAction(.delegate(.createSuccess)):
                 return .run { send in
                     await send(.fetchWorkSpaceList)

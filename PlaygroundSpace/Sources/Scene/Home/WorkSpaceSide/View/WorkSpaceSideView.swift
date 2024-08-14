@@ -98,8 +98,8 @@ extension WorkSpaceSideView {
             }
         case .over:
             List {
-                ForEach(store.currentModels, id: \.workspaceID) { item in
-                    makeWorkSpaceListView(item)
+                ForEach(Array(store.currentModels.enumerated()), id: \.element.workspaceID) { index, item in
+                    makeWorkSpaceListView(item, index)
                 }
             }
             .listStyle(.plain)
@@ -109,7 +109,7 @@ extension WorkSpaceSideView {
 
 extension WorkSpaceSideView {
     
-    private func makeWorkSpaceListView(_ model: WorkspaceListEntity) -> some View {
+    private func makeWorkSpaceListView(_ model: WorkspaceListEntity, _ index: Int) -> some View {
         HStack {
             HStack {
                 Group {
@@ -132,7 +132,7 @@ extension WorkSpaceSideView {
                 }
             }
             .onTapGesture {
-                store.send(.selectedModel(model))
+                store.send(.selectedModel(model, index))
             }
             
             Spacer()
@@ -151,7 +151,7 @@ extension WorkSpaceSideView {
             }
         }
         .padding(.all, 10)
-        .background(store.currentWorkSpaceID == model.workspaceID ? Color.green.opacity(0.1) : Color.white)
+        .background(UserDefaultsManager.shared.currentWorkSpaceId == model.workspaceID ? Color.green.opacity(0.1) : Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
     

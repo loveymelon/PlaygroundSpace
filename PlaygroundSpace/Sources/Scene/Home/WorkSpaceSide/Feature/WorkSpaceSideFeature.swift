@@ -14,10 +14,10 @@ struct WorkSpaceSideFeature {
     struct State: Equatable {
         var currentCase: CurrentViewCase = .loading
         var currentModels: [WorkspaceListEntity] = []
-        var currentWorkSpaceID: String = ""
         var editIsOpen: Bool = false
         var isOwner: Bool = false
         var channelIsOwner: Bool = false
+        var selectIndex: Int = 0
 //        var workSpaceIsOwner: Bool = false
         
         @Presents var workSpaceCreateState: WorkSpaceCreateFeature.State?
@@ -38,17 +38,21 @@ struct WorkSpaceSideFeature {
         case networkCheckWorkSpaceInfo
         case networkWorkSpaceOut
         case checkWorkOwnerAndChannelOwner
+        case networkWorkSpaceDelete
+        
+        case checkWorkSpace([WorkspaceListEntity])
         
         case workSpaceCreateAction(PresentationAction<WorkSpaceCreateFeature.Action>)
         case workSpaceChangeOwnerAction(PresentationAction<ChannelOwnerFeature.Action>)
         case workSpaceDelete
         
-        case selectedModel(WorkspaceListEntity)
+        case selectedModel(WorkspaceListEntity, Int)
         case delegate(Delegate)
         
         enum Delegate {
             case selectWorkSpace(WorkspaceListEntity)
             case workSpaceOutComplete([WorkspaceListEntity])
+            case workSpaceDeleteComplete([WorkspaceListEntity])
         }
     }
     
@@ -68,6 +72,7 @@ struct WorkSpaceSideFeature {
     enum DataTransType {
 //        case workSpaceIsOwner([String])
         case channelIsOwner([String])
+        case deleteWorkSpace
     }
     
     private let repository = CoordinatorRepository()
@@ -78,7 +83,7 @@ struct WorkSpaceSideFeature {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                state.currentWorkSpaceID = UserDefaultsManager.shared.currentWorkSpaceId
+               
                 return .run { send in
                     await send(.networking)
                 }
@@ -94,12 +99,9 @@ struct WorkSpaceSideFeature {
                 state.currentModels = datas
                 state.currentCase = datas.isEmpty ? .empty : .over
                 
-//                return .run { send in
-//                    await send(.dataTransType(.workSpaceIsOwner(datas.map {$0.ownerID})))
-//                }
-                
-            case let .selectedModel(data):
+            case let .selectedModel(data, index):
                 state.isOwner = (data.ownerID == UserDefaultsManager.shared.userId)
+                state.selectIndex = index
                 
                 return .run { send in
                     await send(.delegate(.selectWorkSpace(data)))
@@ -127,10 +129,15 @@ struct WorkSpaceSideFeature {
             case .workSpaceEditType(.workSpaceChangeOwner):
                 state.workSpaceChangeOwnerState = ChannelOwnerFeature.State(channelId: "", beforeViewType: .sideMenu)
                 
-            case let .workSpaceChangeOwnerAction(.presented(.delegate(.workSpaceOwnerChange(ownerId)))):
+            case .workSpaceChangeOwnerAction(.presented(.delegate(.workSpaceOwnerChange(_)))):
                 return .run { send in
                     await send(.networking)
                     await send(.workSpaceChangeOwnerAction(.dismiss))
+                }
+                
+            case .workSpaceEditType(.workSpaceDelete):
+                return .run { send in
+                    await send(.networkWorkSpaceDelete)
                 }
                 
             case .workSpaceEditType(.workSpaceOut):
@@ -146,6 +153,26 @@ struct WorkSpaceSideFeature {
                     }
                 } else {
                     print("nonononoonononon")
+                }
+                
+            case .networkWorkSpaceDelete:
+                return .run { [state = state] send in
+                    let result: Void? = await repository.deleteWorkSpace()
+                    
+                    guard let data = result else { return }
+                    
+                    await send(.dataTransType(.deleteWorkSpace))
+                }
+                
+            case let .checkWorkSpace(workSpaceList):
+                return .run { send in
+                    if workSpaceList.isEmpty {
+                        await send(.networkSuccess(workSpaceList))
+                    } else {
+                        print("network")
+                        await send(.networking)
+                    }
+                    await send(.delegate(.workSpaceDeleteComplete(workSpaceList)))
                 }
                 
             case .networkCheckWorkSpaceInfo:
@@ -166,6 +193,14 @@ struct WorkSpaceSideFeature {
                     }
                     // 워크스페이스 나갔으니 상위에 나 나갔으니 첫번째 워크스페이스로 이동해서 model을 뿌려줘 만약 아무것도 없으면 사이드 메뉴 내리고 viewState를 empty로 변경해줘
                     await send(.delegate(.workSpaceOutComplete(result)))
+                }
+                
+            case .dataTransType(.deleteWorkSpace):
+
+                state.currentModels.remove(at: state.selectIndex)
+                
+                return .run { [state = state] send in
+                    await send(.checkWorkSpace(state.currentModels))
                 }
                 
             case let .dataTransType(.channelIsOwner(ownerIds)):

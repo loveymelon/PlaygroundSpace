@@ -63,4 +63,21 @@ final class CoordinatorRepository {
             return []
         }
     }
+    
+    func deleteWorkSpace() async -> Void? {
+        do {
+            let result = try await network.requestNetwork(router: WorkspaceRouter.workSpaceDelete)
+            
+            switch result {
+            case .success(_):
+                return ()
+            case .failure(let error):
+                print(error)
+                return nil
+            }
+        } catch {
+            print(error)
+            return nil
+        }
+    }
 }
