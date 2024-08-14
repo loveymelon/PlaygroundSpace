@@ -16,15 +16,17 @@ struct WorkSpaceSideFeature {
         var currentModels: [WorkspaceListEntity] = []
         var currentWorkSpaceID: String = ""
         var editIsOpen: Bool = false
+        var isOwner: Bool = false
         
         @Presents var workSpaceCreateState: WorkSpaceCreateFeature.State?
+        @Presents var workSpaceChangeOwnerState: ChannelOwnerFeature.State?
     }
     
     enum Action: BindableAction {
         case binding(BindingAction<State>)
         
         case onAppear
-        case workSpaceEditButtonTapped
+        case workSpaceEditButtonTapped(WorkspaceListEntity)
         case workSpaceEditType(WorkSpaceEditType)
         
         case sendToMakeWorkSpace
@@ -32,6 +34,7 @@ struct WorkSpaceSideFeature {
         case networkSuccess([WorkspaceListEntity])
         
         case workSpaceCreateAction(PresentationAction<WorkSpaceCreateFeature.Action>)
+        case workSpaceChangeOwnerAction(PresentationAction<ChannelOwnerFeature.Action>)
         case workSpaceDelete
         
         case selectedModel(WorkspaceListEntity)
@@ -79,9 +82,17 @@ struct WorkSpaceSideFeature {
                 state.currentModels = datas
                 state.currentCase = datas.isEmpty ? .empty : .over
                 
+//                for data in datas {
+//                    if data.ownerID == UserDefaultsManager.shared.userId {
+//                        state.isOwner = true
+//                        break
+//                    }
+//                }
+                
             case let .selectedModel(data):
+                state.isOwner = (data.ownerID == UserDefaultsManager.shared.userId)
+                
                 return .run { send in
-                    print("side", data)
                     await send(.delegate(.selectWorkSpace(data)))
                 }
                 
@@ -96,11 +107,22 @@ struct WorkSpaceSideFeature {
                     await send(.workSpaceCreateAction(.dismiss))
                 }
                 
-            case .workSpaceEditButtonTapped:
+            case let .workSpaceEditButtonTapped(model):
                 state.editIsOpen = true
+                UserDefaultsManager.shared.currentWorkSpaceId = model.workspaceID
+                state.isOwner = (model.ownerID == UserDefaultsManager.shared.userId)
                 
             case .workSpaceEditType(.workSpaceEdit):
                 state.workSpaceCreateState = WorkSpaceCreateFeature.State(beforeViewType: .sideMenu)
+                
+            case .workSpaceEditType(.workSpaceChangeOwner):
+                state.workSpaceChangeOwnerState = ChannelOwnerFeature.State(channelId: "", beforeViewType: .sideMenu)
+                
+            case let .workSpaceChangeOwnerAction(.presented(.delegate(.workSpaceOwnerChange(ownerId)))):
+                return .run { send in
+                    await send(.networking)
+                    await send(.workSpaceChangeOwnerAction(.dismiss))
+                }
                 
             default:
                 break
@@ -109,6 +131,9 @@ struct WorkSpaceSideFeature {
         }
         .ifLet(\.$workSpaceCreateState, action: \.workSpaceCreateAction) {
             WorkSpaceCreateFeature()
+        }
+        .ifLet(\.$workSpaceChangeOwnerState, action: \.workSpaceChangeOwnerAction) {
+            ChannelOwnerFeature()
         }
     }
 }

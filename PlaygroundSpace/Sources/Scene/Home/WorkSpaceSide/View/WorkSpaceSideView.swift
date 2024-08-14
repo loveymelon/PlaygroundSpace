@@ -41,19 +41,28 @@ struct WorkSpaceSideView: View {
             .sheet(item: $store.scope(state: \.workSpaceCreateState, action: \.workSpaceCreateAction), content: { store in
                 WorkSpaceCreateView(store: store)
             })
+            .sheet(item: $store.scope(state: \.workSpaceChangeOwnerState, action: \.workSpaceChangeOwnerAction), content: { store in
+                ChannelOwnerView(store: store)
+            })
             .confirmationDialog("title", isPresented: $store.editIsOpen, titleVisibility: .hidden) {
-                Button("워크스페이스 편집") {
-                    store.send(.workSpaceEditType(.workSpaceEdit))
-                } // 첫 번째 버튼
-                Button("워크스페이스 나가기") {
-                    store.send(.workSpaceEditType(.workSpaceOut))
-                } // 두 번째 버튼
-                Button("워크스페이스 관리자 변경") {
-                    store.send(.workSpaceEditType(.workSpaceChangeOwner))
-                } // 두 번째 버튼
-                Button("워크스페이스 삭제") {
-                    store.send(.workSpaceEditType(.workSpaceDelete))
-                } // 두 번째 버튼
+                if store.isOwner {
+                    Button("워크스페이스 편집") {
+                        store.send(.workSpaceEditType(.workSpaceEdit))
+                    } // 첫 번째 버튼
+                    Button("워크스페이스 나가기") {
+                        store.send(.workSpaceEditType(.workSpaceOut))
+                    } // 두 번째 버튼
+                    Button("워크스페이스 관리자 변경") {
+                        store.send(.workSpaceEditType(.workSpaceChangeOwner))
+                    } // 두 번째 버튼
+                    Button("워크스페이스 삭제") {
+                        store.send(.workSpaceEditType(.workSpaceDelete))
+                    } // 두 번째 버튼
+                } else {
+                    Button("워크스페이스 나가기") {
+                        store.send(.workSpaceEditType(.workSpaceOut))
+                    }
+                }
                 Button("취소", role: .cancel) {}
             }
         }
@@ -138,7 +147,7 @@ extension WorkSpaceSideView {
                 
             }
             .onTapGesture {
-                store.send(.workSpaceEditButtonTapped)
+                store.send(.workSpaceEditButtonTapped(model))
             }
         }
         .padding(.all, 10)

@@ -14,6 +14,12 @@ struct ChannelOwnerFeature {
     struct State: Equatable {
         var channelId: String
         var memberInfo: [MemberInfoEntity] = []
+        var beforeViewType: BeforeViewType
+    }
+    
+    enum BeforeViewType {
+        case channel
+        case sideMenu
     }
     
     enum Action {
@@ -25,6 +31,7 @@ struct ChannelOwnerFeature {
         enum Delegate {
             case backButtonTapped
             case ownerChange
+            case workSpaceOwnerChange(String)
         }
     }
     
@@ -40,7 +47,9 @@ struct ChannelOwnerFeature {
     
     enum NetworkType {
         case fetchChannelMember
+        case fetchWorkSpaceMember
         case changeOwner(String)
+        case workSpaceChangeOwner(String)
     }
     
     private let repository = ChannelOwnerRepository()
@@ -49,13 +58,21 @@ struct ChannelOwnerFeature {
         Reduce { state, action in
             switch action {
             case .viewEventType(.onAppear):
-                return .run { send in
-                    await send(.networkType(.fetchChannelMember))
+                return .run { [state = state] send in
+                    if state.beforeViewType == .channel {
+                        await send(.networkType(.fetchChannelMember))
+                    } else {
+                        await send(.networkType(.fetchWorkSpaceMember))
+                    }
                 }
                 
             case let .viewEventType(.memberTapped(userId)):
-                return .run { send in
-                    await send(.networkType(.changeOwner(userId)))
+                return .run { [state = state] send in
+                    if state.beforeViewType == .channel {
+                        await send(.networkType(.changeOwner(userId)))
+                    } else {
+                        await send(.networkType(.workSpaceChangeOwner(userId)))
+                    }
                 }
                 
             case .networkType(.fetchChannelMember):
@@ -65,11 +82,27 @@ struct ChannelOwnerFeature {
                     await send(.dataTransType(.memberInfo(result)))
                 }
                 
+            case .networkType(.fetchWorkSpaceMember):
+                return .run { send in
+                    let result = await repository.fetchWorkSpaceMember()
+                    
+                    await send(.dataTransType(.memberInfo(result)))
+                }
+                
             case let .networkType(.changeOwner(ownerId)):
                 return .run { [state = state] send in
                     let result = await repository.changeOwner(channelId: state.channelId, ownerId: ownerId)
                     
                     await send(.delegate(.ownerChange))
+                }
+                
+            case let .networkType(.workSpaceChangeOwner(ownerId)):
+                return .run { send in
+                    let result = await repository.workSpaceChangeOwner(ownerId: ownerId)
+                    
+                    guard let data = result else { return }
+                    
+                    await send(.delegate(.workSpaceOwnerChange(data.ownerID)))
                 }
                 
             case let .dataTransType(.memberInfo(entitys)):

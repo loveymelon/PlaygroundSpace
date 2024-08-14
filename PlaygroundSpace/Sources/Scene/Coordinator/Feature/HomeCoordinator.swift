@@ -30,10 +30,16 @@ struct HomeCoordinator {
     enum Action {
         case router(IdentifiedRouterActionOf<HomeScreen>)
         
+        case parentAction(ParentAction)
+        
         case workspaceResultScene(WorkspaceListEntity)
         case goBackToRoot
         case nextChannelChatView(ChannelEntity)
         case nextDMChatView(DMSEntity)
+        
+        enum ParentAction {
+            case reloadHome
+        }
         
         case delegate(Delegate)
         enum Delegate {
@@ -101,6 +107,11 @@ struct HomeCoordinator {
                 
             case let .nextDMChatView(entity):
                 state.routes.push(.chatView(.init(chatRoomData: entity, beforeView: .dmList)))
+                
+            case .parentAction(.reloadHome):
+                return .run { send in
+                    await send(.router(.routeAction(id: .root, action: .homeInitView(.onAppear))))
+                }
                 
             case .goBackToRoot:
                 // 네비게이션이 내려가는 것을 기다리지말고 다 내려

@@ -102,7 +102,7 @@ struct ChannelSettingFeature {
                 }
                 
             case .viewEventType(.channelButtonType(.channelOwnerChange)):
-                state.channelOwnerState = ChannelOwnerFeature.State(channelId: state.channelId)
+                state.channelOwnerState = ChannelOwnerFeature.State(channelId: state.channelId, beforeViewType: .channel)
                 
             case .channelOwnerAction(.presented(.delegate(.backButtonTapped))):
                 return .run { send in

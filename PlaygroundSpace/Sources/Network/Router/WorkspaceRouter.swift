@@ -14,6 +14,7 @@ enum WorkspaceRouter: Router {
     case fetchMember
     case invite(EmailRequestDTO)
     case edit(String, String, Data)
+    case changeOwner(OwnerRequestDTO)
 }
 
 extension WorkspaceRouter {
@@ -23,7 +24,7 @@ extension WorkspaceRouter {
             return .get
         case .create, .invite:
             return .post
-        case .edit:
+        case .edit, .changeOwner:
             return .put
         }
     }
@@ -36,19 +37,21 @@ extension WorkspaceRouter {
             return APIKey.version + "/workspaces/" + UserDefaultsManager.shared.currentWorkSpaceId + "/members"
         case .edit:
             return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)"
+        case .changeOwner:
+            return APIKey.version + "/workspaces/\(UserDefaultsManager.shared.currentWorkSpaceId)/transfer/ownership"
         }
     }
     
     var optionalHeaders: HTTPHeaders? {
         switch self {
-        case .fetch, .create, .fetchMember, .invite, .edit:
+        case .fetch, .create, .fetchMember, .invite, .edit, .changeOwner:
             return [HTTPHeader(name: "Authorization", value: UserDefaultsManager.shared.accessToken)]
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .fetch, .create, .fetchMember, .invite, .edit:
+        case .fetch, .create, .fetchMember, .invite, .edit, .changeOwner:
             return nil
         }
     }
@@ -59,6 +62,8 @@ extension WorkspaceRouter {
             return nil
         case let .invite(data):
             return requestToBody(data)
+        case let .changeOwner(requestDTO):
+            return requestToBody(requestDTO)
         }
     }
     
@@ -74,7 +79,7 @@ extension WorkspaceRouter {
             data.append(imageData, withName: "image", fileName: "workSpaceImage.jpeg", mimeType: "image/jpeg")
             
             return .multiPart(data)
-        case .invite:
+        case .invite, .changeOwner:
             return .json
         case let .edit(name, description, image):
             let data = MultipartFormData()

@@ -50,4 +50,40 @@ struct ChannelOwnerRepository {
         }
     }
     
+    func fetchWorkSpaceMember() async -> [MemberInfoEntity] {
+        do {
+            let result = try await network.requestNetwork(dto: MemberIfnoListDTO.self, router: WorkspaceRouter.fetchMember)
+            
+            switch result {
+            case .success(let data):
+                return mapper.dtoToEntity(data.memberIfnoListDTO)
+            case .failure(let error):
+                print(error.localizedDescription)
+                return []
+            }
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
+    func workSpaceChangeOwner(ownerId: String) async -> WorkspaceListEntity? {
+        let requestDTO = OwnerRequestDTO(owner_id: ownerId)
+        
+        do {
+            let result = try await network.requestNetwork(dto: WorkspaceDTO.self, router: WorkspaceRouter.changeOwner(requestDTO))
+            
+            switch result {
+            case .success(let data):
+                return mapper.dtoToEntity(data)
+            case .failure(let error):
+                print(error.localizedDescription)
+                return nil
+            }
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
 }

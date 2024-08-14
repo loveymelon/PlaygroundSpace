@@ -62,6 +62,8 @@ struct TabCoordinator {
         case onAppear
         case sideMenuTrigger(Bool)
         case fetchWorkSpaceList
+        
+        case reload
     }
     
     enum CoordiAction {
@@ -129,8 +131,17 @@ struct TabCoordinator {
                     state.sideMenuState = WorkSpaceSideFeature.State()
                 } else {
                     state.sideMenuState = nil
+                    
+//                    return .send(.reload)
                 }
                 state.isOpen = isValid
+                
+//            case .reload:
+//                return .run { send in
+//                    try await Task.sleep(for: .seconds(2))
+//                    await send(.homeAction(.parentAction(.reloadHome)))
+//                }
+                
             case let .sideMenuAction(.delegate(.selectWorkSpace(entity))):
                 state.selectWorkSpace = entity
                 UserDefaultsManager.shared.currentWorkSpaceId = entity.workspaceID

@@ -19,6 +19,10 @@ struct ChannelOwnerMapper {
     func dtoToEntity(_ dto: [MemberInfoDTO]) -> [MemberInfoEntity] {
         return dto.map { dtoToEntity($0) }
     }
+    
+    func dtoToEntity(_ dto: WorkspaceDTO) -> WorkspaceListEntity {
+        return WorkspaceListEntity(workspaceID: dto.workspaceID, name: dto.name, description: dto.description, coverImage: dto.coverImage, ownerID: dto.ownerID, createdAt: dto.createdAt)
+    }
 }
 
 extension ChannelOwnerMapper {
