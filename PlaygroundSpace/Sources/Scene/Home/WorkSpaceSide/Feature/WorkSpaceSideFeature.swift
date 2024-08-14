@@ -179,7 +179,7 @@ struct WorkSpaceSideFeature {
                 return .run { send in
                     let result = await repository.fetchPointChannel()
                     
-                    await send(.dataTransType(.channelIsOwner(result.map { $0.ownerId })))
+                    await send(.dataTransType(.channelIsOwner(result.filter { $0.name != "일반" }.map { $0.ownerId })))
                 }
                 
             case .networkWorkSpaceOut:
@@ -204,7 +204,7 @@ struct WorkSpaceSideFeature {
                 }
                 
             case let .dataTransType(.channelIsOwner(ownerIds)):
-
+                
                 state.channelIsOwner = ownerIds.map { $0 == UserDefaultsManager.shared.userId }.contains(true)
                 
                 return .run { send in

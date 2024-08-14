@@ -55,11 +55,11 @@ struct ChannelSettingRepository {
             case .success(let data):
                 return ()
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
                 return nil
             }
         } catch {
-            print(error.localizedDescription)
+            print(error)
             return nil
         }
     }

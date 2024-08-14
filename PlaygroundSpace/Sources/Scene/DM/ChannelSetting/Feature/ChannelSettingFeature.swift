@@ -129,12 +129,12 @@ struct ChannelSettingFeature {
             case .viewEventType(.channelButtonType(.channelDelete)):
                 return .run { [state = state] send in
                     let result = await repository.deleteChannel(channelId: state.channelId)
-                    
+                    print("herer")
                     guard let void = result else {
                         print("error")
                         return
                     }
-                    
+                    print("here")
                     await send(.delegate(.channelDelete))
                 }
                 
