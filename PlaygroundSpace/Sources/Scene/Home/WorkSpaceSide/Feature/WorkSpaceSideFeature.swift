@@ -95,6 +95,9 @@ struct WorkSpaceSideFeature {
                     await send(.networkSuccess(result))
                 }
                 
+            case .sendToMakeWorkSpace:
+                state.workSpaceCreateState = WorkSpaceCreateFeature.State(beforeViewType: .emptyView)
+                
             case let .networkSuccess(datas):
                 state.currentModels = datas
                 state.currentCase = datas.isEmpty ? .empty : .over
@@ -109,6 +112,12 @@ struct WorkSpaceSideFeature {
                 
             case .workSpaceCreateAction(.presented(.delegate(.backButtonTapped))):
                 return .run { send in
+                    await send(.workSpaceCreateAction(.dismiss))
+                }
+                
+            case .workSpaceCreateAction(.presented(.delegate(.workSpaceCreate))):
+                return .run { send in
+                    await send(.networking)
                     await send(.workSpaceCreateAction(.dismiss))
                 }
                 

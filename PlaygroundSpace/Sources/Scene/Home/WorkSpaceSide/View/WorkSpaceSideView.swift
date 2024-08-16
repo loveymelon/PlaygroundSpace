@@ -171,6 +171,9 @@ extension WorkSpaceSideView {
                 .setTextStyle(type: .body)
             Spacer()
         }
+        .onTapGesture {
+            store.send(.sendToMakeWorkSpace)
+        }
     }
     
     func workSpaceHelpView() -> some View {
