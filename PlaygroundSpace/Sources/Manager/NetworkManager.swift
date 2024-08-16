@@ -64,7 +64,7 @@ final class NetworkManager {
             do {
                 let request = try router.asURLRequest()
                 
-                AF.request(request, interceptor: NetworkInterceptor())
+                AF.request(request, interceptor: NetworkInterceptor.shared)
                     .validate(statusCode: 200..<300)
                     .response { result in
                         switch result.result {
@@ -96,7 +96,7 @@ final class NetworkManager {
                 print(request.url)
                 
                 if case let .multiPart(multipartFormData) = router.encodingType {
-                    AF.upload(multipartFormData: multipartFormData, to: request.url!, method: request.method!, headers: request.headers, interceptor: NetworkInterceptor())
+                    AF.upload(multipartFormData: multipartFormData, to: request.url!, method: request.method!, headers: request.headers, interceptor: NetworkInterceptor.shared)
                         .responseDecodable(of: T.self) { result in
                             switch result.result {
                             case let .success(data):
@@ -116,9 +116,10 @@ final class NetworkManager {
                                 }
                             }
                         }
+                    
                 } else {
                     
-                    AF.request(request, interceptor: NetworkInterceptor())
+                    AF.request(request, interceptor: NetworkInterceptor.shared)
                         .responseDecodable(of: T.self) { result in
                             switch result.result {
                             case .success(let data):

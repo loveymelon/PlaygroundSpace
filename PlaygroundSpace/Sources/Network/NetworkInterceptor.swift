@@ -9,10 +9,16 @@ import Foundation
 import Alamofire
 import ComposableArchitecture
 
-class NetworkInterceptor: RequestInterceptor {
+final class NetworkInterceptor: RequestInterceptor {
     
     @Dependency(\.networkManager) var network
-    let retryLimit = 3
+    
+    static let shared = NetworkInterceptor()
+    
+    private init() { }
+    
+    private let retryLimit = 3
+    private var retryRequests: [(RetryResult) -> Void] = []
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, any Error>) -> Void) {
         
@@ -23,21 +29,28 @@ class NetworkInterceptor: RequestInterceptor {
     
     func retry(_ request: Request, for session: Session, dueTo error: any Error, completion: @escaping (RetryResult) -> Void) {
         
+        retryRequests.append(completion)
+        
         if request.retryCount < retryLimit {
-            network.refreshNetwork { isValid in
+            network.refreshNetwork { [weak self] isValid in
+                guard let self else { return }
                 if isValid {
-                    completion(.retryWithDelay(1))
+                    retryRequests.forEach { $0(.retry) }
+                    retryRequests.removeAll()
                 } else {
                     UserDefaultsManager.shared.accessToken = ""
                     NotificationCenter.default.post(name: .refreshTokenDie, object: nil)
+                    retryRequests.removeAll()
                     completion(.doNotRetryWithError(error))
                 }
             }
         } else {
             UserDefaultsManager.shared.accessToken = ""
             NotificationCenter.default.post(name: .refreshTokenDie, object: nil)
+            retryRequests.removeAll()
             completion(.doNotRetryWithError(error))
         }
+        
         
     }
 }
