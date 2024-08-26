@@ -204,6 +204,6 @@ extension WorkSpaceSideView {
         .padding(.top, 60)
         .padding(.leading, 10)
         .padding(.bottom, 10)
-        .background(Color.gray)
+        .background(.baPrimary)
     }
 }

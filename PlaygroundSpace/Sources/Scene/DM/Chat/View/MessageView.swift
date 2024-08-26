@@ -60,6 +60,7 @@ extension MessageView {
             HStack(alignment: .bottom) {
                 HStack(alignment: .top) {
                     makeProfileImageView()
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                     VStack(alignment: .leading) {
                         Text(messageIsValid ? messageData.user.nickname : chatData.user.nickname)
                             .setTextStyle(type: .caption)

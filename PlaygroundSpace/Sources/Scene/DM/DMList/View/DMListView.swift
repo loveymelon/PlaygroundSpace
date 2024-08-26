@@ -95,13 +95,13 @@ extension DMListView {
     func makeImageView(imageUrl: String?) -> some View {
         HStack {
             if let urlString = imageUrl {
-                DownSamplingImageView(url: URL(string: urlString), size: CGSize(width: 40, height: 40))
+                DownSamplingImageView(url: URL(string: urlString), size: CGSize(width: 32, height: 32))
             } else {
                 Image(ImageNames.profile)
                     .resizable()
             }
         }
-        .frame(width: 40, height: 40)
+        .frame(width: 32, height: 32)
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
     

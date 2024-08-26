@@ -24,12 +24,13 @@ extension DMMemeberView {
             LazyHStack(spacing: 10) {
                 ForEach(store.state.memberData, id: \.userId) { item in
                     makeMemberProfile(item: item)
+                        .frame(width: 60)
                         .onTapGesture {
                             store.send(.viewTouchEvent(.memberTapped(item)))
                         }
                 }
             }
-            .frame(width: 84)
+            .padding(.leading, 10)
         }
     }
     

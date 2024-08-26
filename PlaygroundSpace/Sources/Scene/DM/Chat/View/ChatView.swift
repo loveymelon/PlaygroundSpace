@@ -20,6 +20,10 @@ struct ChatView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         makeTrailingToolbarItem()
                     }
+                    
+                    ToolbarItem(placement: .topBarLeading) {
+                        
+                    }
                 }
                 .sheet(isPresented: $store.state.showImage) {
                     
@@ -43,6 +47,7 @@ extension ChatView {
                     
                     ScrollView {
                         checkMessage()
+                            .padding(.horizontal, 10)
                         Color.clear
                             .id("bottom")
                     }

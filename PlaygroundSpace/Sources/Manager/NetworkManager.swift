@@ -88,7 +88,7 @@ final class NetworkManager {
     }
     
     // DTO 있는 버전,
-    func requestNetwork<T: DTO, R: Router/*, E: Error*/>(dto: T.Type, router: R) async throws -> Result<T, APIError> {
+    func requestNetwork<T: DTO, R: Router>(dto: T.Type, router: R) async throws -> Result<T, APIError> {
         return try await withCheckedThrowingContinuation { continuation in
             do {
                 let request = try router.asURLRequest()
