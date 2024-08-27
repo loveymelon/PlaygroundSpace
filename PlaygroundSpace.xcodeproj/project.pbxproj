@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DF0B43482C6CB6B400505863 /* PointWorkSpaceInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0B43472C6CB6B400505863 /* PointWorkSpaceInfoDTO.swift */; };
+		DF1DECE12C7DA3860098F761 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DF1DECE02C7DA3860098F761 /* README.md */; };
 		DF35463E2C66922200E98F21 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35463D2C66922200E98F21 /* Collection+Extension.swift */; };
 		DF3AFF142C53B7C500677554 /* EnterButtonTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */; };
 		DF5265B62C5FD9420042D56F /* DMSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5265B52C5FD9420042D56F /* DMSRouter.swift */; };
@@ -176,6 +177,7 @@
 
 /* Begin PBXFileReference section */
 		DF0B43472C6CB6B400505863 /* PointWorkSpaceInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointWorkSpaceInfoDTO.swift; sourceTree = "<group>"; };
+		DF1DECE02C7DA3860098F761 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DF35463D2C66922200E98F21 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		DF3AFF132C53B7C500677554 /* EnterButtonTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterButtonTextModifier.swift; sourceTree = "<group>"; };
 		DF5265B52C5FD9420042D56F /* DMSRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMSRouter.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 		DF8B09A42C4F8B7F000B768A = {
 			isa = PBXGroup;
 			children = (
+				DF1DECE02C7DA3860098F761 /* README.md */,
 				DF9DF5BB2C4FBAF5007649DB /* .gitignore */,
 				DF8B09AF2C4F8B7F000B768A /* PlaygroundSpace */,
 				DF8B09C02C4F8B82000B768A /* PlaygroundSpaceTests */,
@@ -1447,6 +1450,7 @@
 			files = (
 				DF8B09B82C4F8B82000B768A /* Preview Assets.xcassets in Resources */,
 				DF9DF5BC2C4FBAF5007649DB /* .gitignore in Resources */,
+				DF1DECE12C7DA3860098F761 /* README.md in Resources */,
 				DF8B09B52C4F8B82000B768A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
