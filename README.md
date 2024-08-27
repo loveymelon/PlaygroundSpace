@@ -106,6 +106,40 @@ extension Collection {
 }
 ```
 
+### Swift Concurrency
+> WWDC 2021에 등장한 GCD기반인 Concurrency는 async/await를 통해 비동기 작업을 동기 코드처럼 직관적이고 간결하게 작성할 수 있고 복잡한 콜백 체인을 피하여 콜백 지옥을 방지할 수 있습니다.
+하나의 actor가 siral인 스레드이므로 gcd처럼 개발자가 원치않는 스레드 할당(Thread Explosion Prevention)을 방지합니다.
+```swift
+ func requestNetwork<T: DTO, R: Router>(dto: T.Type, router: R) async throws -> Result<T, APIError> {
+        return try await withCheckedThrowingContinuation { continuation in
+            do {
+                let request = try router.asURLRequest()
+                    
+                    AF.request(request, interceptor: NetworkInterceptor.shared)
+                        .responseDecodable(of: T.self) { result in
+                            switch result.result {
+                            case .success(let data):
+                                continuation.resume(returning: .success(data))
+                            case .failure(_):
+                                guard let data = result.data else { return }
+                                let errorResult = JSONManager.shared.decoder(type: ErrorDTO.self, data: data)
+                                switch errorResult {
+                                case .success(let success):
+                                    continuation.resume(returning: .failure(.httpError(success.errorCode)))
+                                case .failure(let failure):
+                                    print(failure)
+                                }
+                            }
+                        }
+                    
+                
+            } catch {
+                print(error)
+            }
+        }
+    }
+```
+
 ## 트러블 슈팅
 
 ### RaceCondition
